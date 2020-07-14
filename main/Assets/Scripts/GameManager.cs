@@ -27,10 +27,15 @@ public class GameManager : MonoBehaviour
      public void betRoom3()
      {
         SceneManager.LoadScene(3);
-    }
+     }
 
      public void betRoom4()
      {
         SceneManager.LoadScene(4);
+     }
+
+    public void test()
+    {
+        print("test");//王依柔
     }
 }
