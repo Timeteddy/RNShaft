@@ -20,7 +20,7 @@ public class CameraControl : MonoBehaviour
     }
 
     /// <summary>
-    /// 攝影機跟隨玩家//
+    /// 攝影機跟隨玩家
     /// </summary>
     private void Track()
     {
