@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
     /// <summary>
     /// 停止確認
     /// </summary>
-    bool isPlayStop = false;
+    bool isPlayStop = true;
     
     void Start()
     {
@@ -50,7 +50,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        bool hit = getRay();
+        RaycastHit2D hit = getRay();
+
         Vector2 playPoint = new Vector2(transform.position.x, transform.position.y);
         //animJudge();
 
@@ -74,13 +75,18 @@ public class Player : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position, point, speed * Time.deltaTime);
 
+        if (hit)
+        {
+            print(hit.collider.name);
+        }
+
     }
 
     /// <summary>
     /// 判斷射線是否擊中
     /// </summary>
     /// <returns></returns>
-    private bool getRay()
+    private RaycastHit2D getRay()
     {
         //滑鼠位置
         Vector2 mousePosition = getMousePoint();
@@ -90,10 +96,12 @@ public class Player : MonoBehaviour
         float distance = Vector2.Distance(mousePosition, transform.position);
         //射線本體
         RaycastHit2D hit = Physics2D.Raycast(origin, mousePosition, distance, canHit);
+
         //畫出一條重玩家的位置到射線位置的線
         Debug.DrawLine(origin, mousePosition, Color.red);
 
         return hit;
+
     }
 
     /// <summary>
