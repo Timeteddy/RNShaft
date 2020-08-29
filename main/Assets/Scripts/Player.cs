@@ -21,9 +21,16 @@ public class Player : MonoBehaviour
 
     [Header("移動速度")]
     public float speed;
-
+    [Header("玩家背包")]
+    public GameObject backpack;
+    private bool isOpenBackpack = false;
     [Header("能夠拿取的道具")]
     public LayerMask canHit;
+
+    /// <summary>
+    /// 能否走路
+    /// </summary>
+    private bool walk = true;
 
     public RaycastHit hit;//偵測賭局
 
@@ -50,16 +57,21 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        RaycastHit2D hit = getRay();
-
+        RaycastHit2D hit = getRayObj();
         Vector2 playPoint = new Vector2(transform.position.x, transform.position.y);
         //animJudge();
 
         if (Input.GetMouseButtonDown(0))
         {
+
+            if (isOpenBackpack) return;
+            if (!walk) return;
             point = getMousePoint();
             directionControlelr();
             isPlayStop = false;
+            
+            if (!hit) return;
+            print(hit.collider.name);
         }
 
         //  如果目前不能播放停止動畫時
@@ -74,19 +86,45 @@ public class Player : MonoBehaviour
         }
 
         transform.position = Vector2.MoveTowards(transform.position, point, speed * Time.deltaTime);
+    }
+    
+    /// <summary>
+    /// 開啟背包
+    /// </summary>
+    public void openBackpack()
+    {
+        isOpenBackpack = true;
+        backpack.SetActive(true);
+    }
+    /// <summary>
+    /// 關閉背包
+    /// </summary>
+    public void offBackPack()
+    {
+        isOpenBackpack = false;
+        backpack.SetActive(false);
+    }
 
-        if (hit)
-        {
-            print(hit.collider.name);
-        }
-
+    /// <summary>
+    /// 在ui上時
+    /// </summary>
+    public void initUi()
+    {
+        walk = false;
+    }
+    /// <summary>
+    /// 離開ui時
+    /// </summary>
+    public void exetUi()
+    {
+        walk = true;
     }
 
     /// <summary>
     /// 判斷射線是否擊中
     /// </summary>
     /// <returns></returns>
-    private RaycastHit2D getRay()
+    private RaycastHit2D getRayObj()
     {
         //滑鼠位置
         Vector2 mousePosition = getMousePoint();
@@ -101,7 +139,6 @@ public class Player : MonoBehaviour
         Debug.DrawLine(origin, mousePosition, Color.red);
 
         return hit;
-
     }
 
     /// <summary>
@@ -272,5 +309,10 @@ public class Player : MonoBehaviour
         {
             point = enterPoint;
         }
+    }
+
+    public void test()
+    {
+        print("test");
     }
 }
