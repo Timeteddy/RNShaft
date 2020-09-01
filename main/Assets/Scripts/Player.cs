@@ -6,6 +6,9 @@ public class Player : MonoBehaviour
 {
     public Animator anim; 
     public AnimatorStateInfo animing;
+    
+    [Header("背包控制器")]
+    public Backpack backpackSrc;
 
     static int run_front = Animator.StringToHash("Base Layer.original.nurse_run_front");
     static int run_back = Animator.StringToHash("Base Layer.original.nurse_run_back");
@@ -24,6 +27,8 @@ public class Player : MonoBehaviour
     [Header("玩家背包")]
     public GameObject backpack;
     private bool isOpenBackpack = false;
+
+    private string props;
     [Header("能夠拿取的道具")]
     public LayerMask canHit;
 
@@ -63,9 +68,9 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-
             if (isOpenBackpack) return;
             if (!walk) return;
+            backpackSrc.onForgoProps();
             point = getMousePoint();
             directionControlelr();
             isPlayStop = false;
@@ -81,6 +86,7 @@ public class Player : MonoBehaviour
             if (playPoint == point)
             {
                 animStopJudge();
+                backpackSrc.onPutBackpack();
                 isPlayStop = true;
             }
         }
@@ -94,6 +100,7 @@ public class Player : MonoBehaviour
     public void openBackpack()
     {
         isOpenBackpack = true;
+        backpackSrc.onOpenBackPack();
         backpack.SetActive(true);
     }
     /// <summary>
@@ -102,6 +109,7 @@ public class Player : MonoBehaviour
     public void offBackPack()
     {
         isOpenBackpack = false;
+        backpackSrc.onCloseBackPack();
         backpack.SetActive(false);
     }
 
@@ -309,10 +317,5 @@ public class Player : MonoBehaviour
         {
             point = enterPoint;
         }
-    }
-
-    public void test()
-    {
-        print("test");
     }
 }
