@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class Backpack : MonoBehaviour
 {
@@ -13,10 +14,22 @@ public class Backpack : MonoBehaviour
     /// </summary>
     private string[] arrProps = new string[15];
 
+    [Header("道具圖片")]
     /// <summary>
     /// 物品圖片
     /// </summary>
     public Sprite[] imgProps;
+
+    [Header("背包道具顯示")]
+    /// <summary>
+    /// 背包物品顯示
+    /// </summary>
+    public Image[] imgBackProps;
+
+    /// <summary>
+    /// 背包物品的圖片字典
+    /// </summary>
+    private Dictionary<string, Sprite> propsImgMap = new Dictionary<string, Sprite>();
 
     /// <summary>
     /// 道具數量
@@ -26,6 +39,23 @@ public class Backpack : MonoBehaviour
     void Awake()
     {
         amount = 0;
+
+        propsImgMap.Add("3_1", imgProps[0]);
+        propsImgMap.Add("3_2", imgProps[2]);
+        propsImgMap.Add("3_3", imgProps[1]);
+        propsImgMap.Add("3_4", imgProps[3]);
+        propsImgMap.Add("3_5", imgProps[4]);
+        propsImgMap.Add("11_1", imgProps[5]);
+        propsImgMap.Add("11_2", imgProps[6]);
+        propsImgMap.Add("11_3", imgProps[7]);
+        propsImgMap.Add("11_4", imgProps[8]);
+        propsImgMap.Add("11_5", imgProps[9]);
+        propsImgMap.Add("11_6", imgProps[10]);
+        propsImgMap.Add("11_7", imgProps[11]);
+        propsImgMap.Add("11_8", imgProps[12]);
+        propsImgMap.Add("11_9", imgProps[13]);
+        propsImgMap.Add("11_10", imgProps[14]);
+
     }
 
     /// <summary>
@@ -33,7 +63,13 @@ public class Backpack : MonoBehaviour
     /// </summary>
     public void onOpenBackPack()
     {
-
+        int len = arrProps.Length;
+        for (int i = 0; i < len; i++)
+        {
+            if (arrProps[i] == null) break;
+            imgBackProps[i].sprite = propsImgMap[arrProps[i]];
+            imgBackProps[i].color = new Color(255, 255, 255, 255);
+        }
     }
 
     /// <summary>
