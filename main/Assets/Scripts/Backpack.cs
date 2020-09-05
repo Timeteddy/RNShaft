@@ -36,6 +36,8 @@ public class Backpack : MonoBehaviour
     /// </summary>
     private int amount;
 
+    private Button readlySetClean;
+
     void Awake()
     {
         amount = 0;
@@ -90,6 +92,15 @@ public class Backpack : MonoBehaviour
     }
 
     /// <summary>
+    /// 準備刪除的道具
+    /// </summary>
+    /// <param name="btn"></param>
+    public void btnGetPropsClean(Button btn)
+    {
+        readlySetClean = btn;
+    }
+
+    /// <summary>
     /// 放棄道具
     /// </summary>
     public void onForgoProps()
@@ -105,6 +116,7 @@ public class Backpack : MonoBehaviour
         if (readlySetProps == null) return;
         arrProps[amount] = readlySetProps;
         amount++;
+        Destroy(readlySetClean.gameObject);
     }
 
     /// <summary>

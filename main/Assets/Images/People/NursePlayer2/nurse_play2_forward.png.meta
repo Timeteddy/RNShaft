@@ -1,7 +1,28 @@
 fileFormatVersion: 2
 guid: 23653535810fe7141a11e9c825268ff1
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7411803303626568735
+    second: nurse_play2_forward_0
+  - first:
+      213: -3997103043731069153
+    second: nurse_play2_forward_1
+  - first:
+      213: 9179121752638272305
+    second: nurse_play2_forward_2
+  - first:
+      213: -7004151667634549548
+    second: nurse_play2_forward_3
+  - first:
+      213: 2996027892397491080
+    second: nurse_play2_forward_4
+  - first:
+      213: -2128077067342383051
+    second: nurse_play2_forward_5
+  - first:
+      213: 5170348299897891189
+    second: nurse_play2_forward_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +61,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +92,180 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: nurse_play2_forward_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 169
+        width: 48
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f147ab1d5d30cd660800000000000000
+      internalID: 7411803303626568735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nurse_play2_forward_1
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 109
+        width: 118
+        height: 122
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f17e6c395ff6788c0800000000000000
+      internalID: -3997103043731069153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nurse_play2_forward_2
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 103
+        width: 48
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 133b018d99ac26f70800000000000000
+      internalID: 9179121752638272305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nurse_play2_forward_3
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 22
+        width: 37
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dccea9fa214cce90800000000000000
+      internalID: -7004151667634549548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nurse_play2_forward_4
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 13
+        width: 35
+        height: 76
+      alignment: 9
+      pivot: {x: 0.54, y: 0.54}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 883c3879e77049920800000000000000
+      internalID: 2996027892397491080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nurse_play2_forward_5
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 16
+        width: 67
+        height: 79
+      alignment: 9
+      pivot: {x: 0.39, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 538f66aae2d8772e0800000000000000
+      internalID: -2128077067342383051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nurse_play2_forward_6
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 51
+        width: 31
+        height: 51
+      alignment: 9
+      pivot: {x: 0.44725725, y: 0.35573205}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57965749264c0c740800000000000000
+      internalID: 5170348299897891189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
