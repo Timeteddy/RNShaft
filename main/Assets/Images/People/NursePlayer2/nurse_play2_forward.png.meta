@@ -23,6 +23,33 @@ TextureImporter:
   - first:
       213: 5170348299897891189
     second: nurse_play2_forward_6
+  - first:
+      213: 4979222240527851993
+    second: nurse_play2_forward_0
+  - first:
+      213: 1718434738312237173
+    second: nurse_play2_forward_1
+  - first:
+      213: 8257778041119678622
+    second: nurse_play2_forward_2
+  - first:
+      213: 2446621704975072587
+    second: nurse_play2_forward_3
+  - first:
+      213: -7087595682110091976
+    second: nurse_play2_forward_4
+  - first:
+      213: 8210525837440661738
+    second: nurse_play2_forward_5
+  - first:
+      213: -1981412299800656561
+    second: nurse_play2_forward_6
+  - first:
+      213: -153460578781207189
+    second: nurse_play2_forward_7
+  - first:
+      213: 5722834538197167765
+    second: nurse_play2_forward_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -134,8 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f147ab1d5d30cd660800000000000000
-      internalID: 7411803303626568735
+      spriteID: 9d123682f30c91540800000000000000
+      internalID: 4979222240527851993
       vertices: []
       indices: 
       edges: []
@@ -155,14 +182,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f17e6c395ff6788c0800000000000000
-      internalID: -3997103043731069153
+      spriteID: 570dac23a4b19d710800000000000000
+      internalID: 1718434738312237173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
       name: nurse_play2_forward_2
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 152
+        width: 56
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e90a5f67065899270800000000000000
+      internalID: 8257778041119678622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nurse_play2_forward_3
       rect:
         serializedVersion: 2
         x: 25
@@ -176,14 +224,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 133b018d99ac26f70800000000000000
-      internalID: 9179121752638272305
+      spriteID: b4dbcc85a7524f120800000000000000
+      internalID: 2446621704975072587
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nurse_play2_forward_3
+      name: nurse_play2_forward_4
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 105
+        width: 46
+        height: 41
+      alignment: 9
+      pivot: {x: 0.4618371, y: 0.67}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83d4c30674dc3ad90800000000000000
+      internalID: -7087595682110091976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nurse_play2_forward_5
       rect:
         serializedVersion: 2
         x: 12
@@ -197,50 +266,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4dccea9fa214cce90800000000000000
-      internalID: -7004151667634549548
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: nurse_play2_forward_4
-      rect:
-        serializedVersion: 2
-        x: 73
-        y: 13
-        width: 35
-        height: 76
-      alignment: 9
-      pivot: {x: 0.54, y: 0.54}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 883c3879e77049920800000000000000
-      internalID: 2996027892397491080
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: nurse_play2_forward_5
-      rect:
-        serializedVersion: 2
-        x: 132
-        y: 16
-        width: 67
-        height: 79
-      alignment: 9
-      pivot: {x: 0.39, y: 0.4}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 538f66aae2d8772e0800000000000000
-      internalID: -2128077067342383051
+      spriteID: ae831d77fb5a1f170800000000000000
+      internalID: 8210525837440661738
       vertices: []
       indices: 
       edges: []
@@ -249,19 +276,61 @@ TextureImporter:
       name: nurse_play2_forward_6
       rect:
         serializedVersion: 2
-        x: 205
-        y: 51
-        width: 31
-        height: 51
+        x: 73
+        y: 13
+        width: 35
+        height: 76
       alignment: 9
-      pivot: {x: 0.44725725, y: 0.35573205}
+      pivot: {x: 0.5, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57965749264c0c740800000000000000
-      internalID: 5170348299897891189
+      spriteID: f45cac4e20c9084e0800000000000000
+      internalID: -1981412299800656561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nurse_play2_forward_7
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 16
+        width: 67
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6568baaa6cceddf0800000000000000
+      internalID: -153460578781207189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nurse_play2_forward_8
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 51
+        width: 31
+        height: 51
+      alignment: 9
+      pivot: {x: 0.42, y: 0.35}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59e249d01b79b6f40800000000000000
+      internalID: 5722834538197167765
       vertices: []
       indices: 
       edges: []

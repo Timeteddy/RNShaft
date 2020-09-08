@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class SelectRole : MonoBehaviour
 {
+    public PlayerData playerData;
     [Header("攝影機")]
     public Transform myCamera;
 
@@ -25,6 +26,7 @@ public class SelectRole : MonoBehaviour
     void Awake()
     {
         follow = originalPoint;
+        playerData._RoleState = RoleState.not;
     }
 
     void Update()
@@ -50,10 +52,12 @@ public class SelectRole : MonoBehaviour
         {
             case "one":
                 follow = userOnePoint;
+                playerData._RoleState = RoleState.Baotou;
                 break;
 
             case "two":
                 follow = userTwoPoint;
+                playerData._RoleState = RoleState.FullyArmed;
                 break;
         }
     }

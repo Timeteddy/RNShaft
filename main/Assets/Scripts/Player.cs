@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("玩家資料")]
+    public PlayerData playerData;
+    public GameObject userOne;
+    public GameObject userTwo;
+    [Header("角色動畫控制器")]
     public Animator anim; 
     public AnimatorStateInfo animing;
     
@@ -53,7 +58,25 @@ public class Player : MonoBehaviour
     /// 停止確認
     /// </summary>
     bool isPlayStop = true;
-    
+
+    private void Awake()
+    {
+        switch (playerData._RoleState)
+        {
+            case RoleState.not:
+                Debug.LogError("尚未選擇角色");
+                break;
+            case RoleState.Baotou:
+                userTwo.SetActive(false);
+                anim = userOne.GetComponent<Animator>();
+                break;
+            case RoleState.FullyArmed:
+                userOne.SetActive(false);
+                anim = userTwo.GetComponent<Animator>();
+                break;
+        }
+    }
+
     void Start()
     {
         point = transform.position;
