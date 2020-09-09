@@ -10,15 +10,9 @@ public class Player : MonoBehaviour
     public GameObject userTwo;
     [Header("角色動畫控制器")]
     public Animator anim; 
-    public AnimatorStateInfo animing;
     
     [Header("背包控制器")]
     public Backpack backpackSrc;
-
-    static int run_front = Animator.StringToHash("Base Layer.original.nurse_run_front");
-    static int run_back = Animator.StringToHash("Base Layer.original.nurse_run_back");
-    static int run_left = Animator.StringToHash("Base Layer.original.nurse_run_left");
-    static int run_right = Animator.StringToHash("Base Layer.original.nurse_run_right");
 
     private string front = "front";
     private string back = "back";
@@ -80,7 +74,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         point = transform.position;
-        animing = anim.GetCurrentAnimatorStateInfo(0);
     }
 
     void Update()
@@ -248,48 +241,6 @@ public class Player : MonoBehaviour
             nowAnim = front;
         }
 
-    }
-
-    /// <summary>
-    /// 當前動畫判斷
-    /// </summary>
-    void animJudge()
-    {
-        //if(animing.fullPathHash == run_front)
-        //{
-        //    front = true;
-        //}
-        //else
-        //{
-        //    front = false;
-        //}
-
-        //if (animing.fullPathHash == run_back)
-        //{
-        //    back = true;
-        //}
-        //else
-        //{
-        //    back = false;
-        //}
-
-        //if (animing.fullPathHash == run_left)
-        //{
-        //    left = true;
-        //}
-        //else
-        //{
-        //    left = false;
-        //}
-
-        //if (animing.fullPathHash == run_right)
-        //{
-        //    right = true;
-        //}
-        //else
-        //{
-        //    right = false;
-        //}
     }
 
     /// <summary>
