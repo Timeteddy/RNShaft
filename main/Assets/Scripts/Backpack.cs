@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class Backpack : MonoBehaviour
 {
+    [Header("玩家")]
+    public Player player;
+
     /// <summary>
     /// 準備放入背包的物品
     /// </summary>
@@ -117,6 +120,14 @@ public class Backpack : MonoBehaviour
         arrProps[amount] = readlySetProps;
         amount++;
         Destroy(readlySetClean.gameObject);
+        player.finishGetProps();
+    }
+    /// <summary>
+    /// 獲取準備放入背包的物品
+    /// </summary>
+    public string onGetReadlySetProps()
+    {
+        return readlySetProps;
     }
 
     /// <summary>

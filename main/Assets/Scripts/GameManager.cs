@@ -10,13 +10,29 @@ public class GameManager : MonoBehaviour
     public Player player;
     [Header("攝影機")]
     public CameraControl myCamera;
-
     /// <summary>
     /// 各個房間的入口
     /// </summary>
     public Transform[] arrRoomEntrance = new Transform[10];
+    /// <summary>
+    /// 敲的門號
+    /// </summary>
+    private int doorNumber;
 
+    public void btnInitRoom(int value)
+    {
+        doorNumber = value;
+    }
 
+    /// <summary>
+    /// 敲門
+    /// </summary>
+    /// <param name="value">準備進入的門牌</param>
+    public void intoRoom(int value)
+    {
+        if (doorNumber != value) return;
+        print(value);
+    }
 
     public void betRoom0()
     {

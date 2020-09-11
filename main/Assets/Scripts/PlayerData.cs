@@ -7,6 +7,13 @@ public enum RoleState
 {
     not, Baotou, FullyArmed
 }
+/// <summary>
+/// 玩家動作狀態
+/// </summary>
+public enum ActionState
+{
+    Idle, getProps, intRoom //待機, 撿取物品, 進入房間
+}
 
 //腳本化物件
 [CreateAssetMenu(fileName = "玩家資料", menuName ="角色/玩家 資料")]
@@ -14,4 +21,8 @@ public class PlayerData : ScriptableObject
 {
     [Header("玩家形象")]
     public RoleState _RoleState = RoleState.not;
+    [Header("玩家動作狀態")]
+    public ActionState _actionState = ActionState.Idle;
+    [Header("玩家名稱")]
+    public string _name = "";
 }

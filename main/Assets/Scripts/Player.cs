@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     public PlayerData playerData;
     public GameObject userOne;
     public GameObject userTwo;
+    [Header("場景控制器")]
+    public GameManager GM;
     [Header("角色動畫控制器")]
     public Animator anim; 
     
@@ -52,6 +54,10 @@ public class Player : MonoBehaviour
     /// 停止確認
     /// </summary>
     bool isPlayStop = true;
+    /// <summary>
+    /// 準備進入的房間
+    /// </summary>
+    private int readlyIntoRoom;
 
     private void Awake()
     {
@@ -59,6 +65,8 @@ public class Player : MonoBehaviour
         {
             case RoleState.not:
                 Debug.LogError("尚未選擇角色");
+                userOne.SetActive(false);
+                userTwo.SetActive(false);
                 break;
             case RoleState.Baotou:
                 userTwo.SetActive(false);
@@ -74,6 +82,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         point = transform.position;
+        playerData._actionState = ActionState.Idle;
+        readlyIntoRoom = -1;
     }
 
     void Update()
@@ -87,6 +97,7 @@ public class Player : MonoBehaviour
             if (isOpenBackpack) return;
             if (!walk) return;
             backpackSrc.onForgoProps();
+            playerData._actionState = ActionState.Idle;
             point = getMousePoint();
             directionControlelr();
             isPlayStop = false;
@@ -102,7 +113,15 @@ public class Player : MonoBehaviour
             if (playPoint == point)
             {
                 animStopJudge();
-                backpackSrc.onPutBackpack();
+                
+                if(playerData._actionState == ActionState.getProps)
+                {
+                    backpackSrc.onPutBackpack();
+                }else if(playerData._actionState == ActionState.intRoom)
+                {
+                    GM.intoRoom(readlyIntoRoom);
+                }
+
                 isPlayStop = true;
             }
         }
@@ -142,6 +161,20 @@ public class Player : MonoBehaviour
     public void exetUi()
     {
         walk = true;
+    }
+    /// <summary>
+    /// 準備撿取物品時
+    /// </summary>
+    public void btnGetProps()
+    {
+        playerData._actionState = ActionState.getProps;
+    }
+    /// <summary>
+    /// 完成撿取物品
+    /// </summary>
+    public void finishGetProps()
+    {
+        playerData._actionState = ActionState.Idle;
     }
 
     /// <summary>
@@ -291,5 +324,27 @@ public class Player : MonoBehaviour
         {
             point = enterPoint;
         }
+    }
+
+    public int getReadlyIntoRoom()
+    {
+        return readlyIntoRoom;
+    }
+    /// <summary>
+    /// 進入觸發區
+    /// </summary>
+    /// <param name="evt"></param>
+    void OnTriggerEnter2D(Collider2D evt)
+    {
+        readlyIntoRoom = int.Parse(evt.name);
+    }
+
+    /// <summary>
+    /// 離開觸發區
+    /// </summary>
+    /// <param name="evt"></param>
+    void OnTriggerExit2D(Collider2D evt)
+    {
+        readlyIntoRoom = -1;
     }
 }
