@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 選擇角色
@@ -23,10 +23,16 @@ public class SelectRole : MonoBehaviour
     [Header("攝影機移動速度")]
     public float speed;
 
+    [Header("確認按鈕")]
+    public Button btnEnter;
+    [Header("提示文字")]
+    public Text textPrompt;
+
     void Awake()
     {
         follow = originalPoint;
         playerData._RoleState = RoleState.not;
+        btnEnter.gameObject.SetActive(false);
     }
 
     void Update()
@@ -48,6 +54,8 @@ public class SelectRole : MonoBehaviour
 
     public void betChangeRole(string role)
     {
+        btnEnter.gameObject.SetActive(true);
+        textPrompt.text = "確認選擇這個形象嗎?";
         switch (role)
         {
             case "one":
@@ -60,5 +68,10 @@ public class SelectRole : MonoBehaviour
                 playerData._RoleState = RoleState.FullyArmed;
                 break;
         }
+    }
+
+    public void enter()
+    {
+        SceneManager.LoadScene(1);
     }
 }

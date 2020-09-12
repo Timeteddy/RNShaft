@@ -1,7 +1,31 @@
 fileFormatVersion: 2
 guid: bae1c9017d6c3e941aa1e245ade2b368
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2141423792210807250
+    second: doctors_woman_forward_0
+  - first:
+      213: 402640714251008798
+    second: doctors_woman_forward_1
+  - first:
+      213: -5564258944093942444
+    second: doctors_woman_forward_2
+  - first:
+      213: 1039407174644174351
+    second: doctors_woman_forward_3
+  - first:
+      213: 4246285411865908642
+    second: doctors_woman_forward_4
+  - first:
+      213: 78174412022166043
+    second: doctors_woman_forward_5
+  - first:
+      213: -2608939425100242732
+    second: doctors_woman_forward_6
+  - first:
+      213: 5163361967302996703
+    second: doctors_woman_forward_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +64,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +95,213 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: doctors_woman_forward_0
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 194
+        width: 47
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d98b40e79dd7bd10800000000000000
+      internalID: 2141423792210807250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_woman_forward_1
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 137
+        width: 107
+        height: 134
+      alignment: 9
+      pivot: {x: 0.45, y: 0.45}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1b7a09a897769500800000000000000
+      internalID: 402640714251008798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_woman_forward_2
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 137
+        width: 109
+        height: 100
+      alignment: 9
+      pivot: {x: 0.44, y: 0.66}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45d8df698f7c7c2b0800000000000000
+      internalID: -5564258944093942444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_woman_forward_3
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 127
+        width: 44
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0e88ad7157bc6e00800000000000000
+      internalID: 1039407174644174351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_woman_forward_4
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 27
+        width: 55
+        height: 106
+      alignment: 9
+      pivot: {x: 0.5, y: 0.635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a5d0359516ddea30800000000000000
+      internalID: 4246285411865908642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_woman_forward_5
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 47
+        width: 51
+        height: 51
+      alignment: 9
+      pivot: {x: 0.75, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b123b1ba63bb51100800000000000000
+      internalID: 78174412022166043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_woman_forward_6
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 38
+        width: 50
+        height: 60
+      alignment: 9
+      pivot: {x: 0.4, y: 0.38}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d063666a6f2bcbd0800000000000000
+      internalID: -2608939425100242732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_woman_forward_7
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 39
+        width: 55
+        height: 44
+      alignment: 9
+      pivot: {x: 0.49, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd27bd34a52f7a740800000000000000
+      internalID: 5163361967302996703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

@@ -1,7 +1,28 @@
 fileFormatVersion: 2
 guid: 216f5695b76fd7b4598d86418f4ce9aa
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 3710062394040627970
+    second: nurse_leader_back_0
+  - first:
+      213: 3741384519780893696
+    second: nurse_leader_back_1
+  - first:
+      213: 7146863471734101877
+    second: nurse_leader_back_2
+  - first:
+      213: 7667029725100805791
+    second: nurse_leader_back_3
+  - first:
+      213: 7265830008299473787
+    second: nurse_leader_back_4
+  - first:
+      213: 339719790476101742
+    second: nurse_leader_back_5
+  - first:
+      213: -4497435411414425287
+    second: nurse_leader_back_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -23,7 +44,6 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
-  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -58,7 +78,6 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -87,7 +106,154 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: nurse_leader_back_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 164
+        width: 32
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 203b353371acc7330800000000000000
+      internalID: 3710062394040627970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nurse_leader_back_1
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 165
+        width: 28
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0048fa5e5611ce330800000000000000
+      internalID: 3741384519780893696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nurse_leader_back_2
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 98
+        width: 102
+        height: 115
+      alignment: 9
+      pivot: {x: 0.52, y: 0.45}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5771dea3672ce2360800000000000000
+      internalID: 7146863471734101877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nurse_leader_back_3
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 92
+        width: 47
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9e8efec9e2c66a60800000000000000
+      internalID: 7667029725100805791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nurse_leader_back_4
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 19
+        width: 43
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7b401385e965d460800000000000000
+      internalID: 7265830008299473787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nurse_leader_back_5
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 19
+        width: 43
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e688f7a795de6b400800000000000000
+      internalID: 339719790476101742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nurse_leader_back_6
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 19
+        width: 43
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 931616e5256e591c0800000000000000
+      internalID: -4497435411414425287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

@@ -120,6 +120,7 @@ public class Player : MonoBehaviour
                 }else if(playerData._actionState == ActionState.intRoom)
                 {
                     GM.intoRoom(readlyIntoRoom);
+                    point = transform.position;
                 }
 
                 isPlayStop = true;

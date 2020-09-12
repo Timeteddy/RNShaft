@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     public void btnInitRoom(int value)
     {
+        player.playerData._actionState = ActionState.intRoom;
         doorNumber = value;
     }
 
@@ -31,7 +32,9 @@ public class GameManager : MonoBehaviour
     public void intoRoom(int value)
     {
         if (doorNumber != value) return;
-        print(value);
+        myCamera.transform.position = arrRoomEntrance[value].transform.position;
+        player.transform.position = arrRoomEntrance[value].transform.position;
+        player.playerData._actionState = ActionState.Idle;
     }
 
     public void betRoom0()
