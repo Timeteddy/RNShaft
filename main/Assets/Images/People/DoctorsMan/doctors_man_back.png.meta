@@ -1,7 +1,28 @@
 fileFormatVersion: 2
 guid: fd39c0985680bc9448702523ee3d4014
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 6582440819759009136
+    second: doctors_man_back_0
+  - first:
+      213: 6095356733377141128
+    second: doctors_man_back_1
+  - first:
+      213: 5802919369687083515
+    second: doctors_man_back_2
+  - first:
+      213: -3979732781655264910
+    second: doctors_man_back_3
+  - first:
+      213: -5709850578657590252
+    second: doctors_man_back_4
+  - first:
+      213: 9209282104504614661
+    second: doctors_man_back_5
+  - first:
+      213: -815781626809573781
+    second: doctors_man_back_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +61,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +92,168 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: doctors_man_back_0
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 173
+        width: 43
+        height: 52
+      alignment: 9
+      pivot: {x: 0.75, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07d44c0ec07895b50800000000000000
+      internalID: 6582440819759009136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_man_back_1
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 173
+        width: 42
+        height: 51
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 889da3887ae079450800000000000000
+      internalID: 6095356733377141128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_man_back_2
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 92
+        width: 94
+        height: 103
+      alignment: 9
+      pivot: {x: 0.53, y: 0.38}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf9ae6aeb6c188050800000000000000
+      internalID: 5802919369687083515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_man_back_3
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 87
+        width: 51
+        height: 70
+      alignment: 9
+      pivot: {x: 0.54, y: 0.54}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 271f570ee1625c8c0800000000000000
+      internalID: -3979732781655264910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_man_back_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 18
+        width: 55
+        height: 52
+      alignment: 9
+      pivot: {x: 0.53, y: 0.58}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4144e8a962982c0b0800000000000000
+      internalID: -5709850578657590252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_man_back_5
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 18
+        width: 55
+        height: 52
+      alignment: 9
+      pivot: {x: 0.53, y: 0.58}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50ffb5bf741fdcf70800000000000000
+      internalID: 9209282104504614661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_man_back_6
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 18
+        width: 55
+        height: 52
+      alignment: 9
+      pivot: {x: 0.53, y: 0.58}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6e99bfbee2cda4f0800000000000000
+      internalID: -815781626809573781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

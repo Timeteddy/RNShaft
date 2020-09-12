@@ -1,7 +1,37 @@
 fileFormatVersion: 2
 guid: d620e12ebc43f0343a636ab0bd219795
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -3117431398108293621
+    second: doctors_man_forward_0
+  - first:
+      213: -5015300316264775190
+    second: doctors_man_forward_1
+  - first:
+      213: 7983442493014298810
+    second: doctors_man_forward_2
+  - first:
+      213: -1372051993498037330
+    second: doctors_man_forward_3
+  - first:
+      213: -8666194746506623482
+    second: doctors_man_forward_4
+  - first:
+      213: -2470424851888145843
+    second: doctors_man_forward_5
+  - first:
+      213: 2625924261006653078
+    second: doctors_man_forward_6
+  - first:
+      213: 2188926091292665910
+    second: doctors_man_forward_7
+  - first:
+      213: 7574834776565541880
+    second: doctors_man_forward_8
+  - first:
+      213: -5430357914482218816
+    second: doctors_man_forward_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +70,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +101,231 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: doctors_man_forward_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 106
+        width: 57
+        height: 71
+      alignment: 9
+      pivot: {x: 0.58, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b061b1809a8acb4d0800000000000000
+      internalID: -3117431398108293621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_man_forward_1
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 124
+        width: 4
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae1422f3fe2166ab0800000000000000
+      internalID: -5015300316264775190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_man_forward_2
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 106
+        width: 61
+        height: 71
+      alignment: 9
+      pivot: {x: 0.54, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab050e836a2eace60800000000000000
+      internalID: 7983442493014298810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_man_forward_3
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 124
+        width: 4
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea3de2a3bfd75fce0800000000000000
+      internalID: -1372051993498037330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_man_forward_4
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 106
+        width: 95
+        height: 106
+      alignment: 9
+      pivot: {x: 0.54, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 606cd142bcd7bb780800000000000000
+      internalID: -8666194746506623482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_man_forward_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6
+        width: 61
+        height: 71
+      alignment: 9
+      pivot: {x: 0.55, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4af8e2afa947bdd0800000000000000
+      internalID: -2470424851888145843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_man_forward_6
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 41
+        width: 43
+        height: 51
+      alignment: 9
+      pivot: {x: 0.79, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 696b160e338217420800000000000000
+      internalID: 2625924261006653078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_man_forward_7
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 41
+        width: 42
+        height: 51
+      alignment: 9
+      pivot: {x: 0.34, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 638651fbea0a06e10800000000000000
+      internalID: 2188926091292665910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_man_forward_8
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 0
+        width: 70
+        height: 96
+      alignment: 9
+      pivot: {x: 0.48, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fbe67998183f1960800000000000000
+      internalID: 7574834776565541880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doctors_man_forward_9
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 24
+        width: 4
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c86e008f3e73a4b0800000000000000
+      internalID: -5430357914482218816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
