@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
     /// </summary>
     private int readlyIntoRoom;
 
+
     private void Awake()
     {
         switch (playerData._RoleState)
@@ -82,8 +83,9 @@ public class Player : MonoBehaviour
     void Start()
     {
         point = transform.position;
-        playerData._actionState = ActionState.Idle;
+        //playerData._actionState = ActionState.Idle;
         readlyIntoRoom = -1;
+        playerData._actionState = ActionState.ingPolt;
     }
 
     void Update()
@@ -96,12 +98,13 @@ public class Player : MonoBehaviour
         {
             if (isOpenBackpack) return;
             if (!walk) return;
+            if (playerData._actionState == ActionState.ingPolt) return;
             backpackSrc.onForgoProps();
             playerData._actionState = ActionState.Idle;
             point = getMousePoint();
             directionControlelr();
             isPlayStop = false;
-            
+
             if (!hit) return;
             print(hit.collider.name);
         }
@@ -123,6 +126,19 @@ public class Player : MonoBehaviour
                     point = transform.position;
                 }
 
+                isPlayStop = true;
+            }
+        }
+
+        //劇情演示測試
+        if(playerData._actionState == ActionState.ingPolt)
+        {
+            point = new Vector2(-0.02f, 8);
+            directionControlelr();
+            isPlayStop = false;
+            if (playPoint == point)
+            {
+                animStopJudge();
                 isPlayStop = true;
             }
         }
@@ -321,7 +337,7 @@ public class Player : MonoBehaviour
     /// <param name="evt"></param>
     void OnCollisionStay2D(Collision2D evt)
     {
-        if(evt.gameObject.tag == "wall")
+        if (evt.gameObject.tag == "wall")
         {
             point = enterPoint;
         }
