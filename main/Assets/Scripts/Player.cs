@@ -59,9 +59,14 @@ public class Player : MonoBehaviour
     /// </summary>
     private int readlyIntoRoom;
 
+    [Header("劇情控制器")]
+    public PlotControl plotControl;
 
     private void Awake()
     {
+        //註冊事件
+        plotControl.onCall += test;
+
         switch (playerData._RoleState)
         {
             case RoleState.not:
@@ -83,9 +88,10 @@ public class Player : MonoBehaviour
     void Start()
     {
         point = transform.position;
-        //playerData._actionState = ActionState.Idle;
+        playerData._actionState = ActionState.Idle;
         readlyIntoRoom = -1;
-        playerData._actionState = ActionState.ingPolt;
+        //playerData._actionState = ActionState.ingPolt;
+
     }
 
     void Update()
@@ -152,8 +158,7 @@ public class Player : MonoBehaviour
     public void openBackpack()
     {
         isOpenBackpack = true;
-        backpackSrc.onOpenBackPack();
-        backpack.SetActive(true);
+        backpackSrc.onOpenBackPack(); 
     }
     /// <summary>
     /// 關閉背包
@@ -363,5 +368,13 @@ public class Player : MonoBehaviour
     void OnTriggerExit2D(Collider2D evt)
     {
         readlyIntoRoom = -1;
+    }
+
+    /// <summary>
+    /// 接收事件
+    /// </summary>
+    void test()
+    {
+        print(123456);
     }
 }
