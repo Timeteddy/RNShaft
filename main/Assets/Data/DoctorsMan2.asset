@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TaskState: 0
   _name: "\u91AB\u751FC"
-  start: []
-  ing: []
-  finshed: []
-  lose: []
+  start:
+  - "\u8B77\u7406\u5E2B\uFF0C\u8ACB\u554F\u76AE\u74E3\u8A55\u4F30\u651C\u5E36\u7528\u7269\u9700\u8981\u6E96\u5099\u54EA\u4E00\u4E9B\u6771\u897F\u5462"
+  ing:
+  - "\u6771\u897F\u9084\u6C92\u6536\u96C6\u5B8C\u5594"
+  finshed:
+  - "\u5F88\u4E0D\u932F\u5594"
+  lose:
+  - "\u4E0D\u662F\u9019\u4E9B\u5594\uFF0C\u518D\u4ED4\u7D30\u60F3\u4E00\u4E0B"

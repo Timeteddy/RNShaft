@@ -39,6 +39,6 @@ public class GameManager : MonoBehaviour
 
     public void test()
     {
-        print("test");//王依柔
+        
     }
 }
