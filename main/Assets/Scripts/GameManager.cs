@@ -37,26 +37,6 @@ public class GameManager : MonoBehaviour
         player.playerData._actionState = ActionState.Idle;
     }
 
-    public void betRoom0()
-    {
-    }
-
-    public void betRoom1()
-    {
-    }
-
-    public void betRoom2()
-    {
-    }
-
-     public void betRoom3()
-     {
-     }
-
-     public void betRoom4()
-     {
-     }
-
     public void test()
     {
         print("test");//王依柔
