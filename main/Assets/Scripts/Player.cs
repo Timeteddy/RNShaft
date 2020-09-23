@@ -59,13 +59,10 @@ public class Player : MonoBehaviour
     /// </summary>
     private int readlyIntoRoom;
 
-    //[Header("劇情控制器")]
-    //public PlotControl plotControl;
-
     private void Awake()
     {
         //註冊事件
-        PlotControl.onCall += test;
+        //PlotControl.onCall += test;
 
         switch (playerData._RoleState)
         {
@@ -90,8 +87,6 @@ public class Player : MonoBehaviour
         point = transform.position;
         playerData._actionState = ActionState.Idle;
         readlyIntoRoom = -1;
-        //playerData._actionState = ActionState.ingPolt;
-
     }
 
     void Update()
@@ -132,19 +127,6 @@ public class Player : MonoBehaviour
                     point = transform.position;
                 }
 
-                isPlayStop = true;
-            }
-        }
-
-        //劇情演示測試
-        if(playerData._actionState == ActionState.ingPolt)
-        {
-            point = new Vector2(-0.02f, 8);
-            directionControlelr();
-            isPlayStop = false;
-            if (playPoint == point)
-            {
-                animStopJudge();
                 isPlayStop = true;
             }
         }
@@ -370,11 +352,4 @@ public class Player : MonoBehaviour
         readlyIntoRoom = -1;
     }
 
-    /// <summary>
-    /// 接收事件
-    /// </summary>
-    void test()
-    {
-        print(123456);
-    }
 }

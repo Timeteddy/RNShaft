@@ -8283,7 +8283,6 @@ MonoBehaviour:
   canHit:
     serializedVersion: 2
     m_Bits: 512
-  plotControl: {fileID: 1844517847}
 --- !u!95 &1004859395
 Animator:
   serializedVersion: 3
@@ -11604,6 +11603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1004859394}
   myCamera: {fileID: 519420030}
+  plotControl: {fileID: 1844517847}
   arrRoomEntrance:
   - {fileID: 956021145}
   - {fileID: 249953494}
