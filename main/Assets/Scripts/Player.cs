@@ -59,13 +59,13 @@ public class Player : MonoBehaviour
     /// </summary>
     private int readlyIntoRoom;
 
-    [Header("劇情控制器")]
-    public PlotControl plotControl;
+    //[Header("劇情控制器")]
+    //public PlotControl plotControl;
 
     private void Awake()
     {
         //註冊事件
-        plotControl.onCall += test;
+        PlotControl.onCall += test;
 
         switch (playerData._RoleState)
         {

@@ -11,7 +11,7 @@ public delegate void deleM();
 public class PlotControl : MonoBehaviour
 {
     //宣告事件
-    public event deleM onCall;
+    public static event deleM onCall;
 
     void Start()
     {
