@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     private string left = "left";
     private string right = "right";
 
-    private string nowAnim = "idel";
+    public string nowAnim = "idel";
 
     [Header("移動速度")]
     public float speed;
@@ -103,8 +103,7 @@ public class Player : MonoBehaviour
             backpackSrc.onForgoProps();
             playerData._actionState = ActionState.Idle;
             point = getMousePoint();
-            directionControlelr();
-            isPlayStop = false;
+            directionControlelr(); 
 
             if (!hit) return;
             print(hit.collider.name);
@@ -133,6 +132,41 @@ public class Player : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position, point, speed * Time.deltaTime);
     }
+
+    /// <summary>
+    /// 報到開始
+    /// </summary>
+    public void onCheckInStart()
+    {
+        playerData._actionState = ActionState.ingPolt;
+        anim.SetTrigger("nurse_idle_back");
+    }
+
+    /// <summary>
+    /// 歸還主角控制權
+    /// </summary>
+    public void onReturnControl()
+    {
+        playerData._actionState = ActionState.Idle;
+    }
+
+    /// <summary>
+    /// 由外界控制主角移動
+    /// </summary>
+    /// <param name="value">要到達的位置</param>
+    public void onSetPoint(Vector2 value)
+    {
+        point = value;
+    }
+
+    /// <summary>
+    /// 獲取主角的目標位置
+    /// </summary>
+    /// <returns></returns>
+    public Vector2 onGetPoint()
+    {
+        return point;
+    }
     
     /// <summary>
     /// 開啟背包
@@ -140,7 +174,8 @@ public class Player : MonoBehaviour
     public void openBackpack()
     {
         isOpenBackpack = true;
-        backpackSrc.onOpenBackPack(); 
+        backpackSrc.onOpenBackPack();
+        backpack.SetActive(true);
     }
     /// <summary>
     /// 關閉背包
@@ -234,9 +269,11 @@ public class Player : MonoBehaviour
     /// <summary>
     /// 依照角度判斷前進方向
     /// </summary>
-    private void directionControlelr()
+    public void directionControlelr()
     {
         float angle = getAngle();
+
+        isPlayStop = false;
 
         anim.SetBool("nurse_run_front", false);
         anim.SetBool("nurse_run_back", false);
@@ -277,7 +314,6 @@ public class Player : MonoBehaviour
             anim.SetBool("nurse_run_front", true);
             nowAnim = front;
         }
-
     }
 
     /// <summary>
@@ -340,6 +376,7 @@ public class Player : MonoBehaviour
     /// <param name="evt"></param>
     void OnTriggerEnter2D(Collider2D evt)
     {
+        if (evt.name == "Main Camera") return;
         readlyIntoRoom = int.Parse(evt.name);
     }
 

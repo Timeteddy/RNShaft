@@ -1,12 +1,25 @@
-﻿using UnityEngine.SceneManagement;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 遊戲整體狀態
 /// </summary>
 public enum SceneState
 {
-    checkIn, one, two, three, four, five, six, seven, eight, nine, ten, finish, loss
+    checkIn,
+    oneStart, oneIng,
+    twoStart, twoeIng,
+    threeStart, threeeIng,
+    fourStart, foureIng,
+    fiveStart, fiveeIng,
+    sixStart, sixeIng,
+    sevenStart, sevenIng,
+    eightStart, eightIng,
+    nineStart, nineIng,
+    tenStart, teneIng,
+    finish, 
+    loss
 }
 
 /// <summary>
@@ -16,6 +29,8 @@ public class GameManager : MonoBehaviour
 {
     [Header("玩家")]
     public Player player;
+    [Header("護理長")]
+    public Leader leader;
     [Header("攝影機")]
     public CameraControl myCamera;
     [Header("劇情機器")]
@@ -39,6 +54,30 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         sceneState = SceneState.checkIn;
+
+        PlotControl.SE_CHECKIN_START += checkInStart;
+        PlotControl.SE_CHECKIN_END += checkInEnd;
+
+        myCamera.SE_FLLW_START += cameraFollowStart;
+        myCamera.SE_FLLW_END += cameraFollowEnd;
+
+    }
+
+    /// <summary>
+    /// 報到開始
+    /// </summary>
+    private void checkInStart()
+    {
+        player.onCheckInStart();
+        myCamera.onCheckInStart(leader.transform);
+    }
+
+    /// <summary>
+    /// 報到結束
+    /// </summary>
+    private void checkInEnd()
+    {
+        print("報到結束");
     }
 
     public void btnInitRoom(int value)
@@ -59,8 +98,31 @@ public class GameManager : MonoBehaviour
         player.playerData._actionState = ActionState.Idle;
     }
 
-    public void test()
+    /// <summary>
+    /// 攝影機開始跟隨
+    /// </summary>
+    public void cameraFollowStart()
     {
-        
+        print("開始跟隨");
+    }
+
+    /// <summary>
+    /// 攝影機跟隨結束
+    /// </summary>
+    public void cameraFollowEnd()
+    {
+        StartCoroutine(onReturnControl(1.0f));
+    }
+
+    /// <summary>
+    /// 歸還控制權
+    /// </summary>
+    /// <param name="value">等待秒數</param>
+    /// <returns></returns>
+    IEnumerator onReturnControl(float value)
+    {
+        yield return new WaitForSeconds(value);
+        player.onReturnControl();
+        myCamera.onReturnControl();
     }
 }

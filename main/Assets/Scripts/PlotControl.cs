@@ -25,7 +25,7 @@ public class PlotControl : MonoBehaviour
 
     void Start()
     {
-       
+        SE_CHECKIN_START();
     }
     
     void Update()
