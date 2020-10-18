@@ -51,6 +51,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private int doorNumber;
 
+    /// <summary>
+    /// 準備對話的對象
+    /// </summary>
+    private string readlyDialoguePeople;
+
     private void Awake()
     {
         sceneState = SceneState.checkIn;
@@ -61,6 +66,39 @@ public class GameManager : MonoBehaviour
         myCamera.SE_FLLW_START += cameraFollowStart;
         myCamera.SE_FLLW_END += cameraFollowEnd;
 
+    }
+
+    /// <summary>
+    /// 準備進行對話
+    /// </summary>
+    /// <param name="people">準備對話的對象</param>
+    public void onSetReadlyDialogue(string people)
+    {
+        readlyDialoguePeople = people;
+    }
+
+    /// <summary>
+    /// 準備進行對話
+    /// </summary>
+    /// <param name="people">準備對話的對象</param>
+    public string onGetDialoguePeople()
+    {
+        return readlyDialoguePeople;
+    }
+
+    /// <summary>
+    /// 開始對話
+    /// </summary>
+    public void onStartDialogue()
+    {
+        switch (readlyDialoguePeople)
+        {
+            case "Leder":
+                leader.onStartDialogue();
+                break;
+            default:
+                break;
+        }
     }
 
     /// <summary>
@@ -75,9 +113,11 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// 報到結束
     /// </summary>
-    private void checkInEnd()
+    public void checkInEnd()   //TODO 之後要修改為隨機題目
     {
-        print("報到結束");
+        player.onReturnControl();
+        sceneState = SceneState.oneStart;
+
     }
 
     public void btnInitRoom(int value)

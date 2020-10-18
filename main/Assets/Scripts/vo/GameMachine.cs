@@ -37,7 +37,6 @@ public class GameMachine : MonoBehaviour
     /// </summary>
     /// <param name="text">要放入的text</param>
     /// <param name="str">顯示的字</param>
-    /// <param name="speed">打字速度</param>
     public static void Typewriter(Text text, string str)
     {
         SE_TYPWRTR_START();

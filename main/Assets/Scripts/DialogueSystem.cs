@@ -33,9 +33,9 @@ public class DialogueSystem : MonoBehaviour
     /// <summary>
     /// 設定對話內容
     /// </summary>
-    /// <param name="name">名子</param>
+    /// <param name="conten">對話內容</param>
     public void setConten(string conten)
     {
-        tConten.text = conten;
+        GameMachine.Typewriter(tConten, conten);
     }
 }

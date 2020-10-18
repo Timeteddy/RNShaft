@@ -2,6 +2,12 @@
 
 public class NPC : MonoBehaviour
 {
+    [Header("對話進度")]
+    public int dlgeSchedule;
+    [Header("能否進行點擊觀看下個對話")]
+    public bool isNexDialogue = false;
+    [Header("遊戲控制器")]
+    public GameManager GM;
     [Header("對話系統")]
     public DialogueSystem dlge;
     [Header("Npc資料")]

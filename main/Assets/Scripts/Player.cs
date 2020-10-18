@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    #region 宣告
     [Header("玩家資料")]
     public PlayerData playerData;
     public GameObject userOne;
@@ -59,6 +60,8 @@ public class Player : MonoBehaviour
     /// </summary>
     private int readlyIntoRoom;
 
+    #endregion
+
     private void Awake()
     {
         //註冊事件
@@ -100,6 +103,7 @@ public class Player : MonoBehaviour
             if (isOpenBackpack) return;
             if (!walk) return;
             if (playerData._actionState == ActionState.ingPolt) return;
+            if (playerData._actionState == ActionState.ingDialogue) return;
             backpackSrc.onForgoProps();
             playerData._actionState = ActionState.Idle;
             point = getMousePoint();
@@ -116,16 +120,27 @@ public class Player : MonoBehaviour
             if (playPoint == point)
             {
                 animStopJudge();
-                
-                if(playerData._actionState == ActionState.getProps)
-                {
-                    backpackSrc.onPutBackpack();
-                }else if(playerData._actionState == ActionState.intRoom)
-                {
-                    GM.intoRoom(readlyIntoRoom);
-                    point = transform.position;
-                }
 
+                switch (playerData._actionState)
+                {
+                    case ActionState.Idle:
+                        break;
+                    case ActionState.getProps:
+                        backpackSrc.onPutBackpack();
+                        break;
+                    case ActionState.intRoom:
+                        GM.intoRoom(readlyIntoRoom);
+                        point = transform.position;
+                        break;
+                    case ActionState.ingPolt:
+                        break;
+                    case ActionState.readyDialogue:
+                        break;
+                    case ActionState.ingDialogue:
+                        break;
+                    default:
+                        break;
+                }
                 isPlayStop = true;
             }
         }
@@ -366,6 +381,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 準備進行對話
+    /// </summary>
+    public void btnReadlyDialogue()
+    {
+        //切換狀態為準備對話
+        playerData._actionState = ActionState.readyDialogue;
+    }
+
     public int getReadlyIntoRoom()
     {
         return readlyIntoRoom;
@@ -377,7 +401,27 @@ public class Player : MonoBehaviour
     void OnTriggerEnter2D(Collider2D evt)
     {
         if (evt.name == "Main Camera") return;
-        readlyIntoRoom = int.Parse(evt.name);
+
+        switch (playerData._actionState)
+        {
+            case ActionState.Idle:
+                break;
+            case ActionState.getProps:
+                break;
+            case ActionState.intRoom:
+                readlyIntoRoom = int.Parse(evt.name);
+                break;
+            case ActionState.ingPolt:
+                break;
+            case ActionState.readyDialogue:
+                playerData._actionState = ActionState.ingDialogue;
+                GM.onStartDialogue();
+                break;
+            case ActionState.ingDialogue:
+                break;
+            default:
+                break;
+        }
     }
 
     /// <summary>
@@ -388,5 +432,6 @@ public class Player : MonoBehaviour
     {
         readlyIntoRoom = -1;
     }
+
 
 }
