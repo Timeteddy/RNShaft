@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public enum SceneState
 {
     checkIn,
+    zeroStart, zeroIng,
     oneStart, oneIng,
     twoStart, twoeIng,
     threeStart, threeeIng,
@@ -17,7 +18,6 @@ public enum SceneState
     sevenStart, sevenIng,
     eightStart, eightIng,
     nineStart, nineIng,
-    tenStart, teneIng,
     finish, 
     loss
 }
@@ -41,6 +41,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private SceneState sceneState;
 
+    /// <summary>
+    /// 各個房間的出口
+    /// </summary>
+    public Transform[] arrRoomExport = new Transform[10];
+    
     /// <summary>
     /// 各個房間的入口
     /// </summary>
@@ -96,6 +101,9 @@ public class GameManager : MonoBehaviour
             case "Leder":
                 leader.onStartDialogue();
                 break;
+            case "Myself":
+                player.onDlgeMyself("先去找護理長報到吧!");
+                break;
             default:
                 break;
         }
@@ -115,8 +123,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void checkInEnd()   //TODO 之後要修改為隨機題目
     {
-        player.onReturnControl();
-        sceneState = SceneState.oneStart;
+        //讓攝影機移動到特定的房間
+        //player.onReturnControl();
+        sceneState = SceneState.zeroStart;
+
+        myCamera.onCheckInStart(arrRoomEntrance[0]);
 
     }
 
@@ -132,9 +143,16 @@ public class GameManager : MonoBehaviour
     /// <param name="value">準備進入的門牌</param>
     public void intoRoom(int value)
     {
+        if (sceneState == SceneState.checkIn)
+        {
+            onSetReadlyDialogue("Myself");
+            onStartDialogue();
+            return;
+        }
+
         if (doorNumber != value) return;
-        myCamera.transform.position = arrRoomEntrance[value].transform.position;
-        player.transform.position = arrRoomEntrance[value].transform.position;
+        myCamera.transform.position = arrRoomExport[value].transform.position;
+        player.transform.position = arrRoomExport[value].transform.position;
         player.playerData._actionState = ActionState.Idle;
     }
 

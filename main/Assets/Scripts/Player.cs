@@ -12,8 +12,23 @@ public class Player : MonoBehaviour
     [Header("場景控制器")]
     public GameManager GM;
     [Header("角色動畫控制器")]
-    public Animator anim; 
+    public Animator anim;
     
+    [Header("對話系統")]
+    public DialogueSystem dlge;
+    /// <summary>
+    /// 是否與自己對話
+    /// </summary>
+    private bool isDlgeMyself = false;
+    /// <summary>
+    /// 對話進度
+    /// </summary>
+    private int dlgeSchedule = 0;
+    /// <summary>
+    /// 能否進行點擊觀看下個對話
+    /// </summary>
+    private bool isNexDialogue = false;
+
     [Header("背包控制器")]
     public Backpack backpackSrc;
 
@@ -65,7 +80,8 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         //註冊事件
-        //PlotControl.onCall += test;
+        GameMachine.SE_TYPWRTR_START += typewriterStart;
+        GameMachine.SE_TYPWRTR_END += typewriterEnd;
 
         switch (playerData._RoleState)
         {
@@ -103,7 +119,21 @@ public class Player : MonoBehaviour
             if (isOpenBackpack) return;
             if (!walk) return;
             if (playerData._actionState == ActionState.ingPolt) return;
-            if (playerData._actionState == ActionState.ingDialogue) return;
+            if (playerData._actionState == ActionState.ingDialogue) 
+            {
+                if (!isDlgeMyself) return;
+                if (!isNexDialogue) return;
+
+                if(dlgeSchedule > 0)
+                {
+                    onReturnControl(); 
+                    dlge.onDisplayWindow(false);
+                    dlge.setName(null);
+                    dlgeSchedule = 0;
+                    isDlgeMyself = true;
+                }
+                return;
+            }
             backpackSrc.onForgoProps();
             playerData._actionState = ActionState.Idle;
             point = getMousePoint();
@@ -364,7 +394,27 @@ public class Player : MonoBehaviour
     {
         if(evt.gameObject.tag == "wall")
         {
+            float angle = getAngle();
             enterPoint = transform.position;
+
+            switch (nowAnim)
+            {
+                case "front":
+                    enterPoint = new Vector2(enterPoint.x, enterPoint.y + 0.3f);
+                    break;
+                case "back":
+                    enterPoint = new Vector2(enterPoint.x, enterPoint.y - 0.3f);
+                    break;
+                case "left":
+                    enterPoint = new Vector2(enterPoint.x + 0.3f, enterPoint.y);
+                    break;
+                case "right":
+                    enterPoint = new Vector2(enterPoint.x - 0.3f, enterPoint.y);
+                    break;
+                default:
+                    break;
+            }
+
             point = enterPoint;
         }
     }
@@ -388,6 +438,19 @@ public class Player : MonoBehaviour
     {
         //切換狀態為準備對話
         playerData._actionState = ActionState.readyDialogue;
+    }
+
+    /// <summary>
+    /// 玩家跟自己對話
+    /// </summary>
+    /// <param name="content">對話內容</param>
+    public void onDlgeMyself(string content)
+    {
+        playerData._actionState = ActionState.ingDialogue;
+        isDlgeMyself = true;
+        dlge.setName(playerData._name);
+        dlge.onDisplayWindow(true);
+        dlge.setConten(content);
     }
 
     public int getReadlyIntoRoom()
@@ -433,5 +496,22 @@ public class Player : MonoBehaviour
         readlyIntoRoom = -1;
     }
 
+    /// <summary>
+    /// 對話開始
+    /// </summary>
+    public void typewriterStart()
+    {
+        if (!isDlgeMyself) return;
+        isNexDialogue = false;
+    }
 
+    /// <summary>
+    /// 對話結束
+    /// </summary>
+    public void typewriterEnd()
+    {
+        if (!isDlgeMyself) return;
+        dlgeSchedule++;
+        isNexDialogue = true;
+    }
 }
