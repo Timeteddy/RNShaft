@@ -77,6 +77,7 @@ public class Player : MonoBehaviour
 
     #endregion
 
+    #region 起始
     private void Awake()
     {
         //註冊事件
@@ -107,7 +108,9 @@ public class Player : MonoBehaviour
         playerData._actionState = ActionState.Idle;
         readlyIntoRoom = -1;
     }
+    #endregion
 
+    #region 重複
     void Update()
     {
         RaycastHit2D hit = getRayObj();
@@ -162,6 +165,10 @@ public class Player : MonoBehaviour
                         GM.intoRoom(readlyIntoRoom);
                         point = transform.position;
                         break;
+                    case ActionState.leaveRoom:
+                        GM.leaveRoom();
+                        point = transform.position;
+                        break;
                     case ActionState.ingPolt:
                         break;
                     case ActionState.readyDialogue:
@@ -177,7 +184,9 @@ public class Player : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position, point, speed * Time.deltaTime);
     }
+    #endregion
 
+    #region 報到開始
     /// <summary>
     /// 報到開始
     /// </summary>
@@ -186,7 +195,9 @@ public class Player : MonoBehaviour
         playerData._actionState = ActionState.ingPolt;
         anim.SetTrigger("nurse_idle_back");
     }
+    #endregion
 
+    #region 歸還主角控制權
     /// <summary>
     /// 歸還主角控制權
     /// </summary>
@@ -194,7 +205,9 @@ public class Player : MonoBehaviour
     {
         playerData._actionState = ActionState.Idle;
     }
+    #endregion
 
+    #region 由外界控制主角移動
     /// <summary>
     /// 由外界控制主角移動
     /// </summary>
@@ -203,7 +216,9 @@ public class Player : MonoBehaviour
     {
         point = value;
     }
+    #endregion
 
+    #region 獲取主角的目標位置
     /// <summary>
     /// 獲取主角的目標位置
     /// </summary>
@@ -212,7 +227,9 @@ public class Player : MonoBehaviour
     {
         return point;
     }
-    
+    #endregion
+
+    #region 開啟背包
     /// <summary>
     /// 開啟背包
     /// </summary>
@@ -222,6 +239,9 @@ public class Player : MonoBehaviour
         backpackSrc.onOpenBackPack();
         backpack.SetActive(true);
     }
+    #endregion
+
+    #region 關閉背包
     /// <summary>
     /// 關閉背包
     /// </summary>
@@ -231,7 +251,9 @@ public class Player : MonoBehaviour
         backpackSrc.onCloseBackPack();
         backpack.SetActive(false);
     }
+    #endregion
 
+    #region 在ui上時
     /// <summary>
     /// 在ui上時
     /// </summary>
@@ -239,6 +261,9 @@ public class Player : MonoBehaviour
     {
         walk = false;
     }
+    #endregion
+
+    #region 離開ui時
     /// <summary>
     /// 離開ui時
     /// </summary>
@@ -246,6 +271,9 @@ public class Player : MonoBehaviour
     {
         walk = true;
     }
+    #endregion
+
+    #region 準備撿取物品時
     /// <summary>
     /// 準備撿取物品時
     /// </summary>
@@ -253,6 +281,9 @@ public class Player : MonoBehaviour
     {
         playerData._actionState = ActionState.getProps;
     }
+    #endregion
+
+    #region 完成撿取物品
     /// <summary>
     /// 完成撿取物品
     /// </summary>
@@ -260,7 +291,9 @@ public class Player : MonoBehaviour
     {
         playerData._actionState = ActionState.Idle;
     }
+    #endregion
 
+    #region 判斷射線是否擊中
     /// <summary>
     /// 判斷射線是否擊中
     /// </summary>
@@ -281,7 +314,9 @@ public class Player : MonoBehaviour
 
         return hit;
     }
+    #endregion
 
+    #region 獲取滑鼠位置
     /// <summary>
     /// 獲取滑鼠位置
     /// </summary>
@@ -295,7 +330,9 @@ public class Player : MonoBehaviour
 
         return mousePosition;
     }
+    #endregion
 
+    #region 或取玩家前進方向的角度
     /// <summary>
     /// 或取玩家前進方向的角度
     /// </summary>
@@ -310,7 +347,9 @@ public class Player : MonoBehaviour
 
         return angle;
     }
+    #endregion
 
+    #region 依照角度判斷前進方向
     /// <summary>
     /// 依照角度判斷前進方向
     /// </summary>
@@ -360,7 +399,9 @@ public class Player : MonoBehaviour
             nowAnim = front;
         }
     }
+    #endregion
 
+    #region 根據動畫目前動畫決定結束時該播放的動畫
     /// <summary>
     /// 根據動畫目前動畫決定結束時該播放的動畫
     /// </summary>
@@ -385,7 +426,9 @@ public class Player : MonoBehaviour
         }
         nowAnim = "idle";
     }
+    #endregion
 
+    #region 碰撞事件(進入)
     /// <summary>
     /// 碰撞事件(進入)
     /// </summary>
@@ -418,7 +461,9 @@ public class Player : MonoBehaviour
             point = enterPoint;
         }
     }
+    #endregion
 
+    #region 碰撞事件(停留)
     /// <summary>
     /// 碰撞事件(停留)
     /// </summary>
@@ -430,7 +475,9 @@ public class Player : MonoBehaviour
             point = enterPoint;
         }
     }
+    #endregion
 
+    #region 準備進行對話
     /// <summary>
     /// 準備進行對話
     /// </summary>
@@ -439,7 +486,9 @@ public class Player : MonoBehaviour
         //切換狀態為準備對話
         playerData._actionState = ActionState.readyDialogue;
     }
+    #endregion
 
+    #region 玩家跟自己對話
     /// <summary>
     /// 玩家跟自己對話
     /// </summary>
@@ -452,11 +501,16 @@ public class Player : MonoBehaviour
         dlge.onDisplayWindow(true);
         dlge.setConten(content);
     }
+    #endregion
 
+    #region 抓取準備進入的房間
     public int getReadlyIntoRoom()
     {
         return readlyIntoRoom;
     }
+    #endregion
+
+    #region 進入觸發區
     /// <summary>
     /// 進入觸發區
     /// </summary>
@@ -474,6 +528,8 @@ public class Player : MonoBehaviour
             case ActionState.intRoom:
                 readlyIntoRoom = int.Parse(evt.name);
                 break;
+            case ActionState.leaveRoom:
+                break;
             case ActionState.ingPolt:
                 break;
             case ActionState.readyDialogue:
@@ -486,7 +542,9 @@ public class Player : MonoBehaviour
                 break;
         }
     }
+    #endregion
 
+    #region 離開觸發區
     /// <summary>
     /// 離開觸發區
     /// </summary>
@@ -495,7 +553,9 @@ public class Player : MonoBehaviour
     {
         readlyIntoRoom = -1;
     }
+    #endregion
 
+    #region 對話開始
     /// <summary>
     /// 對話開始
     /// </summary>
@@ -504,7 +564,9 @@ public class Player : MonoBehaviour
         if (!isDlgeMyself) return;
         isNexDialogue = false;
     }
+    #endregion
 
+    #region 對話結束
     /// <summary>
     /// 對話結束
     /// </summary>
@@ -514,4 +576,5 @@ public class Player : MonoBehaviour
         dlgeSchedule++;
         isNexDialogue = true;
     }
+    #endregion
 }

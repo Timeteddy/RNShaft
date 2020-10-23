@@ -2,31 +2,46 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
+#region 遊戲整體狀態
 /// <summary>
 /// 遊戲整體狀態
 /// </summary>
 public enum SceneState
 {
+    zeroStart,
+    oneStart, 
+    twoStart, 
+    threeStart,
+    fourStart,
+    fiveStart,
+    sixStart, 
+    sevenStart,
+    eightStart,
+    nineStart,
+
+    zeroIng,
+    oneIng,
+    twoeIng,
+    threeeIng,
+    foureIng,
+    fiveeIng,
+    sixeIng,
+    sevenIng,
+    eightIng,
+    nineIng,
+
     checkIn,
-    zeroStart, zeroIng,
-    oneStart, oneIng,
-    twoStart, twoeIng,
-    threeStart, threeeIng,
-    fourStart, foureIng,
-    fiveStart, fiveeIng,
-    sixStart, sixeIng,
-    sevenStart, sevenIng,
-    eightStart, eightIng,
-    nineStart, nineIng,
     finish, 
     loss
 }
+#endregion
 
 /// <summary>
 /// 地圖轉移
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+    #region 宣告
     [Header("玩家")]
     public Player player;
     [Header("護理長")]
@@ -61,6 +76,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private string readlyDialoguePeople;
 
+    #endregion
+
+    #region 起始
     private void Awake()
     {
         sceneState = SceneState.checkIn;
@@ -72,25 +90,31 @@ public class GameManager : MonoBehaviour
         myCamera.SE_FLLW_END += cameraFollowEnd;
 
     }
-
+    #endregion
+    //功能
+    #region 設定準備進行對話的對象
     /// <summary>
-    /// 準備進行對話
+    /// 設定準備進行對話的對象
     /// </summary>
-    /// <param name="people">準備對話的對象</param>
+    /// <param name="people">設定準備進行對話的對象</param>
     public void onSetReadlyDialogue(string people)
     {
         readlyDialoguePeople = people;
     }
+    #endregion
 
+    #region 抓取準備進行對話的對象
     /// <summary>
-    /// 準備進行對話
+    /// 抓取準備進行對話的對象
     /// </summary>
     /// <param name="people">準備對話的對象</param>
     public string onGetDialoguePeople()
     {
         return readlyDialoguePeople;
     }
+    #endregion
 
+    #region 開始對話
     /// <summary>
     /// 開始對話
     /// </summary>
@@ -101,14 +125,19 @@ public class GameManager : MonoBehaviour
             case "Leder":
                 leader.onStartDialogue();
                 break;
-            case "Myself":
+            case "MyselfCheckin":
                 player.onDlgeMyself("先去找護理長報到吧!");
+                break;
+            case "MyselfWrongDoor":
+                player.onDlgeMyself("走錯地方了，病人還再等我們呢!");
                 break;
             default:
                 break;
         }
     }
+    #endregion
 
+    #region 報到開始
     /// <summary>
     /// 報到開始
     /// </summary>
@@ -117,7 +146,9 @@ public class GameManager : MonoBehaviour
         player.onCheckInStart();
         myCamera.onCheckInStart(leader.transform);
     }
+    #endregion
 
+    #region 報到結束
     /// <summary>
     /// 報到結束
     /// </summary>
@@ -130,22 +161,42 @@ public class GameManager : MonoBehaviour
         myCamera.onCheckInStart(arrRoomEntrance[0]);
 
     }
+    #endregion
 
+    #region 按鈕.準備進入的房間
     public void btnInitRoom(int value)
     {
         player.playerData._actionState = ActionState.intRoom;
         doorNumber = value;
     }
+    #endregion
 
+    #region 按鈕.準備離開的房間
+    public void btnLeventRoom()
+    {
+        player.playerData._actionState = ActionState.leaveRoom;
+    }
+    #endregion
+
+    #region 敲門 進入房間
     /// <summary>
     /// 敲門
     /// </summary>
     /// <param name="value">準備進入的門牌</param>
     public void intoRoom(int value)
     {
+        //在報到狀態
         if (sceneState == SceneState.checkIn)
         {
-            onSetReadlyDialogue("Myself");
+            onSetReadlyDialogue("MyselfCheckin");
+            onStartDialogue();
+            return;
+        }
+
+        //走錯門
+        if((int)sceneState != value)
+        {
+            onSetReadlyDialogue("MyselfWrongDoor");
             onStartDialogue();
             return;
         }
@@ -155,7 +206,21 @@ public class GameManager : MonoBehaviour
         player.transform.position = arrRoomExport[value].transform.position;
         player.playerData._actionState = ActionState.Idle;
     }
+    #endregion
 
+    #region 離開房間
+    /// <summary>
+    /// 離開房間
+    /// </summary>
+    public void leaveRoom()
+    {
+        myCamera.transform.position = arrRoomEntrance[doorNumber].transform.position;
+        player.transform.position = arrRoomEntrance[doorNumber].transform.position;
+        player.playerData._actionState = ActionState.Idle;
+    }
+    #endregion
+
+    #region 攝影機開始跟隨
     /// <summary>
     /// 攝影機開始跟隨
     /// </summary>
@@ -163,7 +228,9 @@ public class GameManager : MonoBehaviour
     {
         print("開始跟隨");
     }
+    #endregion
 
+    #region 攝影機跟隨結束
     /// <summary>
     /// 攝影機跟隨結束
     /// </summary>
@@ -171,7 +238,9 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(onReturnControl(1.0f));
     }
+    #endregion
 
+    #region 歸還控制權
     /// <summary>
     /// 歸還控制權
     /// </summary>
@@ -183,4 +252,6 @@ public class GameManager : MonoBehaviour
         player.onReturnControl();
         myCamera.onReturnControl();
     }
+    #endregion
+
 }

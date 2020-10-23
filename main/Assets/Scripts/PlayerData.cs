@@ -12,7 +12,8 @@ public enum RoleState
 /// </summary>
 public enum ActionState
 {
-    Idle, getProps, intRoom, ingPolt, readyDialogue, ingDialogue//待機, 撿取物品, 進入房間, 劇情演示, 準備對話, 對話中
+    //待機, 撿取物品, 進入房間, 離開房間, 劇情演示, 準備對話, 對話中
+    Idle, getProps, intRoom, leaveRoom, ingPolt, readyDialogue, ingDialogue
 }
 
 //腳本化物件

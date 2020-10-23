@@ -163,6 +163,8 @@ public class Leader : NPC
     /// </summary>
     private void cameraFollowEnd()
     {
+        if (npcData._TaskState != TaskState.start) return;
+
         anim.SetTrigger("nurse_posture_wave0");
         symbol.gameObject.SetActive(true);
     }
