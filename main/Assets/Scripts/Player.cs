@@ -435,7 +435,7 @@ public class Player : MonoBehaviour
     /// <param name="evt"></param>
     void OnCollisionEnter2D(Collision2D evt)
     {
-        if(evt.gameObject.tag == "wall")
+        if(evt.gameObject.tag == "wall" || evt.gameObject.tag == "people")
         {
             float angle = getAngle();
             enterPoint = transform.position;
@@ -477,7 +477,7 @@ public class Player : MonoBehaviour
     }
     #endregion
 
-    #region 準備進行對話
+    #region 按鈕,準備進行對話
     /// <summary>
     /// 準備進行對話
     /// </summary>
@@ -485,6 +485,16 @@ public class Player : MonoBehaviour
     {
         //切換狀態為準備對話
         playerData._actionState = ActionState.readyDialogue;
+    }
+    #endregion
+
+    #region 按鈕,修改主角狀態為 劇情演示
+    /// <summary>
+    /// 按鈕,修改主角狀態為 劇情演示
+    /// </summary>
+    public void btnChangePlayerSataeInPlot()
+    {
+        playerData._actionState = ActionState.ingPolt;
     }
     #endregion
 

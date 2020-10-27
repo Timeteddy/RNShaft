@@ -6,6 +6,9 @@
 public delegate void checkInStart();
 public delegate void checkInEnd();
 
+public delegate void roomStart();
+public delegate void roomEnd();
+
 /// <summary>
 /// 劇情狀態機
 /// </summary>
@@ -21,6 +24,15 @@ public class PlotControl : MonoBehaviour
     /// </summary>
     public static event checkInEnd SE_CHECKIN_END;
 
+    /// <summary>房間劇情開始</summary>
+    public static event roomStart SE_ROOM_START;
+
+    /// <summary>房間劇情中</summary>
+    public static event roomStart SE_ROOM_ING;
+
+    /// <summary>房間劇情結束</summary>
+    public static event roomEnd SE_ROOM_END;
+
 
     void Start()
     {
@@ -31,9 +43,22 @@ public class PlotControl : MonoBehaviour
     {
         SE_CHECKIN_END();
     }
-    
-    void Update()
+
+    /// <summary>房間劇情開始</summary>
+    public void onSeRoomStart()
     {
-        
+        SE_ROOM_START();
+    }
+
+    /// <summary>房間劇情結束</summary>
+    public void onSeRoomIng()
+    {
+        SE_ROOM_ING();
+    }
+
+    /// <summary>房間劇情結束</summary>
+    public void onSeRoomEnd()
+    {
+        SE_ROOM_END();
     }
 }

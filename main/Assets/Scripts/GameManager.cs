@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
     public Player player;
     [Header("護理長")]
     public Leader leader;
+    [Header("醫生0")]
+    public Doctors_zero doctorsZero;
     [Header("攝影機")]
     public CameraControl myCamera;
     [Header("劇情機器")]
@@ -131,6 +133,9 @@ public class GameManager : MonoBehaviour
             case "MyselfWrongDoor":
                 player.onDlgeMyself("走錯地方了，病人還再等我們呢!");
                 break;
+            case "DcotorsZero":
+                doctorsZero.onStartDialogue();
+                break;
             default:
                 break;
         }
@@ -202,6 +207,8 @@ public class GameManager : MonoBehaviour
         }
 
         if (doorNumber != value) return;
+        sceneState = (SceneState)value; //切換遊戲主狀態
+        plotControl.onSeRoomStart();
         myCamera.transform.position = arrRoomExport[value].transform.position;
         player.transform.position = arrRoomExport[value].transform.position;
         player.playerData._actionState = ActionState.Idle;
@@ -249,9 +256,25 @@ public class GameManager : MonoBehaviour
     IEnumerator onReturnControl(float value)
     {
         yield return new WaitForSeconds(value);
+        onReturnControl();
+    }
+    /// <summary>
+    /// 歸還控制權
+    /// </summary>
+    public void onReturnControl()
+    {
         player.onReturnControl();
         myCamera.onReturnControl();
     }
     #endregion
+
+    #region 抓取當前遊戲主狀態
+    /// <summary>抓取當前遊戲主狀態</summary>
+    public SceneState onGetSceneState()
+    {
+        return sceneState;
+    }
+    #endregion
+
 
 }

@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Leader : NPC
 {
+    #region 起始
     void Awake()
     {
         dlgeSchedule = 0;
@@ -22,12 +23,17 @@ public class Leader : NPC
         GameMachine.SE_TYPWRTR_START += typewriterStart;
         GameMachine.SE_TYPWRTR_END += typewriterEnd;
     }
-    
+    #endregion
+
+    #region 重複
     void Update()
     {
+        if (GM.onGetDialoguePeople() != "Leder") return;
         onClickMouseDown();
     }
+    #endregion
 
+    #region 點擊滑鼠或畫面
     /// <summary>
     /// 點擊滑鼠或畫面
     /// </summary>
@@ -48,7 +54,6 @@ public class Leader : NPC
                     dlge.setConten(npcData.start[dlgeSchedule]);
                     break;
                 case TaskState.ing:
-                    GM.player.onReturnControl();
                     dlge.onDisplayWindow(false);
                     dlge.setName(null);
                     break;
@@ -59,10 +64,11 @@ public class Leader : NPC
                 default:
                     break;
             }
-
         }
     }
+    #endregion
 
+    #region 設定準備對話的對象
     /// <summary>
     /// 設定準備對話的對象
     /// </summary>
@@ -70,15 +76,20 @@ public class Leader : NPC
     {
         GM.onSetReadlyDialogue("Leder");
     }
+    #endregion
 
+    #region 打字效果開始
     /// <summary>
     /// 打字效果開始
     /// </summary>
     private void typewriterStart()
     {
+        if (GM.onGetDialoguePeople() != "Leder") return;
         isNexDialogue = false;
     }
+    #endregion
 
+    #region 打字效果結束
     /// <summary>
     /// 打字效果結束
     /// </summary>
@@ -107,7 +118,9 @@ public class Leader : NPC
 
         isNexDialogue = true;
     }
+    #endregion
 
+    #region 開始對話
     /// <summary>
     /// 開始對話
     /// </summary>
@@ -132,13 +145,18 @@ public class Leader : NPC
                 break;
         }
     }
+    #endregion
 
+    #region 報到開始
     /// <summary>
     /// 報到開始
     /// </summary>
     private void checkInStart()
     {
     }
+    #endregion
+
+    #region 報到結束
     /// <summary>
     /// 報到結束
     /// </summary>
@@ -151,6 +169,9 @@ public class Leader : NPC
         symbol.gameObject.SetActive(false);
         GM.checkInEnd();
     }
+    #endregion
+
+    #region 攝影機跟隨開始
     /// <summary>
     /// 攝影機跟隨開始
     /// </summary>
@@ -158,16 +179,34 @@ public class Leader : NPC
     {
 
     }
+    #endregion
+
+    #region 攝影機跟隨結束
     /// <summary>
     /// 攝影機跟隨結束
     /// </summary>
     private void cameraFollowEnd()
     {
-        if (npcData._TaskState != TaskState.start) return;
+        switch (npcData._TaskState)
+        {
+            case TaskState.start:
+                if (GM.onGetSceneState() != SceneState.checkIn) return;
 
-        anim.SetTrigger("nurse_posture_wave0");
-        symbol.gameObject.SetActive(true);
+                anim.SetTrigger("nurse_posture_wave0");
+                symbol.gameObject.SetActive(true);
+                break;
+            case TaskState.ing:
+                GM.player.onReturnControl();
+                break;
+            case TaskState.lose:
+                break;
+            case TaskState.finished:
+                break;
+            default:
+                break;
+        }
+        
     }
-
+    #endregion
 
 }
