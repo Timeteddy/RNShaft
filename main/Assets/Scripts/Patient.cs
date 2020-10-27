@@ -54,6 +54,7 @@ public class Patient : MonoBehaviour
     {
         if (!isOpenTopic) return;
         if (doctors.npcData._TaskState != TaskState.ing) return;
+        doctors.GM.onChangePlayerStatePlot();
         doctors.topic.SetActive(true);
     }
     #endregion

@@ -276,5 +276,12 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region 修改主角為劇情狀態
+    /// <summary>修改主角為劇情狀態 </summary>
+    public void onChangePlayerStatePlot()
+    {
+        player.playerData._actionState = ActionState.ingPolt;
+    }
+    #endregion
 
 }

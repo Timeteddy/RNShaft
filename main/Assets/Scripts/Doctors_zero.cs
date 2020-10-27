@@ -33,7 +33,6 @@ public class Doctors_zero : NPC
         PlotControl.SE_ROOM_START += plotSeRoomStart;
         PlotControl.SE_ROOM_ING += plotSeRoomIng;
         PlotControl.SE_ROOM_END += plotSeRoomEnd;
-
     }
     #endregion
 
@@ -185,7 +184,6 @@ public class Doctors_zero : NPC
     private void typewriterEnd()
     {
         if (GM.onGetDialoguePeople() != "DcotorsZero") return;
-        //由於進行中時 是依照隨機的結果選擇對話，因使不需要累加
 
         switch (npcData._TaskState)
         {
@@ -193,6 +191,7 @@ public class Doctors_zero : NPC
                 dlgeSchedule++;
                 break;
             case TaskState.ing:
+                dlgeSchedule++;
                 break;
             case TaskState.lose:
                 dlgeSchedule++;
@@ -223,11 +222,18 @@ public class Doctors_zero : NPC
                 dlge.setConten(npcData.start[dlgeSchedule]);
                 break;
             case TaskState.ing:
+                if (dlgeSchedule >= npcData.ing.Length) 
+                    dlgeSchedule = 0;
                 dlge.setConten(npcData.ing[dlgeSchedule]);
                 break;
             case TaskState.lose:
+                if (dlgeSchedule >= npcData.lose.Length)
+                    dlgeSchedule = 0;
+                dlge.setConten(npcData.lose[dlgeSchedule]);
                 break;
             case TaskState.finished:
+                if (dlgeSchedule >= npcData.finshed.Length)
+                    dlgeSchedule = 0;
                 dlge.setConten(npcData.finshed[dlgeSchedule]);
                 break;
             default:
@@ -246,14 +252,15 @@ public class Doctors_zero : NPC
         {
             case "D":       //過關
                 npcData._TaskState = TaskState.finished;
-                GM.onReturnControl();
+                StartCoroutine(plotPressentationSecondAct());
                 break;
             default:        //失敗
                 npcData._TaskState = TaskState.lose;
                 GM.onReturnControl();
                 break;
         }
-
+        isNexDialogue = false;
+        dlgeSchedule = 0;
         topic.SetActive(false);
     }
     #endregion
@@ -266,8 +273,38 @@ public class Doctors_zero : NPC
     IEnumerator plotPressentationFirstAct()
     {
         patint.onJitterStart();
+        isNexDialogue = false;
         yield return new WaitForSeconds(fltPainfulReaction);
+        anim.SetBool("nurse_run_left", true);   //向左看
+        yield return new WaitForSeconds(0.1f);
+        anim.SetBool("nurse_run_left", false);
+
+        yield return new WaitForSeconds(1.0f);
+
+        anim.SetBool("nurse_run_front", true);  //向前看
+        yield return new WaitForSeconds(0.1f);
+        anim.SetBool("nurse_run_front", false);
+
+        yield return new WaitForSeconds(0.5f);
+
+        anim.SetTrigger("nurse_jump_front");
+        yield return new WaitForSeconds(1.0f);
         onStartDialogue();
+    }
+    #endregion
+
+    #region 劇情, 過關
+    /// <summary>
+    /// 劇情第一幕
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator plotPressentationSecondAct()
+    {
+        GM.onChangePlayerStatePlot();
+        patint.onJitterEnd();
+        isNexDialogue = false;
+        yield return new WaitForSeconds(2.0f);
+        GM.myCamera.onCheckInStart(transform);
     }
     #endregion
 
