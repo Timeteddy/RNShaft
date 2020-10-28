@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
     public Leader leader;
     [Header("醫生0")]
     public Doctors_zero doctorsZero;
+    [Header("醫生1")]
+    public Doctors_one doctorsOne;
     [Header("攝影機")]
     public CameraControl myCamera;
     [Header("劇情機器")]
@@ -136,6 +138,9 @@ public class GameManager : MonoBehaviour
             case "DcotorsZero":
                 doctorsZero.onStartDialogue();
                 break;
+            case "DcotorsOne":
+                doctorsOne.onStartDialogue();
+                break;
             default:
                 break;
         }
@@ -161,9 +166,9 @@ public class GameManager : MonoBehaviour
     {
         //讓攝影機移動到特定的房間
         //player.onReturnControl();
-        sceneState = SceneState.zeroStart;
+        sceneState = SceneState.oneStart;
 
-        myCamera.onCheckInStart(arrRoomEntrance[0]);
+        myCamera.onCheckInStart(arrRoomEntrance[1]);
 
     }
     #endregion

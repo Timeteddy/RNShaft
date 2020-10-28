@@ -8,13 +8,17 @@ public class Doctors_zero : NPC
 {
     #region 宣告
     [Header("負責的病人")]
-    public Patient patint;
+    public Patient_zero patint;
 
     [Header("題目")]
     public GameObject topic;
 
     /// <summary>痛苦反應時間 </summary>
     private float fltPainfulReaction = 0.5f;
+    [Header("驚嘆號")]
+    public Sprite imgMarvel;
+    [Header("問號")]
+    public Sprite imgQuestion;
     #endregion
 
     #region 啟動
@@ -105,6 +109,7 @@ public class Doctors_zero : NPC
                         dlge.setName(null);
                         dlgeSchedule = 0;
                         GM.onReturnControl();
+                        symbol.gameObject.SetActive(false);
                         return;
                     }
                     dlge.setConten(npcData.finshed[dlgeSchedule]);
@@ -163,7 +168,10 @@ public class Doctors_zero : NPC
     /// </summary>
     private void cameraFollowEnd()
     {
+        if (GM.onGetSceneState() != SceneState.zeroStart) return;
+        if (npcData._TaskState != TaskState.finished) return;
 
+        symbol.sprite = imgQuestion;
     }
     #endregion
 
