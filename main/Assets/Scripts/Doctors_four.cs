@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 /// <summary>
 /// 醫生0
@@ -19,6 +20,12 @@ public class Doctors_four : NPC
     public Sprite imgMarvel;
     [Header("問號")]
     public Sprite imgQuestion;
+
+    /// <summary>玩家的答案 </summary>
+    [SerializeField]
+    private int[] arrAnswer = new int[8];
+    [Header("答案按鈕")]
+    public Button[] arrBtnAnswer;
     #endregion
 
     #region 啟動
@@ -37,6 +44,12 @@ public class Doctors_four : NPC
         PlotControl.SE_ROOM_START += plotSeRoomStart;
         PlotControl.SE_ROOM_ING += plotSeRoomIng;
         PlotControl.SE_ROOM_END += plotSeRoomEnd;
+
+        for (int i = 0; i < arrAnswer.Length; i++)
+        {
+            arrAnswer[i] = 0;
+            arrBtnAnswer[i].interactable = true;
+        }
     }
     #endregion
 
@@ -70,12 +83,9 @@ public class Doctors_four : NPC
                         GM.onReturnControl();
                         return;
                     }
-                    else if(dlgeSchedule == 2)  //劇情演示
+                    else if (dlgeSchedule == 1)
                     {
-                        StartCoroutine(plotPressentationFirstAct());
-                        dlge.onDisplayWindow(false);
-                        dlge.setName(null);
-                        return;
+                        patint.onJitterStart();
                     }
 
                     dlge.setConten(npcData.start[dlgeSchedule]);
@@ -254,22 +264,49 @@ public class Doctors_four : NPC
     /// <summary>
     /// 回答問題
     /// </summary>
-    public void btnAnswerQuestion(string answer)
+    public void btnAnswerQuestion(int answer)
     {
         switch (answer)
         {
-            case "A":       //過關
-                npcData._TaskState = TaskState.finished;
-                StartCoroutine(plotPressentationSecondAct());
+            case 0:       //選擇正確答案
+                arrAnswer[answer] = 1;
                 break;
-            default:        //失敗
-                npcData._TaskState = TaskState.lose;
-                GM.onReturnControl();
+            case 2:       //選擇正確答案
+                arrAnswer[answer] = 1;
+                break;
+            default:        //選擇錯誤答案
+                arrAnswer[answer] = -1;
                 break;
         }
+        arrBtnAnswer[answer].interactable = false;
+        isNexDialogue = false;
+        dlgeSchedule = 0;
+    }
+    #endregion
+
+    #region 按鈕，確認
+    /// <summary>
+    /// 確認問題
+    /// </summary>
+    public void btnEnter()
+    {
         isNexDialogue = false;
         dlgeSchedule = 0;
         topic.SetActive(false);
+        //當發現回答的內容有錯誤的答案時
+        for (int i = 0; i < arrAnswer.Length; i++)
+        {
+            if (arrAnswer[i] == -1)
+            {
+                npcData._TaskState = TaskState.lose;
+                GM.onReturnControl();
+                return;
+            }
+        }
+
+        //如果沒有錯誤的答案
+        npcData._TaskState = TaskState.finished;
+        StartCoroutine(plotPressentationSecondAct());
     }
     #endregion
 
