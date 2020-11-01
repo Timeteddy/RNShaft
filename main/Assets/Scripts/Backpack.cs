@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Backpack : MonoBehaviour
 {
+    #region 宣告
     [Header("玩家")]
     public Player player;
 
@@ -40,7 +41,9 @@ public class Backpack : MonoBehaviour
     private int amount;
 
     private Button readlySetClean;
+    #endregion
 
+    #region 啟動
     void Awake()
     {
         amount = 0;
@@ -63,6 +66,16 @@ public class Backpack : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        btnGetProps("11_3");
+        onPutBackpack();
+        btnGetProps("11_10");
+        onPutBackpack();
+    }
+    #endregion
+
+    #region 打開背包
     /// <summary>
     /// 打開背包
     /// </summary>
@@ -76,7 +89,9 @@ public class Backpack : MonoBehaviour
             imgBackProps[i].color = new Color(255, 255, 255, 255);
         }
     }
+    #endregion
 
+    #region 關閉背包
     /// <summary>
     /// 關閉背包
     /// </summary>
@@ -84,7 +99,9 @@ public class Backpack : MonoBehaviour
     {
 
     }
+    #endregion
 
+    #region 獲取道具
     /// <summary>
     /// 獲取道具
     /// </summary>
@@ -93,7 +110,9 @@ public class Backpack : MonoBehaviour
     {
         readlySetProps = name;
     }
+    #endregion
 
+    #region 準備刪除的道具
     /// <summary>
     /// 準備刪除的道具
     /// </summary>
@@ -102,7 +121,9 @@ public class Backpack : MonoBehaviour
     {
         readlySetClean = btn;
     }
+    #endregion
 
+    #region 放棄道具
     /// <summary>
     /// 放棄道具
     /// </summary>
@@ -110,7 +131,9 @@ public class Backpack : MonoBehaviour
     {
         readlySetProps = null;
     }
+    #endregion
 
+    #region 將道具放入背包
     /// <summary>
     /// 將道具放入背包
     /// </summary>
@@ -119,9 +142,15 @@ public class Backpack : MonoBehaviour
         if (readlySetProps == null) return;
         arrProps[amount] = readlySetProps;
         amount++;
-        Destroy(readlySetClean.gameObject);
+        if (readlySetClean != null)
+        {
+            Destroy(readlySetClean.gameObject);
+        }
         player.finishGetProps();
     }
+    #endregion
+
+    #region 獲取準備放入背包的物品
     /// <summary>
     /// 獲取準備放入背包的物品
     /// </summary>
@@ -129,7 +158,9 @@ public class Backpack : MonoBehaviour
     {
         return readlySetProps;
     }
+    #endregion
 
+    #region 將物品標記拿出標籤
     /// <summary>
     /// 將物品標記拿出標籤
     /// </summary>
@@ -137,7 +168,9 @@ public class Backpack : MonoBehaviour
     {
 
     }
+    #endregion
 
+    #region 確認拿出道具
     /// <summary>
     /// 確認拿出道具
     /// </summary>
@@ -145,4 +178,5 @@ public class Backpack : MonoBehaviour
     {
 
     }
+    #endregion
 }
