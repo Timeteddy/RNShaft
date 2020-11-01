@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 /// <summary>
 /// 醫生0
@@ -19,6 +20,14 @@ public class Doctors_six : NPC
     public Sprite imgMarvel;
     [Header("問號")]
     public Sprite imgQuestion;
+
+    /// <summary>玩家的答案 </summary>
+    [SerializeField]
+    private int[] arrAnswer = new int[4];
+    [Header("答案按鈕")]
+    public Button[] arrBtnAnswer;
+    /// <summary>能否說話 </summary>
+    private bool isTock = true;
     #endregion
 
     #region 啟動
@@ -37,6 +46,12 @@ public class Doctors_six : NPC
         PlotControl.SE_ROOM_START += plotSeRoomStart;
         PlotControl.SE_ROOM_ING += plotSeRoomIng;
         PlotControl.SE_ROOM_END += plotSeRoomEnd;
+
+        for (int i = 0; i < arrAnswer.Length; i++)
+        {
+            arrAnswer[i] = 0;
+            arrBtnAnswer[i].interactable = true;
+        }
     }
     #endregion
 
@@ -44,6 +59,7 @@ public class Doctors_six : NPC
     void Update()
     {
         if (GM.onGetDialoguePeople() != "DcotorsSix") return;
+        if (!isTock) return;
         onClickMouseDown();
     }
     #endregion
@@ -70,14 +86,6 @@ public class Doctors_six : NPC
                         GM.onReturnControl();
                         return;
                     }
-                    else if(dlgeSchedule == 2)  //劇情演示
-                    {
-                        StartCoroutine(plotPressentationFirstAct());
-                        dlge.onDisplayWindow(false);
-                        dlge.setName(null);
-                        return;
-                    }
-
                     dlge.setConten(npcData.start[dlgeSchedule]);
                     break;
                 case TaskState.ing:
@@ -105,11 +113,13 @@ public class Doctors_six : NPC
                 case TaskState.finished:
                     if (dlgeSchedule >= npcData.finshed.Length)
                     {
+                        isTock = false;
                         dlge.onDisplayWindow(false);
                         dlge.setName(null);
                         dlgeSchedule = 0;
                         GM.onReturnControl();
                         symbol.gameObject.SetActive(false);
+                        StartCoroutine(plotPressentationFirstAct());
                         return;
                     }
                     dlge.setConten(npcData.finshed[dlgeSchedule]);
@@ -221,12 +231,17 @@ public class Doctors_six : NPC
     /// </summary>
     public void onStartDialogue()
     {
+        if (!isTock) return;
         dlge.onDisplayWindow(true);
         dlge.setName("醫生_6");
 
         switch (npcData._TaskState)
         {
             case TaskState.start:
+                if(dlgeSchedule == 0)
+                {
+                    patint.onJitterStart();
+                }
                 dlge.setConten(npcData.start[dlgeSchedule]);
                 break;
             case TaskState.ing:
@@ -254,33 +269,56 @@ public class Doctors_six : NPC
     /// <summary>
     /// 回答問題
     /// </summary>
-    public void btnAnswerQuestion(string answer)
+    public void btnAnswerQuestion(int answer)
     {
         switch (answer)
         {
-            case "A":       //過關
-                npcData._TaskState = TaskState.finished;
-                StartCoroutine(plotPressentationSecondAct());
+            case 0:         //選擇錯誤答案
+                arrAnswer[answer] = -1;
                 break;
-            default:        //失敗
-                npcData._TaskState = TaskState.lose;
-                GM.onReturnControl();
+            default:        //選擇正確答案
+                arrAnswer[answer] = 1;
                 break;
         }
+        arrBtnAnswer[answer].interactable = false;
         isNexDialogue = false;
         dlgeSchedule = 0;
-        topic.SetActive(false);
     }
     #endregion
 
-    #region 劇情, 病人抖動
+    #region 按鈕，確認
+    /// <summary>
+    /// 確認問題
+    /// </summary>
+    public void btnEnter()
+    {
+        isNexDialogue = false;
+        dlgeSchedule = 0;
+        topic.SetActive(false);
+        //當發現回答的內容有錯誤的答案時
+        for (int i = 0; i < arrAnswer.Length; i++)
+        {
+            if (arrAnswer[i] == -1)
+            {
+                npcData._TaskState = TaskState.lose;
+                GM.onReturnControl();
+                return;
+            }
+        }
+
+        //如果沒有錯誤的答案
+        npcData._TaskState = TaskState.finished;
+        StartCoroutine(plotPressentationSecondAct());
+    }
+    #endregion
+
+    #region 劇情, 開始治療
     /// <summary>
     /// 劇情第一幕
     /// </summary>
     /// <returns></returns>
     IEnumerator plotPressentationFirstAct()
     {
-        patint.onJitterStart();
         isNexDialogue = false;
         yield return new WaitForSeconds(fltPainfulReaction);
         anim.SetBool("nurse_run_left", true);   //向左看
@@ -288,13 +326,7 @@ public class Doctors_six : NPC
         anim.SetBool("nurse_run_left", false);
 
         yield return new WaitForSeconds(1.0f);
-
-        anim.SetBool("nurse_run_front", true);  //向前看
-        yield return new WaitForSeconds(0.1f);
-        anim.SetBool("nurse_run_front", false);
-
-        yield return new WaitForSeconds(0.5f);
-        onStartDialogue();
+        anim.SetBool("nurse_action_treatment", true);
     }
     #endregion
 

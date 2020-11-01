@@ -206,9 +206,9 @@ public class GameManager : MonoBehaviour
     {
         //讓攝影機移動到特定的房間
         //player.onReturnControl();
-        sceneState = SceneState.fiveStart;
+        sceneState = SceneState.sixStart;
 
-        myCamera.onCheckInStart(arrRoomEntrance[5]);
+        myCamera.onCheckInStart(arrRoomEntrance[6]);
 
     }
     #endregion
