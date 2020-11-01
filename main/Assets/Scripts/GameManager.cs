@@ -50,6 +50,22 @@ public class GameManager : MonoBehaviour
     public Doctors_zero doctorsZero;
     [Header("醫生1")]
     public Doctors_one doctorsOne;
+    [Header("醫生2")]
+    public Doctors_two doctorsTwo;
+    [Header("醫生3")]
+    public Doctors_three doctorsThree;
+    [Header("醫生4")]
+    public Doctors_four doctorsFour;
+    [Header("醫生5")]
+    public Doctors_five doctorsFive;
+    [Header("醫生6")]
+    public Doctors_six doctorsSix;
+    [Header("醫生7")]
+    public Doctors_seven doctorsSeven;
+    [Header("醫生8")]
+    public Doctors_eight doctorsEight;
+    [Header("醫生9")]
+    public Doctors_nine doctorsNine;
     [Header("攝影機")]
     public CameraControl myCamera;
     [Header("劇情機器")]
@@ -141,6 +157,30 @@ public class GameManager : MonoBehaviour
             case "DcotorsOne":
                 doctorsOne.onStartDialogue();
                 break;
+            case "DcotorsTwo":
+                doctorsTwo.onStartDialogue();
+                break;
+            case "DcotorsThree":
+                doctorsThree.onStartDialogue();
+                break;
+            case "DcotorsFour":
+                doctorsFour.onStartDialogue();
+                break;
+            case "DcotorsFive":
+                doctorsFive.onStartDialogue();
+                break;
+            case "DcotorsSix":
+                doctorsSix.onStartDialogue();
+                break;
+            case "DcotorsSeven":
+                doctorsSeven.onStartDialogue();
+                break;
+            case "DcotorsEight":
+                doctorsEight.onStartDialogue();
+                break;
+            case "DcotorsNine":
+                doctorsNine.onStartDialogue();
+                break;
             default:
                 break;
         }
@@ -166,9 +206,9 @@ public class GameManager : MonoBehaviour
     {
         //讓攝影機移動到特定的房間
         //player.onReturnControl();
-        sceneState = SceneState.oneStart;
+        sceneState = SceneState.fourStart;
 
-        myCamera.onCheckInStart(arrRoomEntrance[1]);
+        myCamera.onCheckInStart(arrRoomEntrance[4]);
 
     }
     #endregion
