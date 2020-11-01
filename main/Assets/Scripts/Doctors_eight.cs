@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 /// <summary>
 /// 醫生0
@@ -19,6 +20,12 @@ public class Doctors_eight : NPC
     public Sprite imgMarvel;
     [Header("問號")]
     public Sprite imgQuestion;
+
+    /// <summary>玩家的答案 </summary>
+    [SerializeField]
+    private int[] arrAnswer = new int[6];
+    [Header("答案按鈕")]
+    public Button[] arrBtnAnswer;
     #endregion
 
     #region 啟動
@@ -70,14 +77,6 @@ public class Doctors_eight : NPC
                         GM.onReturnControl();
                         return;
                     }
-                    else if(dlgeSchedule == 2)  //劇情演示
-                    {
-                        StartCoroutine(plotPressentationFirstAct());
-                        dlge.onDisplayWindow(false);
-                        dlge.setName(null);
-                        return;
-                    }
-
                     dlge.setConten(npcData.start[dlgeSchedule]);
                     break;
                 case TaskState.ing:
@@ -254,22 +253,41 @@ public class Doctors_eight : NPC
     /// <summary>
     /// 回答問題
     /// </summary>
-    public void btnAnswerQuestion(string answer)
+    public void btnAnswerQuestion(int answer)
     {
-        switch (answer)
-        {
-            case "A":       //過關
-                npcData._TaskState = TaskState.finished;
-                StartCoroutine(plotPressentationSecondAct());
-                break;
-            default:        //失敗
-                npcData._TaskState = TaskState.lose;
-                GM.onReturnControl();
-                break;
-        }
+        //由於全部都是，因此只要判斷是否有0
+        arrAnswer[answer] = 1;
+
+        arrBtnAnswer[answer].interactable = false;
+        isNexDialogue = false;
+        dlgeSchedule = 0;
+    }
+    #endregion
+
+    #region 按鈕，確認
+    /// <summary>
+    /// 確認問題
+    /// </summary>
+    public void btnEnter()
+    {
         isNexDialogue = false;
         dlgeSchedule = 0;
         topic.SetActive(false);
+        GM.onChangePlayerStatePlot();
+        //當發現回答的內容有錯誤的答案時
+        for (int i = 0; i < arrAnswer.Length; i++)
+        {
+            if (arrAnswer[i] == 0)
+            {
+                npcData._TaskState = TaskState.lose;
+                GM.onReturnControl();
+                return;
+            }
+        }
+
+        //如果沒有錯誤的答案
+        npcData._TaskState = TaskState.finished;
+        StartCoroutine(plotPressentationSecondAct());
     }
     #endregion
 
