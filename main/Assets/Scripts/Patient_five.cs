@@ -38,7 +38,7 @@ public class Patient_five : MonoBehaviour
     }
     #endregion
 
-    #region 進入觸發區
+    #region 離開觸發區
     void OnTriggerExit2D(Collider2D evt)
     {
         if (doctors.npcData._TaskState != TaskState.ing) return;

@@ -49,8 +49,8 @@ public class Backpack : MonoBehaviour
         amount = 0;
 
         propsImgMap.Add("3_1", imgProps[0]);
-        propsImgMap.Add("3_2", imgProps[2]);
-        propsImgMap.Add("3_3", imgProps[1]);
+        propsImgMap.Add("3_2", imgProps[1]);
+        propsImgMap.Add("3_3", imgProps[2]);
         propsImgMap.Add("3_4", imgProps[3]);
         propsImgMap.Add("3_5", imgProps[4]);
         propsImgMap.Add("11_1", imgProps[5]);
@@ -69,9 +69,7 @@ public class Backpack : MonoBehaviour
     private void Start()
     {
         btnGetProps("11_3");
-        onPutBackpack();
         btnGetProps("11_10");
-        onPutBackpack();
     }
     #endregion
 
@@ -109,6 +107,9 @@ public class Backpack : MonoBehaviour
     public void btnGetProps(string name)
     {
         readlySetProps = name;
+        arrProps[amount] = readlySetProps;
+        amount++;
+
     }
     #endregion
 
@@ -120,6 +121,7 @@ public class Backpack : MonoBehaviour
     public void btnGetPropsClean(Button btn)
     {
         readlySetClean = btn;
+        Destroy(readlySetClean.gameObject);
     }
     #endregion
 

@@ -159,7 +159,7 @@ public class Player : MonoBehaviour
                     case ActionState.Idle:
                         break;
                     case ActionState.getProps:
-                        backpackSrc.onPutBackpack();
+                        //backpackSrc.onPutBackpack();
                         break;
                     case ActionState.intRoom:
                         GM.intoRoom(readlyIntoRoom);
@@ -279,7 +279,7 @@ public class Player : MonoBehaviour
     /// </summary>
     public void btnGetProps()
     {
-        playerData._actionState = ActionState.getProps;
+        //playerData._actionState = ActionState.getProps;
     }
     #endregion
 
