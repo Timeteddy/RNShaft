@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 /// <summary>
@@ -19,6 +20,20 @@ public class Doctors_two : NPC
     public Sprite imgMarvel;
     [Header("問號")]
     public Sprite imgQuestion;
+    [Header("道具按鈕")]
+    public Button[] arrBtnProps;
+    [Header("提示")]
+    public GameObject prompt;
+    [Header("給予視窗")]
+    public GameObject giveWindow;
+    /// <summary>可以給予道具 </summary>
+    public bool isGive = false;
+
+    /// <summary>玩家的答案 </summary>
+    [SerializeField]
+    private int[] arrAnswer = new int[11];
+    [Header("答案按鈕")]
+    public Button[] arrBtnAnswer;
     #endregion
 
     #region 啟動
@@ -37,6 +52,12 @@ public class Doctors_two : NPC
         PlotControl.SE_ROOM_START += plotSeRoomStart;
         PlotControl.SE_ROOM_ING += plotSeRoomIng;
         PlotControl.SE_ROOM_END += plotSeRoomEnd;
+
+        for (int i = 0; i < arrAnswer.Length; i++)
+        {
+            arrAnswer[i] = 0;
+            arrBtnAnswer[i].interactable = true;
+        }
     }
     #endregion
 
@@ -70,14 +91,6 @@ public class Doctors_two : NPC
                         GM.onReturnControl();
                         return;
                     }
-                    else if(dlgeSchedule == 2)  //劇情演示
-                    {
-                        StartCoroutine(plotPressentationFirstAct());
-                        dlge.onDisplayWindow(false);
-                        dlge.setName(null);
-                        return;
-                    }
-
                     dlge.setConten(npcData.start[dlgeSchedule]);
                     break;
                 case TaskState.ing:
@@ -105,6 +118,10 @@ public class Doctors_two : NPC
                 case TaskState.finished:
                     if (dlgeSchedule >= npcData.finshed.Length)
                     {
+                        if (!GM.getArrTaskSchedule(2))
+                        {
+                            GM.finallyTask(2);
+                        }
                         dlge.onDisplayWindow(false);
                         dlge.setName(null);
                         dlgeSchedule = 0;
@@ -221,8 +238,11 @@ public class Doctors_two : NPC
     /// </summary>
     public void onStartDialogue()
     {
-        dlge.onDisplayWindow(true);
-        dlge.setName("醫生_2");
+        if (npcData._TaskState != TaskState.ing)
+        {
+            dlge.onDisplayWindow(true);
+            dlge.setName(npcData._name);
+        }
 
         switch (npcData._TaskState)
         {
@@ -230,9 +250,7 @@ public class Doctors_two : NPC
                 dlge.setConten(npcData.start[dlgeSchedule]);
                 break;
             case TaskState.ing:
-                if (dlgeSchedule >= npcData.ing.Length) 
-                    dlgeSchedule = 0;
-                dlge.setConten(npcData.ing[dlgeSchedule]);
+                giveWindow.SetActive(true);
                 break;
             case TaskState.lose:
                 if (dlgeSchedule >= npcData.lose.Length)
@@ -254,22 +272,86 @@ public class Doctors_two : NPC
     /// <summary>
     /// 回答問題
     /// </summary>
-    public void btnAnswerQuestion(string answer)
+    public void btnAnswerQuestion(int answer)
     {
+        if (!isGive) return;
+
         switch (answer)
         {
-            case "A":       //過關
-                npcData._TaskState = TaskState.finished;
-                StartCoroutine(plotPressentationSecondAct());
+            case 1:       //過關
+                arrAnswer[answer] = 1;
+                break;
+            case 2:       //過關
+                arrAnswer[answer] = 1;
+                break;
+            case 3:       //過關
+                arrAnswer[answer] = 1;
+                break;
+            case 4:       //過關
+                arrAnswer[answer] = 1;
                 break;
             default:        //失敗
-                npcData._TaskState = TaskState.lose;
-                GM.onReturnControl();
+                arrAnswer[answer] = -1;
                 break;
         }
         isNexDialogue = false;
         dlgeSchedule = 0;
+    }
+    #endregion
+
+    #region 關閉自己
+    public void btnInteranctableMySelf(Button mySelf)
+    {
+        if (!isGive) return;
+        mySelf.interactable = false;
+    }
+    #endregion
+
+    #region 按鈕，確認
+    /// <summary>
+    /// 確認問題
+    /// </summary>
+    public void btnEnter()
+    {
+        isNexDialogue = false;
+        dlgeSchedule = 0;
         topic.SetActive(false);
+        //當發現回答的內容有錯誤的答案時
+        for (int i = 0; i < arrAnswer.Length; i++)
+        {
+            if (arrAnswer[i] == -1)
+            {
+                npcData._TaskState = TaskState.lose;
+                GM.onReturnControl();
+                return;
+            }
+        }
+
+        //如果沒有錯誤的答案
+        npcData._TaskState = TaskState.finished;
+        StartCoroutine(plotPressentationSecondAct());
+    }
+    #endregion
+
+    #region 按鈕，開始給予
+    public void btnOpenGive()
+    {
+        isGive = true;
+        prompt.SetActive(true);
+    }
+    #endregion
+
+    #region 按鈕，取消給予
+    public void btnClosedGive()
+    {
+        isGive = false;
+        prompt.SetActive(false);
+
+        for (int i = 0; i < arrAnswer.Length; i++)
+        {
+            arrAnswer[i] = 0;
+            arrBtnAnswer[i].interactable = true;
+        }
     }
     #endregion
 

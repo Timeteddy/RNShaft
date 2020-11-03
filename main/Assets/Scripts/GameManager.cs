@@ -96,9 +96,20 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private string readlyDialoguePeople;
 
+    /// <summary>所有房間的任務完成狀態 </summary>
+    private bool[] arrRoomTask = new bool[10];
+    /// <summary>玩家完成進度 </summary>
+    private int roomTaskSchedule = 0;
+    /// <summary>玩家任務排程表(任務順序) </summary>
+    [SerializeField]
+    private int[] arrTaskSchedule = new int[10];
+    /// <summary>當前進度 </summary>
+    private int nowSchedule = 0;
+
     #endregion
 
     #region 起始
+    [System.Obsolete]
     private void Awake()
     {
         sceneState = SceneState.checkIn;
@@ -109,8 +120,29 @@ public class GameManager : MonoBehaviour
         myCamera.SE_FLLW_START += cameraFollowStart;
         myCamera.SE_FLLW_END += cameraFollowEnd;
 
+        //所有房間都是未完成狀態
+        int lenRt = arrRoomTask.Length;
+        for(int i = 0; i < lenRt; i++)
+        {
+            arrRoomTask[i] = false;
+        }
+        
+        int lenTs = arrTaskSchedule.Length;
+        for (int i = 0; i < lenTs; i++)
+        {
+            arrTaskSchedule[i] = i;
+        }
+        //將順序打亂
+        for(int i = 0; i < lenTs; i++)
+        {
+            int original = arrTaskSchedule[i];
+            int rdm = Random.RandomRange(0, 10);
+            arrTaskSchedule[i] = arrTaskSchedule[rdm];
+            arrTaskSchedule[rdm] = original;
+        }
     }
     #endregion
+    
     //功能
     #region 設定準備進行對話的對象
     /// <summary>
@@ -202,22 +234,23 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// 報到結束
     /// </summary>
-    public void checkInEnd()   //TODO 之後要修改為隨機題目
+    public void checkInEnd()
     {
         //讓攝影機移動到特定的房間
-        //player.onReturnControl();
-        sceneState = SceneState.twoStart;
+        //sceneState = SceneState.twoStart;
+        sceneState = (SceneState)arrTaskSchedule[roomTaskSchedule];
 
-        myCamera.onCheckInStart(arrRoomEntrance[2]);
+        myCamera.onCheckInStart(arrRoomEntrance[arrTaskSchedule[roomTaskSchedule]]);
 
+        nowSchedule = arrTaskSchedule[roomTaskSchedule];
     }
     #endregion
 
     #region 按鈕.準備進入的房間
     public void btnInitRoom(int value)
     {
-        player.playerData._actionState = ActionState.intRoom;
         doorNumber = value;
+        player.readlyIntoRoom = value;
     }
     #endregion
 
@@ -268,7 +301,46 @@ public class GameManager : MonoBehaviour
     {
         myCamera.transform.position = arrRoomEntrance[doorNumber].transform.position;
         player.transform.position = arrRoomEntrance[doorNumber].transform.position;
+
+        if (arrRoomTask[nowSchedule] == true)
+        {
+            if(roomTaskSchedule == 10)
+            {
+                myCamera.onCheckInStart(leader.transform);
+                return;
+            }
+            sceneState = (SceneState)arrTaskSchedule[roomTaskSchedule];
+
+            myCamera.onCheckInStart(arrRoomEntrance[arrTaskSchedule[roomTaskSchedule]]);
+
+            nowSchedule = arrTaskSchedule[roomTaskSchedule];
+            return;
+        }
         player.playerData._actionState = ActionState.Idle;
+    }
+    #endregion
+
+    #region 抓取房間任務當前狀態
+    /// <summary>
+    /// 抓取房間任務當前狀態
+    /// </summary>
+    /// <param name="index">房號</param>
+    /// <returns></returns>
+    public bool getArrTaskSchedule(int index)
+    {
+        return arrRoomTask[index];
+    }
+    #endregion
+
+    #region 任務完成
+    /// <summary>
+    /// 任務完成
+    /// </summary>
+    /// <param name="value">完成的房間</param>
+    public void finallyTask(int value)
+    {
+        arrRoomTask[value] = true;
+        roomTaskSchedule++;
     }
     #endregion
 
@@ -278,7 +350,6 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void cameraFollowStart()
     {
-        print("開始跟隨");
     }
     #endregion
 

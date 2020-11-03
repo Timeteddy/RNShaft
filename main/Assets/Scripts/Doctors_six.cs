@@ -114,6 +114,10 @@ public class Doctors_six : NPC
                     if (dlgeSchedule >= npcData.finshed.Length)
                     {
                         isTock = false;
+                        if (!GM.getArrTaskSchedule(6))
+                        {
+                            GM.finallyTask(6);
+                        }
                         dlge.onDisplayWindow(false);
                         dlge.setName(null);
                         dlgeSchedule = 0;
@@ -233,7 +237,7 @@ public class Doctors_six : NPC
     {
         if (!isTock) return;
         dlge.onDisplayWindow(true);
-        dlge.setName("醫生_6");
+        dlge.setName(npcData._name);
 
         switch (npcData._TaskState)
         {
@@ -273,7 +277,7 @@ public class Doctors_six : NPC
     {
         switch (answer)
         {
-            case 0:         //選擇錯誤答案
+            case 1:         //選擇錯誤答案
                 arrAnswer[answer] = -1;
                 break;
             default:        //選擇正確答案

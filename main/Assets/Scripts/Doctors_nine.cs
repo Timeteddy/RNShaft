@@ -119,6 +119,10 @@ public class Doctors_nine : NPC
                     if (dlgeSchedule >= npcData.finshed.Length)
                     {
                         isTock = false;
+                        if (!GM.getArrTaskSchedule(9))
+                        {
+                            GM.finallyTask(9);
+                        }
                         dlge.onDisplayWindow(false);
                         dlge.setName(null);
                         dlgeSchedule = 0;
@@ -239,7 +243,7 @@ public class Doctors_nine : NPC
     {
         if (!isTock) return;
         dlge.onDisplayWindow(true);
-        dlge.setName("醫生_9");
+        dlge.setName(npcData._name);
 
         switch (npcData._TaskState)
         {

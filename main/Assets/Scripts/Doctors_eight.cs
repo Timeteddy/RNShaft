@@ -104,6 +104,10 @@ public class Doctors_eight : NPC
                 case TaskState.finished:
                     if (dlgeSchedule >= npcData.finshed.Length)
                     {
+                        if (!GM.getArrTaskSchedule(8))
+                        {
+                            GM.finallyTask(8);
+                        }
                         dlge.onDisplayWindow(false);
                         dlge.setName(null);
                         dlgeSchedule = 0;
@@ -221,11 +225,13 @@ public class Doctors_eight : NPC
     public void onStartDialogue()
     {
         dlge.onDisplayWindow(true);
-        dlge.setName("醫生_8");
+        dlge.setName(npcData._name);
 
         switch (npcData._TaskState)
         {
             case TaskState.start:
+                if (dlgeSchedule >= npcData.start.Length)
+                    dlgeSchedule = 0;
                 dlge.setConten(npcData.start[dlgeSchedule]);
                 break;
             case TaskState.ing:

@@ -73,7 +73,14 @@ public class Player : MonoBehaviour
     /// <summary>
     /// 準備進入的房間
     /// </summary>
-    private int readlyIntoRoom;
+    public int readlyIntoRoom;
+
+    /// <summary>是否在門前面(站在觸發區) </summary>
+    [SerializeField]
+    private bool isReadlyIntoDoor;
+    /// <summary>是否點擊門 </summary>
+    [SerializeField]
+    private bool isHitDoor;
 
     #endregion
 
@@ -140,10 +147,8 @@ public class Player : MonoBehaviour
             backpackSrc.onForgoProps();
             playerData._actionState = ActionState.Idle;
             point = getMousePoint();
-            directionControlelr(); 
-
-            if (!hit) return;
-            print(hit.collider.name);
+            directionControlelr();
+            isHitDoor = false;
         }
 
         //  如果目前不能播放停止動畫時
@@ -172,6 +177,8 @@ public class Player : MonoBehaviour
                     case ActionState.ingPolt:
                         break;
                     case ActionState.readyDialogue:
+                        playerData._actionState = ActionState.ingDialogue;
+                        GM.onStartDialogue();
                         break;
                     case ActionState.ingDialogue:
                         break;
@@ -180,6 +187,14 @@ public class Player : MonoBehaviour
                 }
                 isPlayStop = true;
             }
+        }
+
+        //當停留在觸發區的時候點擊門時
+        if (isHitDoor && isReadlyIntoDoor)
+        {
+            playerData._actionState = ActionState.intRoom;
+            GM.intoRoom(readlyIntoRoom);
+            point = transform.position;
         }
 
         transform.position = Vector2.MoveTowards(transform.position, point, speed * Time.deltaTime);
@@ -536,20 +551,34 @@ public class Player : MonoBehaviour
             case ActionState.getProps:
                 break;
             case ActionState.intRoom:
-                readlyIntoRoom = int.Parse(evt.name);
                 break;
             case ActionState.leaveRoom:
                 break;
             case ActionState.ingPolt:
                 break;
             case ActionState.readyDialogue:
-                playerData._actionState = ActionState.ingDialogue;
-                GM.onStartDialogue();
                 break;
             case ActionState.ingDialogue:
                 break;
             default:
                 break;
+        }
+    }
+    #endregion
+
+    #region 點擊門
+    public void btnHitDoor()
+    {
+        isHitDoor = true;
+    }
+    #endregion
+
+    #region 停留觸發區
+    void OnTriggerStay2D(Collider2D evt)
+    {
+        if (evt.tag == "door")
+        {
+            isReadlyIntoDoor = true;
         }
     }
     #endregion
@@ -562,6 +591,7 @@ public class Player : MonoBehaviour
     void OnTriggerExit2D(Collider2D evt)
     {
         readlyIntoRoom = -1;
+        isReadlyIntoDoor = false;
     }
     #endregion
 

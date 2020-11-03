@@ -36,11 +36,18 @@ public class Backpack : MonoBehaviour
     private Dictionary<string, Sprite> propsImgMap = new Dictionary<string, Sprite>();
 
     /// <summary>
+    /// 背包物品的答案字典
+    /// </summary>
+    private Dictionary<string, int> answerMap = new Dictionary<string, int>();
+
+    /// <summary>
     /// 道具數量
     /// </summary>
     private int amount;
 
     private Button readlySetClean;
+    [Header("遊戲控制器")]
+    public GameManager GM;
     #endregion
 
     #region 啟動
@@ -63,6 +70,22 @@ public class Backpack : MonoBehaviour
         propsImgMap.Add("11_8", imgProps[12]);
         propsImgMap.Add("11_9", imgProps[13]);
         propsImgMap.Add("11_10", imgProps[14]);
+
+        answerMap.Add("3_1", 0);
+        answerMap.Add("3_2", 1);
+        answerMap.Add("3_3", 2);
+        answerMap.Add("3_4", 3);
+        answerMap.Add("3_5", 4);
+        answerMap.Add("11_1", 5);
+        answerMap.Add("11_2", 6);
+        answerMap.Add("11_3", 7);
+        answerMap.Add("11_4", 8);
+        answerMap.Add("11_5", 9);
+        answerMap.Add("11_6", 10);
+        answerMap.Add("11_7", 11);
+        answerMap.Add("11_8", 12);
+        answerMap.Add("11_9", 13);
+        answerMap.Add("11_10", 14);
 
     }
 
@@ -108,6 +131,14 @@ public class Backpack : MonoBehaviour
     {
         readlySetProps = name;
         arrProps[amount] = readlySetProps;
+
+        //手動添加點擊事件與參數
+        imgBackProps[amount].GetComponent<Button>().onClick.AddListener(delegate () 
+        {
+            int index = answerMap[name];
+            GM.doctorsTwo.btnAnswerQuestion(index);
+        });
+
         amount++;
 
     }
