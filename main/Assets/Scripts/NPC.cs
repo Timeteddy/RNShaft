@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class NPC : MonoBehaviour
 {
@@ -20,4 +21,6 @@ public class NPC : MonoBehaviour
     public SpriteRenderer symbol;
     [Header("攝影機")]
     public CameraControl myCamera;
+    [Header("對話按鈕")]
+    public Button btnDialogue;
 }

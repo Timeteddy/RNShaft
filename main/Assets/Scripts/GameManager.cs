@@ -101,10 +101,15 @@ public class GameManager : MonoBehaviour
     /// <summary>玩家完成進度 </summary>
     private int roomTaskSchedule = 0;
     /// <summary>玩家任務排程表(任務順序) </summary>
-    [SerializeField]
     private int[] arrTaskSchedule = new int[10];
     /// <summary>當前進度 </summary>
     private int nowSchedule = 0;
+    /// <summary>攝影機在房間內的視角 </summary>
+    private float fltInRoom = 6.0f;
+    /// <summary>攝影機在房間外的視角 </summary>
+    private float fltOutRoom = 8.0f;
+    /// <summary>場景動畫 </summary>
+    public AnimScene animScene;
 
     #endregion
 
@@ -237,12 +242,14 @@ public class GameManager : MonoBehaviour
     public void checkInEnd()
     {
         //讓攝影機移動到特定的房間
-        //sceneState = SceneState.twoStart;
         sceneState = (SceneState)arrTaskSchedule[roomTaskSchedule];
 
         myCamera.onCheckInStart(arrRoomEntrance[arrTaskSchedule[roomTaskSchedule]]);
 
         nowSchedule = arrTaskSchedule[roomTaskSchedule];
+
+        //sceneState = SceneState.twoStart;
+        //myCamera.onCheckInStart(arrRoomEntrance[2]);
     }
     #endregion
 
@@ -263,7 +270,7 @@ public class GameManager : MonoBehaviour
 
     #region 敲門 進入房間
     /// <summary>
-    /// 敲門
+    /// 播放過場動畫(進入房間)
     /// </summary>
     /// <param name="value">準備進入的門牌</param>
     public void intoRoom(int value)
@@ -271,6 +278,7 @@ public class GameManager : MonoBehaviour
         //在報到狀態
         if (sceneState == SceneState.checkIn)
         {
+            player.btnDialogue.gameObject.SetActive(true);
             onSetReadlyDialogue("MyselfCheckin");
             onStartDialogue();
             return;
@@ -279,32 +287,49 @@ public class GameManager : MonoBehaviour
         //走錯門
         if((int)sceneState != value)
         {
+            player.btnDialogue.gameObject.SetActive(true);
             onSetReadlyDialogue("MyselfWrongDoor");
             onStartDialogue();
             return;
         }
 
         if (doorNumber != value) return;
-        sceneState = (SceneState)value; //切換遊戲主狀態
+        animScene.onAnimPlayPassIntoRoom();
+    }
+
+    /// <summary>可通過門(進入房間) </summary>
+    public void onPassIntoRoom()
+    {
+        sceneState = (SceneState)doorNumber; //切換遊戲主狀態
         plotControl.onSeRoomStart();
-        myCamera.transform.position = arrRoomExport[value].transform.position;
-        player.transform.position = arrRoomExport[value].transform.position;
+        myCamera.GetComponent<Camera>().orthographicSize = fltInRoom;
+        myCamera.transform.position = arrRoomExport[doorNumber].transform.position;
+        player.transform.position = arrRoomExport[doorNumber].transform.position;
+        player.onSetPoint(player.transform.position);
         player.playerData._actionState = ActionState.Idle;
     }
     #endregion
 
     #region 離開房間
     /// <summary>
-    /// 離開房間
+    /// 播放過場動畫(離開房間)
     /// </summary>
     public void leaveRoom()
     {
+        animScene.onAnimPlayPassLeventRoom();
+    }
+
+    /// <summary>可通過門(離開房間) </summary>
+    public void onPassLeventRoom()
+    {
+        myCamera.GetComponent<Camera>().orthographicSize = fltOutRoom;
         myCamera.transform.position = arrRoomEntrance[doorNumber].transform.position;
         player.transform.position = arrRoomEntrance[doorNumber].transform.position;
+        player.onSetPoint(player.transform.position);
 
         if (arrRoomTask[nowSchedule] == true)
         {
-            if(roomTaskSchedule == 10)
+            if (roomTaskSchedule == 10)
             {
                 myCamera.onCheckInStart(leader.transform);
                 return;
@@ -380,7 +405,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void onReturnControl()
     {
-        StartCoroutine(onReturnPlayerControl(1.0f));
+        player.onReturnControl();
         myCamera.onReturnControl();
     }
 

@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba2e083953a01d4eb96057b1f851985, type: 3}
   m_Name: DoctorsMan3
   m_EditorClassIdentifier: 
-  _TaskState: 0
+  _TaskState: 3
   _name: "\u91AB\u751FD"
   start:
   - "XXX,\u59B3\u4F86\u4E86\u58D3"
   - "\u75C5\u4EBA\u73FE\u5728\u4E0D\u592A\u8212\u670D!!\u9EBB\u7169\u59B3\u5230\u5E8A\u7684\u53E6\u4E00\u908A\u807D\u807D\u770B\u75C5\u4EBA\u7684\u8ACB\u6C42!"
   ing: []
   finshed:
-  - "\u5F88\u53B2\u5BB3\uFF0C\u5E0C\u671B\u4E4B\u5F8C\u4E5F\u80FD\u9019\u6A23"
+  - "\u5E0C\u671B\u4E4B\u5F8C\u4E5F\u80FD\u7E7C\u7E8C\u4FDD\u6301\u5594!!!"
   lose:
   - "\u932F\u4E86\uFF0C\u4E0B\u6B21\u518D\u4F86\u5427"

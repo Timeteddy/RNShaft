@@ -136,6 +136,7 @@ public class Backpack : MonoBehaviour
         imgBackProps[amount].GetComponent<Button>().onClick.AddListener(delegate () 
         {
             int index = answerMap[name];
+            GM.doctorsTwo.setWrong(index);
             GM.doctorsTwo.btnAnswerQuestion(index);
         });
 

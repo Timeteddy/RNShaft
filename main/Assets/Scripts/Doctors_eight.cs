@@ -50,8 +50,7 @@ public class Doctors_eight : NPC
     #region 重複
     void Update()
     {
-        if (GM.onGetDialoguePeople() != "DcotorsEight") return;
-        onClickMouseDown();
+        btnDialogue.interactable = isNexDialogue;
     }
     #endregion
 
@@ -120,6 +119,71 @@ public class Doctors_eight : NPC
                 default:
                     break;
             }
+        }
+    }
+    #endregion
+
+    #region 按鈕，對話系統
+    public void btnDialogueSysetm()
+    {
+        switch (npcData._TaskState)
+        {
+            case TaskState.start:
+                if (dlgeSchedule >= npcData.start.Length)
+                {
+                    npcData._TaskState = TaskState.ing;
+                    dlge.onDisplayWindow(false);
+                    dlge.setName(null);
+                    dlgeSchedule = 0;
+                    GM.onReturnControl();
+                    btnDialogue.gameObject.SetActive(false);
+                    return;
+                }
+                dlge.setConten(npcData.start[dlgeSchedule]);
+                break;
+            case TaskState.ing:
+                if (dlgeSchedule >= npcData.ing.Length)
+                {
+                    dlge.onDisplayWindow(false);
+                    dlge.setName(null);
+                    dlgeSchedule = 0;
+                    GM.onReturnControl();
+                    btnDialogue.gameObject.SetActive(false);
+                    return;
+                }
+                dlge.setConten(npcData.ing[dlgeSchedule]);
+                break;
+            case TaskState.lose:
+                if (dlgeSchedule >= npcData.lose.Length)
+                {
+                    dlge.onDisplayWindow(false);
+                    dlge.setName(null);
+                    dlgeSchedule = 0;
+                    GM.onReturnControl();
+                    btnDialogue.gameObject.SetActive(false);
+                    return;
+                }
+                dlge.setConten(npcData.lose[dlgeSchedule]);
+                break;
+            case TaskState.finished:
+                if (dlgeSchedule >= npcData.finshed.Length)
+                {
+                    if (!GM.getArrTaskSchedule(8))
+                    {
+                        GM.finallyTask(8);
+                    }
+                    dlge.onDisplayWindow(false);
+                    dlge.setName(null);
+                    dlgeSchedule = 0;
+                    GM.onReturnControl();
+                    symbol.gameObject.SetActive(false);
+                    btnDialogue.gameObject.SetActive(false);
+                    return;
+                }
+                dlge.setConten(npcData.finshed[dlgeSchedule]);
+                break;
+            default:
+                break;
         }
     }
     #endregion
@@ -224,6 +288,7 @@ public class Doctors_eight : NPC
     /// </summary>
     public void onStartDialogue()
     {
+        btnDialogue.gameObject.SetActive(true);
         dlge.onDisplayWindow(true);
         dlge.setName(npcData._name);
 

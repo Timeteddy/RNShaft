@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -52,6 +51,7 @@ public class Player : MonoBehaviour
     /// <summary>
     /// 能否走路
     /// </summary>
+    [SerializeField]
     private bool walk = true;
 
     public RaycastHit hit;//偵測賭局
@@ -68,15 +68,21 @@ public class Player : MonoBehaviour
     public int readlyIntoRoom;
 
     /// <summary>是否在門前面(站在觸發區) </summary>
-    [SerializeField]
     private bool isReadlyIntoDoor;
     /// <summary>是否點擊門 </summary>
-    [SerializeField]
     private bool isHitDoor;
     /// <summary>是否站在人的前面(站在觸發區) </summary>
     private bool isReadlyTalk;
     /// <summary>是否點擊人 </summary>
     public bool isHitTalk;
+    /// <summary>是否站在門口(站在觸發區) </summary>
+    public bool isRedlyLeventRoom;
+    /// <summary>是否點擊門口 </summary>
+    public bool isHitLevent;
+    /// <summary>對話按鈕 </summary>
+    public Button btnDialogue;
+    /// <summary>場景動畫 </summary>
+    public AnimScene animScene;
 
     #endregion
 
@@ -116,9 +122,9 @@ public class Player : MonoBehaviour
     #region 重複
     void Update()
     {
-        RaycastHit2D hit = getRayObj();
+        btnDialogue.interactable = isNexDialogue;
+
         Vector2 playPoint = new Vector2(transform.position.x, transform.position.y);
-        //animJudge();
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -130,14 +136,6 @@ public class Player : MonoBehaviour
                 if (!isDlgeMyself) return;
                 if (!isNexDialogue) return;
 
-                if(dlgeSchedule > 0)
-                {
-                    onReturnControl(); 
-                    dlge.onDisplayWindow(false);
-                    dlge.setName(null);
-                    dlgeSchedule = 0;
-                    isDlgeMyself = true;
-                }
                 return;
             }
             backpackSrc.onForgoProps();
@@ -146,6 +144,7 @@ public class Player : MonoBehaviour
             directionControlelr();
             isHitDoor = false;
             isHitTalk = false;
+            isHitLevent = false;
         }
 
         //  如果目前不能播放停止動畫時
@@ -155,30 +154,6 @@ public class Player : MonoBehaviour
             if (playPoint == point)
             {
                 animStopJudge();
-
-                switch (playerData._actionState)
-                {
-                    case ActionState.Idle:
-                        break;
-                    case ActionState.getProps:
-                        //backpackSrc.onPutBackpack();
-                        break;
-                    case ActionState.intRoom:
-                        break;
-                    case ActionState.leaveRoom:
-                        GM.leaveRoom();
-                        point = transform.position;
-                        break;
-                    case ActionState.ingPolt:
-                        break;
-                    case ActionState.readyDialogue:
-                        
-                        break;
-                    case ActionState.ingDialogue:
-                        break;
-                    default:
-                        break;
-                }
                 isPlayStop = true;
             }
         }
@@ -187,8 +162,9 @@ public class Player : MonoBehaviour
         if (isHitDoor && isReadlyIntoDoor)
         {
             playerData._actionState = ActionState.intRoom;
-            GM.intoRoom(readlyIntoRoom);
             point = transform.position;
+            GM.intoRoom(readlyIntoRoom);
+            isHitDoor = false;
         }
 
         if(isHitTalk && isReadlyTalk)
@@ -198,7 +174,27 @@ public class Player : MonoBehaviour
             isHitTalk = false;
         }
 
+        if(isHitLevent && isRedlyLeventRoom)
+        {
+            playerData._actionState = ActionState.leaveRoom;
+            point = transform.position;
+            GM.leaveRoom();
+            isHitLevent = false;
+        }
+
         transform.position = Vector2.MoveTowards(transform.position, point, speed * Time.deltaTime);
+    }
+    #endregion
+
+    #region 按鈕，與自己對話
+    public void btnDialogueSystem()
+    {
+        onReturnControl();
+        dlge.onDisplayWindow(false);
+        dlge.setName(null);
+        dlgeSchedule = 0;
+        btnDialogue.gameObject.SetActive(false);
+        GM.onSetReadlyDialogue("");
     }
     #endregion
 
@@ -220,6 +216,7 @@ public class Player : MonoBehaviour
     public void onReturnControl()
     {
         playerData._actionState = ActionState.Idle;
+        walk = true;
     }
     #endregion
 
@@ -266,6 +263,8 @@ public class Player : MonoBehaviour
         isOpenBackpack = false;
         backpackSrc.onCloseBackPack();
         backpack.SetActive(false);
+
+        onReturnControl();
     }
     #endregion
 
@@ -581,6 +580,13 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    #region 按鈕，點擊離開
+    public void btnHitLevent()
+    {
+        isHitLevent = true;
+    }
+    #endregion
+
     #region 停留觸發區
     void OnTriggerStay2D(Collider2D evt)
     {
@@ -591,6 +597,10 @@ public class Player : MonoBehaviour
         else if(evt.tag == "people")
         {
             isReadlyTalk = true;
+        }
+        else if(evt.tag == "levent")
+        {
+            isRedlyLeventRoom = true;
         }
     }
     #endregion
@@ -604,6 +614,8 @@ public class Player : MonoBehaviour
     {
         readlyIntoRoom = -1;
         isReadlyIntoDoor = false;
+        isReadlyTalk = false;
+        isRedlyLeventRoom = false;
     }
     #endregion
 

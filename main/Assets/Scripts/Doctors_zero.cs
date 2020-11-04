@@ -43,84 +43,79 @@ public class Doctors_zero : NPC
     #region 重複
     void Update()
     {
-        if (GM.onGetDialoguePeople() != "DcotorsZero") return;
-        onClickMouseDown();
+        btnDialogue.interactable = isNexDialogue;
     }
     #endregion
 
-    #region 點擊滑鼠或畫面
-    /// <summary>
-    /// 點擊滑鼠或畫面
-    /// </summary>
-    private void onClickMouseDown()
+    #region 按鈕，對話系統
+    public void btnDialogueSysetm()
     {
-        if (!isNexDialogue) return;
-
-        if (Input.GetMouseButtonDown(0))
+        switch (npcData._TaskState)
         {
-            switch (npcData._TaskState)
-            {
-                case TaskState.start:
-                    if (dlgeSchedule >= npcData.start.Length)
-                    {
-                        npcData._TaskState = TaskState.ing;
-                        dlge.onDisplayWindow(false);
-                        dlge.setName(null);
-                        dlgeSchedule = 0;
-                        GM.onReturnControl();
-                        return;
-                    }
-                    else if(dlgeSchedule == 1)  //劇情演示
-                    {
-                        StartCoroutine(plotPressentationFirstAct());
-                        dlge.onDisplayWindow(false);
-                        dlge.setName(null);
-                        return;
-                    }
+            case TaskState.start:
+                if (dlgeSchedule >= npcData.start.Length)
+                {
+                    npcData._TaskState = TaskState.ing;
+                    dlge.onDisplayWindow(false);
+                    dlge.setName(null);
+                    dlgeSchedule = 0;
+                    GM.onReturnControl();
+                    btnDialogue.gameObject.SetActive(false);
+                    return;
+                }
+                else if (dlgeSchedule == 1)  //劇情演示
+                {
+                    StartCoroutine(plotPressentationFirstAct());
+                    dlge.onDisplayWindow(false);
+                    dlge.setName(null);
+                    return;
+                }
 
-                    dlge.setConten(npcData.start[dlgeSchedule]);
-                    break;
-                case TaskState.ing:
-                    if (dlgeSchedule >= npcData.ing.Length)
+                dlge.setConten(npcData.start[dlgeSchedule]);
+                break;
+            case TaskState.ing:
+                if (dlgeSchedule >= npcData.ing.Length)
+                {
+                    dlge.onDisplayWindow(false);
+                    dlge.setName(null);
+                    dlgeSchedule = 0;
+                    GM.onReturnControl();
+                    btnDialogue.gameObject.SetActive(false);
+                    return;
+                }
+                dlge.setConten(npcData.ing[dlgeSchedule]);
+                break;
+            case TaskState.lose:
+                if (dlgeSchedule >= npcData.lose.Length)
+                {
+                    dlge.onDisplayWindow(false);
+                    dlge.setName(null);
+                    dlgeSchedule = 0;
+                    GM.onReturnControl();
+                    btnDialogue.gameObject.SetActive(false);
+                    return;
+                }
+                dlge.setConten(npcData.lose[dlgeSchedule]);
+                break;
+            case TaskState.finished:
+                if (dlgeSchedule >= npcData.finshed.Length)
+                {
+                    if (!GM.getArrTaskSchedule(0))
                     {
-                        dlge.onDisplayWindow(false);
-                        dlge.setName(null);
-                        dlgeSchedule = 0;
-                        GM.onReturnControl();
-                        return;
+                        GM.finallyTask(0);
                     }
-                    dlge.setConten(npcData.ing[dlgeSchedule]);
-                    break;
-                case TaskState.lose:
-                    if (dlgeSchedule >= npcData.lose.Length)
-                    {
-                        dlge.onDisplayWindow(false);
-                        dlge.setName(null);
-                        dlgeSchedule = 0;
-                        GM.onReturnControl();
-                        return;
-                    }
-                    dlge.setConten(npcData.lose[dlgeSchedule]);
-                    break;
-                case TaskState.finished:
-                    if (dlgeSchedule >= npcData.finshed.Length)
-                    {
-                        if (!GM.getArrTaskSchedule(0))
-                        {
-                            GM.finallyTask(0);
-                        }
-                        dlge.onDisplayWindow(false);
-                        dlge.setName(null);
-                        dlgeSchedule = 0;
-                        GM.onReturnControl();
-                        symbol.gameObject.SetActive(false);
-                        return;
-                    }
-                    dlge.setConten(npcData.finshed[dlgeSchedule]);
-                    break;
-                default:
-                    break;
-            }
+                    dlge.onDisplayWindow(false);
+                    dlge.setName(null);
+                    dlgeSchedule = 0;
+                    GM.onReturnControl();
+                    btnDialogue.gameObject.SetActive(false);
+                    symbol.gameObject.SetActive(false);
+                    return;
+                }
+                dlge.setConten(npcData.finshed[dlgeSchedule]);
+                break;
+            default:
+                break;
         }
     }
     #endregion
@@ -225,6 +220,7 @@ public class Doctors_zero : NPC
     /// </summary>
     public void onStartDialogue()
     {
+        btnDialogue.gameObject.SetActive(true);
         dlge.onDisplayWindow(true);
         dlge.setName(npcData._name);
 

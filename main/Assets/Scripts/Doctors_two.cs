@@ -64,76 +64,73 @@ public class Doctors_two : NPC
     #region 重複
     void Update()
     {
-        if (GM.onGetDialoguePeople() != "DcotorsTwo") return;
-        onClickMouseDown();
+        btnDialogue.interactable = isNexDialogue;
+        //if (GM.onGetDialoguePeople() != "DcotorsTwo") return;
+        //onClickMouseDown();
     }
     #endregion
 
-    #region 點擊滑鼠或畫面
-    /// <summary>
-    /// 點擊滑鼠或畫面
-    /// </summary>
-    private void onClickMouseDown()
+    #region 按鈕，對話系統
+    public void btnDialogueSysetm()
     {
-        if (!isNexDialogue) return;
-
-        if (Input.GetMouseButtonDown(0))
+        switch (npcData._TaskState)
         {
-            switch (npcData._TaskState)
-            {
-                case TaskState.start:
-                    if (dlgeSchedule >= npcData.start.Length)
+            case TaskState.start:
+                if (dlgeSchedule >= npcData.start.Length)
+                {
+                    npcData._TaskState = TaskState.ing;
+                    dlge.onDisplayWindow(false);
+                    dlge.setName(null);
+                    dlgeSchedule = 0;
+                    GM.onReturnControl();
+                    btnDialogue.gameObject.SetActive(false);
+                    return;
+                }
+                dlge.setConten(npcData.start[dlgeSchedule]);
+                break;
+            case TaskState.ing:
+                if (dlgeSchedule >= npcData.ing.Length)
+                {
+                    dlge.onDisplayWindow(false);
+                    dlge.setName(null);
+                    dlgeSchedule = 0;
+                    GM.onReturnControl();
+                    btnDialogue.gameObject.SetActive(false);
+                    return;
+                }
+                dlge.setConten(npcData.ing[dlgeSchedule]);
+                break;
+            case TaskState.lose:
+                if (dlgeSchedule >= npcData.lose.Length)
+                {
+                    dlge.onDisplayWindow(false);
+                    dlge.setName(null);
+                    dlgeSchedule = 0;
+                    GM.onReturnControl();
+                    btnDialogue.gameObject.SetActive(false);
+                    return;
+                }
+                dlge.setConten(npcData.lose[dlgeSchedule]);
+                break;
+            case TaskState.finished:
+                if (dlgeSchedule >= npcData.finshed.Length)
+                {
+                    if (!GM.getArrTaskSchedule(2))
                     {
-                        npcData._TaskState = TaskState.ing;
-                        dlge.onDisplayWindow(false);
-                        dlge.setName(null);
-                        dlgeSchedule = 0;
-                        GM.onReturnControl();
-                        return;
+                        GM.finallyTask(2);
                     }
-                    dlge.setConten(npcData.start[dlgeSchedule]);
-                    break;
-                case TaskState.ing:
-                    if (dlgeSchedule >= npcData.ing.Length)
-                    {
-                        dlge.onDisplayWindow(false);
-                        dlge.setName(null);
-                        dlgeSchedule = 0;
-                        GM.onReturnControl();
-                        return;
-                    }
-                    dlge.setConten(npcData.ing[dlgeSchedule]);
-                    break;
-                case TaskState.lose:
-                    if (dlgeSchedule >= npcData.lose.Length)
-                    {
-                        dlge.onDisplayWindow(false);
-                        dlge.setName(null);
-                        dlgeSchedule = 0;
-                        GM.onReturnControl();
-                        return;
-                    }
-                    dlge.setConten(npcData.lose[dlgeSchedule]);
-                    break;
-                case TaskState.finished:
-                    if (dlgeSchedule >= npcData.finshed.Length)
-                    {
-                        if (!GM.getArrTaskSchedule(2))
-                        {
-                            GM.finallyTask(2);
-                        }
-                        dlge.onDisplayWindow(false);
-                        dlge.setName(null);
-                        dlgeSchedule = 0;
-                        GM.onReturnControl();
-                        symbol.gameObject.SetActive(false);
-                        return;
-                    }
-                    dlge.setConten(npcData.finshed[dlgeSchedule]);
-                    break;
-                default:
-                    break;
-            }
+                    dlge.onDisplayWindow(false);
+                    dlge.setName(null);
+                    dlgeSchedule = 0;
+                    GM.onReturnControl();
+                    symbol.gameObject.SetActive(false);
+                    btnDialogue.gameObject.SetActive(false);
+                    return;
+                }
+                dlge.setConten(npcData.finshed[dlgeSchedule]);
+                break;
+            default:
+                break;
         }
     }
     #endregion
@@ -240,6 +237,7 @@ public class Doctors_two : NPC
     {
         if (npcData._TaskState != TaskState.ing)
         {
+            btnDialogue.gameObject.SetActive(true);
             dlge.onDisplayWindow(true);
             dlge.setName(npcData._name);
         }
@@ -278,14 +276,16 @@ public class Doctors_two : NPC
 
         switch (answer)
         {
-            case 1:       //過關
+            case 0:       //過關
                 arrAnswer[answer] = 1;
+                arrAnswer[0] = 1;
                 break;
             case 2:       //過關
                 arrAnswer[answer] = 1;
                 break;
             case 3:       //過關
                 arrAnswer[answer] = 1;
+                arrAnswer[1] = 1;
                 break;
             case 4:       //過關
                 arrAnswer[answer] = 1;
@@ -338,6 +338,8 @@ public class Doctors_two : NPC
     {
         isGive = true;
         prompt.SetActive(true);
+        arrAnswer[0] = -1;
+        arrAnswer[1] = -1;
     }
     #endregion
 
@@ -346,11 +348,40 @@ public class Doctors_two : NPC
     {
         isGive = false;
         prompt.SetActive(false);
+        GM.onReturnControl();
 
         for (int i = 0; i < arrAnswer.Length; i++)
         {
             arrAnswer[i] = 0;
             arrBtnAnswer[i].interactable = true;
+        }
+    }
+    #endregion
+
+    #region 射定錯誤答案
+    /// <summary>
+    /// 射定錯誤答案
+    /// </summary>
+    /// <param name="index">按鈕數字</param>
+    public void setWrong(int index)
+    {
+        switch (index)
+        {
+            case 0:       //過關
+                arrAnswer[index] = -1;
+                break;
+            case 2:       //過關
+                arrAnswer[index] = -1;
+                break;
+            case 3:       //過關
+                arrAnswer[index] = -1;
+                break;
+            case 4:       //過關
+                arrAnswer[index] = -1;
+                break;
+            default:        //失敗
+                arrAnswer[index] = 0;
+                break;
         }
     }
     #endregion

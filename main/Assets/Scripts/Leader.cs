@@ -28,44 +28,37 @@ public class Leader : NPC
     #region 重複
     void Update()
     {
-        if (GM.onGetDialoguePeople() != "Leder") return;
-        onClickMouseDown();
+        btnDialogue.interactable = isNexDialogue;
     }
     #endregion
 
-    #region 點擊滑鼠或畫面
-    /// <summary>
-    /// 點擊滑鼠或畫面
-    /// </summary>
-    private void onClickMouseDown()
+    #region 按鈕，對話系統
+    public void btnDialogueSysetm()
     {
-        if (!isNexDialogue) return;
-
-        if (Input.GetMouseButtonDown(0))
+        switch (npcData._TaskState)
         {
-            switch (npcData._TaskState)
-            {
-                case TaskState.start:
-                    if (dlgeSchedule >= npcData.start.Length)
-                    {
-                        checkInEnd();
-                        return;
-                    }
-                    dlge.setConten(npcData.start[dlgeSchedule]);
-                    break;
-                case TaskState.ing:
-                    dlge.onDisplayWindow(false);
-                    dlge.setName(null);
-                    if (GM.player.playerData._actionState == ActionState.ingPolt) return;
-                    GM.onReturnControl();
-                    break;
-                case TaskState.lose:
-                    break;
-                case TaskState.finished:
-                    break;
-                default:
-                    break;
-            }
+            case TaskState.start:
+                if (dlgeSchedule >= npcData.start.Length)
+                {
+                    checkInEnd();
+                    btnDialogue.gameObject.SetActive(false);
+                    return;
+                }
+                dlge.setConten(npcData.start[dlgeSchedule]);
+                break;
+            case TaskState.ing:
+                dlge.onDisplayWindow(false);
+                dlge.setName(null);
+                btnDialogue.gameObject.SetActive(false);
+                if (GM.player.playerData._actionState == ActionState.ingPolt) return;
+                GM.onReturnControl();
+                break;
+            case TaskState.lose:
+                break;
+            case TaskState.finished:
+                break;
+            default:
+                break;
         }
     }
     #endregion
@@ -129,8 +122,9 @@ public class Leader : NPC
     public void onStartDialogue()
     {
         dlge.onDisplayWindow(true);
+        btnDialogue.gameObject.SetActive(true);
         dlge.setName("護理長");
-
+        
         switch (npcData._TaskState)
         {
             case TaskState.start:
