@@ -56,23 +56,15 @@ public class Player : MonoBehaviour
 
     public RaycastHit hit;//偵測賭局
 
-    /// <summary>
-    /// 要移動的位置
-    /// </summary>
+    /// <summary> 要移動的位置 </summary>
     Vector2 point;
 
-    /// <summary>
-    /// 紀錄進入碰撞的位置
-    /// </summary>
+    /// <summary>紀錄進入碰撞的位置 </summary>
     Vector2 enterPoint;
 
-    /// <summary>
-    /// 停止確認
-    /// </summary>
+    /// <summary>停止確認 </summary>
     bool isPlayStop = true;
-    /// <summary>
-    /// 準備進入的房間
-    /// </summary>
+    /// <summary>準備進入的房間 </summary>
     public int readlyIntoRoom;
 
     /// <summary>是否在門前面(站在觸發區) </summary>
@@ -81,6 +73,10 @@ public class Player : MonoBehaviour
     /// <summary>是否點擊門 </summary>
     [SerializeField]
     private bool isHitDoor;
+    /// <summary>是否站在人的前面(站在觸發區) </summary>
+    private bool isReadlyTalk;
+    /// <summary>是否點擊人 </summary>
+    public bool isHitTalk;
 
     #endregion
 
@@ -149,6 +145,7 @@ public class Player : MonoBehaviour
             point = getMousePoint();
             directionControlelr();
             isHitDoor = false;
+            isHitTalk = false;
         }
 
         //  如果目前不能播放停止動畫時
@@ -167,8 +164,6 @@ public class Player : MonoBehaviour
                         //backpackSrc.onPutBackpack();
                         break;
                     case ActionState.intRoom:
-                        GM.intoRoom(readlyIntoRoom);
-                        point = transform.position;
                         break;
                     case ActionState.leaveRoom:
                         GM.leaveRoom();
@@ -177,8 +172,7 @@ public class Player : MonoBehaviour
                     case ActionState.ingPolt:
                         break;
                     case ActionState.readyDialogue:
-                        playerData._actionState = ActionState.ingDialogue;
-                        GM.onStartDialogue();
+                        
                         break;
                     case ActionState.ingDialogue:
                         break;
@@ -195,6 +189,13 @@ public class Player : MonoBehaviour
             playerData._actionState = ActionState.intRoom;
             GM.intoRoom(readlyIntoRoom);
             point = transform.position;
+        }
+
+        if(isHitTalk && isReadlyTalk)
+        {
+            playerData._actionState = ActionState.ingDialogue;
+            GM.onStartDialogue();
+            isHitTalk = false;
         }
 
         transform.position = Vector2.MoveTowards(transform.position, point, speed * Time.deltaTime);
@@ -566,10 +567,17 @@ public class Player : MonoBehaviour
     }
     #endregion
 
-    #region 點擊門
+    #region 按鈕，點擊門
     public void btnHitDoor()
     {
         isHitDoor = true;
+    }
+    #endregion
+
+    #region 按鈕，點擊人
+    public void btnHitPeople()
+    {
+        isHitTalk = true;
     }
     #endregion
 
@@ -579,6 +587,10 @@ public class Player : MonoBehaviour
         if (evt.tag == "door")
         {
             isReadlyIntoDoor = true;
+        }
+        else if(evt.tag == "people")
+        {
+            isReadlyTalk = true;
         }
     }
     #endregion

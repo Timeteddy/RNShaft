@@ -56,6 +56,8 @@ public class Leader : NPC
                 case TaskState.ing:
                     dlge.onDisplayWindow(false);
                     dlge.setName(null);
+                    if (GM.player.playerData._actionState == ActionState.ingPolt) return;
+                    GM.onReturnControl();
                     break;
                 case TaskState.lose:
                     break;

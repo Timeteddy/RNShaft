@@ -350,6 +350,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void cameraFollowStart()
     {
+        player.btnChangePlayerSataeInPlot();
     }
     #endregion
 
@@ -379,8 +380,19 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void onReturnControl()
     {
-        player.onReturnControl();
+        StartCoroutine(onReturnPlayerControl(1.0f));
         myCamera.onReturnControl();
+    }
+
+    /// <summary>
+    /// 歸還玩家控制權
+    /// </summary>
+    /// <param name="value">等待秒數</param>
+    /// <returns></returns>
+    IEnumerator onReturnPlayerControl(float value)
+    {
+        yield return new WaitForSeconds(value);
+        player.onReturnControl();
     }
     #endregion
 

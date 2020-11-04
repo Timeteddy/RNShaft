@@ -6691,6 +6691,40 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0
+--- !u!1 &353288346 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 191378241, guid: e0c76856c2340634a99e7a26858da526,
+    type: 3}
+  m_PrefabInstance: {fileID: 390824981}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &353288348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353288346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1004859394}
+          m_MethodName: btnHitPeople
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &358173394
 GameObject:
   m_ObjectHideFlags: 0
@@ -7302,7 +7336,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 191378243, guid: e0c76856c2340634a99e7a26858da526, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 191378243, guid: e0c76856c2340634a99e7a26858da526, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -7315,10 +7349,10 @@ PrefabInstance:
     - target: {fileID: 191378243, guid: e0c76856c2340634a99e7a26858da526, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1004859394}
+      objectReference: {fileID: 800009858}
     - target: {fileID: 191378243, guid: e0c76856c2340634a99e7a26858da526, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: btnReadlyDialogue
+      value: btnSetReadlyDialogue
       objectReference: {fileID: 0}
     - target: {fileID: 191378243, guid: e0c76856c2340634a99e7a26858da526, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -7367,12 +7401,12 @@ PrefabInstance:
     - target: {fileID: 1145653793820097527, guid: e0c76856c2340634a99e7a26858da526,
         type: 3}
       propertyPath: m_Offset.y
-      value: -0.44707227
+      value: -0.22397542
       objectReference: {fileID: 0}
     - target: {fileID: 1145653793820097527, guid: e0c76856c2340634a99e7a26858da526,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.5580325
+      value: 0.11183882
       objectReference: {fileID: 0}
     - target: {fileID: 3597364089007720269, guid: e0c76856c2340634a99e7a26858da526,
         type: 3}
@@ -21147,6 +21181,7 @@ MonoBehaviour:
   readlyIntoRoom: 0
   isReadlyIntoDoor: 0
   isHitDoor: 0
+  isHitTalk: 0
 --- !u!95 &1004859395
 Animator:
   serializedVersion: 3
