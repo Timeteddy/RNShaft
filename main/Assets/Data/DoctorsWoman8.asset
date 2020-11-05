@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba2e083953a01d4eb96057b1f851985, type: 3}
   m_Name: DoctorsWoman8
   m_EditorClassIdentifier: 
-  _TaskState: 3
+  _TaskState: 0
   _name: "\u91AB\u751FI"
   start:
-  - "XXX\u4F86\u7684\u6B63\u597D!!!"
+  - "@\u4F86\u7684\u6B63\u597D!!!"
   - "\u73FE\u5728\u75C5\u4EBA\u5DF2\u7D93\u9032\u884C\u5B8C<\u986F\u5FAE\u624B\u8853>\u4E86"
   - "\u8ACB\u5230\u5E8A\u7684\u53E6\u4E00\u908A\u5E6B\u6211\u8A55\u4F30\u60A3\u80A2\uFF08\u6307\uFF09\u6216\u76AE\u74E3\u7684\u9805\u76EE"
   ing:

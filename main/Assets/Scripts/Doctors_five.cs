@@ -300,7 +300,7 @@ public class Doctors_five : NPC
             if(arrAnswer[i] == -1)
             {
                 npcData._TaskState = TaskState.lose;
-                GM.onReturnControl();
+                GM.animScene.onAnimPlayLose();
                 return;
             }
         }

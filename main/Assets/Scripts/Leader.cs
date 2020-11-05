@@ -56,6 +56,16 @@ public class Leader : NPC
             case TaskState.lose:
                 break;
             case TaskState.finished:
+                if (dlgeSchedule >= npcData.finshed.Length)
+                {
+                    btnDialogue.gameObject.SetActive(false);
+                    dlge.onDisplayWindow(false);
+                    dlge.setName(null);
+                    symbol.gameObject.SetActive(false);
+                    GM.animScene.onAnimPlayWin();
+                    return;
+                }
+                dlge.setConten(npcData.finshed[dlgeSchedule]);
                 break;
             default:
                 break;
@@ -136,6 +146,7 @@ public class Leader : NPC
             case TaskState.lose:
                 break;
             case TaskState.finished:
+                dlge.setConten(npcData.finshed[dlgeSchedule]);
                 break;
             default:
                 break;

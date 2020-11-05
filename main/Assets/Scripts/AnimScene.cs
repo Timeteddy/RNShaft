@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AnimScene : MonoBehaviour
 {
@@ -52,7 +51,7 @@ public class AnimScene : MonoBehaviour
     /// <summary>播放獲勝動畫 </summary>
     public void onAnimPlayWin()
     {
-
+        anim.SetTrigger("GameWin");
     }
     #endregion
 
@@ -60,7 +59,21 @@ public class AnimScene : MonoBehaviour
     /// <summary>播放失敗動畫 </summary>
     public void onAnimPlayLose()
     {
+        anim.SetTrigger("GameLost");
+    }
+    #endregion
 
+    #region 按鈕，重新開始遊戲
+    public void btnReplay()
+    {
+        SceneManager.LoadScene(0);
+    }
+    #endregion
+
+    #region 按鈕，離開遊戲
+    public void btnExit()
+    {
+        Application.Quit();
     }
     #endregion
 

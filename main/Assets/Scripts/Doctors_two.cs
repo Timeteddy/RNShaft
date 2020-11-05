@@ -322,7 +322,7 @@ public class Doctors_two : NPC
             if (arrAnswer[i] == -1)
             {
                 npcData._TaskState = TaskState.lose;
-                GM.onReturnControl();
+                GM.animScene.onAnimPlayLose();
                 return;
             }
         }

@@ -264,7 +264,7 @@ public class Doctors_three : NPC
                 break;
             default:        //失敗
                 npcData._TaskState = TaskState.lose;
-                GM.onReturnControl();
+                GM.animScene.onAnimPlayLose();
                 break;
         }
         isNexDialogue = false;

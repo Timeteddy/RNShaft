@@ -308,7 +308,7 @@ public class Doctors_six : NPC
             if (arrAnswer[i] == -1)
             {
                 npcData._TaskState = TaskState.lose;
-                GM.onReturnControl();
+                GM.animScene.onAnimPlayLose();
                 return;
             }
         }

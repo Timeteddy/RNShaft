@@ -351,7 +351,7 @@ public class Doctors_eight : NPC
             if (arrAnswer[i] == 0)
             {
                 npcData._TaskState = TaskState.lose;
-                GM.onReturnControl();
+                GM.animScene.onAnimPlayLose();
                 return;
             }
         }
