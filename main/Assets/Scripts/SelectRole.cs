@@ -277,7 +277,15 @@ public class SelectRole : MonoBehaviour
                 }
                 else
                 {
-                    textPlot.text = sceneData.selectRole[5];
+                    playerData._name = "護理師";
+
+                    //淡出動畫，已淡出動畫做為下一階段的開場
+                    textPlot.text = "";
+                    setNameWindow.gameObject.SetActive(false);
+                    btnEnter.gameObject.SetActive(false);
+
+                    StartCoroutine(screenOut());
+                    //textPlot.text = sceneData.selectRole[5];
                 }
                 break;
             case StateStart.role:
