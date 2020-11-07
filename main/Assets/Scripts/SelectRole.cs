@@ -68,6 +68,8 @@ public class SelectRole : MonoBehaviour
 
     void Start()
     {
+        Screen.SetResolution(1920, 1080, false);
+
         playerData._name = "";
         follow = originalPoint;
         playerData._RoleState = RoleState.not;
