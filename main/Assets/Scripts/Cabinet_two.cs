@@ -24,11 +24,17 @@ public class Cabinet_two : MonoBehaviour
     public GameObject[] arrBtnCabinet;
 
     public bool isOpenTopic;
+
+    [Header("音效控制器")]
+    public AudioSource audioS;
+    [Header("選單")]
+    public AudioClip mscOpenMenu;
     #endregion
 
     public void btnOpenWindow()
     {
         if (!isOpenTopic) return;
+        audioS.PlayOneShot(mscOpenMenu, 1.0f);
         main.SetActive(true);
     }
 
@@ -49,6 +55,7 @@ public class Cabinet_two : MonoBehaviour
         original.SetActive(false);
         original_text.SetActive(false);
         arrBtnCabinet[index].SetActive(true);
+        audioS.PlayOneShot(mscOpenMenu, 1.0f);
     }
     #endregion
 

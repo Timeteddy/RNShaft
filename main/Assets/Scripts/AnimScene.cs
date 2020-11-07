@@ -12,12 +12,20 @@ public class AnimScene : MonoBehaviour
     public Animator anim;
     /// <summary>是否為進入房間 </summary>
     private bool isIntoRoom;
+
+    [Header("獲勝")]
+    public AudioClip mscWin;
+    [Header("失敗_1")]
+    public AudioClip mscLose_1;
+    [Header("失敗_2")]
+    public AudioClip mscLose_2;
     #endregion
 
     #region 播放過場動畫(進入房間)
     /// <summary>播放過場動畫(進入房間) </summary>
     public void onAnimPlayPassIntoRoom()
     {
+        GM.btnMscDoor();
         isIntoRoom = true;
         anim.SetTrigger("PassDoor");
     }
@@ -27,12 +35,13 @@ public class AnimScene : MonoBehaviour
     /// <summary>播放過場動畫(離開房間) </summary>
     public void onAnimPlayPassLeventRoom()
     {
+        GM.btnMscDoor();
         isIntoRoom = false;
         anim.SetTrigger("PassDoor");
     }
     #endregion
 
-    #region 開始過場
+    #region 開始過場(動畫標籤)
     /// <summary>正式過場 </summary>
     public void animTagPass()
     {
@@ -47,10 +56,18 @@ public class AnimScene : MonoBehaviour
     }
     #endregion
 
+    #region 失敗動畫 第二段(動畫標籤)
+    public void animTagLose()
+    {
+        GM.audioS.PlayOneShot(mscLose_2, 1.0f);
+    }
+    #endregion
+
     #region 播放獲勝動畫
     /// <summary>播放獲勝動畫 </summary>
     public void onAnimPlayWin()
     {
+        GM.audioS.PlayOneShot(mscWin, 1.0f);
         anim.SetTrigger("GameWin");
     }
     #endregion
@@ -59,6 +76,7 @@ public class AnimScene : MonoBehaviour
     /// <summary>播放失敗動畫 </summary>
     public void onAnimPlayLose()
     {
+        GM.audioS.PlayOneShot(mscLose_1, 1.0f);
         anim.SetTrigger("GameLost");
     }
     #endregion

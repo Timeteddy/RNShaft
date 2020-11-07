@@ -102,6 +102,7 @@ public class Backpack : MonoBehaviour
     /// </summary>
     public void onOpenBackPack()
     {
+        GM.audioS.PlayOneShot(GM.mscOpenMenu, 1.0f);
         int len = arrProps.Length;
         for (int i = 0; i < len; i++)
         {

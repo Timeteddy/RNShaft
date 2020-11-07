@@ -110,7 +110,22 @@ public class GameManager : MonoBehaviour
     private float fltOutRoom = 8.0f;
     /// <summary>場景動畫 </summary>
     public AnimScene animScene;
-
+    [Header("音效控制器")]
+    public AudioSource audioS;
+    [Header("正常BGM")]
+    public AudioClip mscBgmBass;
+    [Header("緊張BGM")]
+    public AudioClip mscBgmTnsn;
+    [Header("按鈕音效")]
+    public AudioClip mscButton;
+    [Header("選單")]
+    public AudioClip mscOpenMenu;
+    [Header("門")]
+    public AudioClip mscDoor;
+    [Header("撿取道具")]
+    public AudioClip mscPickUp;
+    [Header("跳")]
+    public AudioClip mscJump;
     #endregion
 
     #region 起始
@@ -177,6 +192,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void onStartDialogue()
     {
+        audioS.PlayOneShot(mscOpenMenu, 1.0f);
         switch (readlyDialoguePeople)
         {
             case "Leder":
@@ -437,4 +453,34 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region 音效播放(按鈕)
+    /// <summary>
+    /// 按鈕音效
+    /// </summary>
+    public void btnMscButton()
+    {
+        audioS.PlayOneShot(mscButton, 1.0f);
+    }
+    /// <summary>
+    /// 頁面音效
+    /// </summary>
+    public void btnMscMenu()
+    {
+        audioS.PlayOneShot(mscOpenMenu, 1.0f);
+    }
+    /// <summary>
+    /// 道具撿取
+    /// </summary>
+    public void btnMscPickUp()
+    {
+        audioS.PlayOneShot(mscPickUp, 1.0f);
+    }
+    /// <summary>
+    /// 道具撿取
+    /// </summary>
+    public void btnMscDoor()
+    {
+        audioS.PlayOneShot(mscDoor, 1.0f);
+    }
+    #endregion
 }

@@ -296,6 +296,7 @@ public class Doctors_zero : NPC
         yield return new WaitForSeconds(0.5f);
 
         anim.SetTrigger("nurse_jump_front");
+        GM.audioS.PlayOneShot(GM.mscJump, 1.0f);
         yield return new WaitForSeconds(1.0f);
         onStartDialogue();
     }

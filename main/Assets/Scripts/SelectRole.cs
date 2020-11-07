@@ -61,6 +61,11 @@ public class SelectRole : MonoBehaviour
     /// </summary>
     private bool isClickMouse = false;
 
+    [Header("音效控制器")]
+    public AudioSource audioS;
+    [Header("按鈕音效")]
+    public AudioClip mscButton;
+
     void Start()
     {
         playerData._name = "";
@@ -283,4 +288,15 @@ public class SelectRole : MonoBehaviour
                 break;
         }
     }
+
+    #region 音效播放
+    /// <summary>
+    /// 按鈕音效
+    /// </summary>
+    public void btnMscButton()
+    {
+        audioS.PlayOneShot(mscButton, 1.0f);
+    }
+    #endregion
 }
+

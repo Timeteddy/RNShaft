@@ -7,6 +7,11 @@ public class DialogueSystem : MonoBehaviour
     public Text tName;
     public Text tConten;
 
+    [Header("音效控制器")]
+    public AudioSource audioS;
+    [Header("選單")]
+    public AudioClip mscOpenMenu;
+
     private void Awake()
     {
         onDisplayWindow(false);
@@ -18,6 +23,7 @@ public class DialogueSystem : MonoBehaviour
     /// <param name="isOpen">開啟?</param>
     public void onDisplayWindow(bool isOpen)
     {
+        if(isOpen) audioS.PlayOneShot(mscOpenMenu, 1.0f);
         main.SetActive(isOpen);
     }
 

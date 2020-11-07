@@ -84,6 +84,11 @@ public class Player : MonoBehaviour
     /// <summary>場景動畫 </summary>
     public AnimScene animScene;
 
+    [Header("走")]
+    public AudioSource mscWalk;
+    [Header("撞牆")]
+    public AudioClip mscHitWall;
+
     #endregion
 
     #region 起始
@@ -138,6 +143,7 @@ public class Player : MonoBehaviour
 
                 return;
             }
+            mscWalk.Play();
             backpackSrc.onForgoProps();
             playerData._actionState = ActionState.Idle;
             point = getMousePoint();
@@ -440,6 +446,7 @@ public class Player : MonoBehaviour
                 break;
         }
         nowAnim = "idle";
+        mscWalk.Stop();
     }
     #endregion
 
@@ -452,6 +459,7 @@ public class Player : MonoBehaviour
     {
         if(evt.gameObject.tag == "wall" || evt.gameObject.tag == "people")
         {
+            if (evt.gameObject.tag == "wall") GM.audioS.PlayOneShot(mscHitWall, 1.0f);
             float angle = getAngle();
             enterPoint = transform.position;
 

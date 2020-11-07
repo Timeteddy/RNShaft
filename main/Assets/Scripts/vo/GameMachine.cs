@@ -36,6 +36,10 @@ public class GameMachine : MonoBehaviour
     private static float flaNormalSpeed = 0.1f;
     /// <summary>略過打字速度 </summary>
     private static float flaHitJumOver = 0.0f;
+    [Header("音效控制器")]
+    public AudioSource audioS;
+    [Header("打字音效")]
+    public AudioClip mscKey;
     #endregion
 
     #region 起始
@@ -95,6 +99,10 @@ public class GameMachine : MonoBehaviour
         {
             text.text += dialog[i];
             //加入音效
+            if(typwrtrSpeed != flaHitJumOver)
+            {
+                instance.audioS.PlayOneShot(instance.mscKey, 0.5f);
+            }
             yield return new WaitForSeconds(typwrtrSpeed);
             isHitJumpOver = true;
         }

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b51c8e91fcfc3b043b3ece316ef0dacd, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  _RoleState: 0
-  _actionState: 4
+  _RoleState: 1
+  _actionState: 6
   _name: 

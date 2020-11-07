@@ -97,6 +97,8 @@ public class Patient_three : MonoBehaviour
     public void onJitterStart()
     {
         anim.SetBool("Jitter", true);
+        doctors.GM.audioS.clip = doctors.GM.mscBgmTnsn;
+        doctors.GM.audioS.Play();
     }
     #endregion
 
@@ -107,6 +109,8 @@ public class Patient_three : MonoBehaviour
     public void onJitterEnd()
     {
         anim.SetBool("Jitter", false);
+        doctors.GM.audioS.clip = doctors.GM.mscBgmBass;
+        doctors.GM.audioS.Play();
     }
     #endregion
 
@@ -175,6 +179,7 @@ public class Patient_three : MonoBehaviour
         doctors.topic.SetActive(true);
         answers.SetActive(true);
         conditon.SetActive(false);
+        doctors.GM.btnMscMenu();
     }
     #endregion
 }

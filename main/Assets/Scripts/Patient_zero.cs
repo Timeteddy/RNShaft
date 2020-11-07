@@ -17,6 +17,8 @@ public class Patient_zero : MonoBehaviour
     public void onJitterStart()
     {
         anim.SetBool("Jitter", true);
+        doctors.GM.audioS.clip = doctors.GM.mscBgmTnsn;
+        doctors.GM.audioS.Play();
     }
     #endregion
 
@@ -27,6 +29,8 @@ public class Patient_zero : MonoBehaviour
     public void onJitterEnd()
     {
         anim.SetBool("Jitter", false);
+        doctors.GM.audioS.clip = doctors.GM.mscBgmBass;
+        doctors.GM.audioS.Play();
     }
     #endregion
 
@@ -58,6 +62,7 @@ public class Patient_zero : MonoBehaviour
         if (doctors.npcData._TaskState != TaskState.ing) return;
         doctors.GM.onChangePlayerStatePlot();
         doctors.topic.SetActive(true);
+        doctors.GM.btnMscMenu();
     }
     #endregion
 }
