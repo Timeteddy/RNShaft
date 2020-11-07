@@ -922,4 +922,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/CreateRole.unity
   - Assets/Scenes/Main.unity
-  playerPath: C:/Users/Pino/Desktop/Web2
+  playerPath: D:/Pino/WorkRoom/UnityEngine/Progect/RNShaft/Web2
