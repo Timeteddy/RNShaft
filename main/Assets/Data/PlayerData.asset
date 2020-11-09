@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   _RoleState: 1
-  _actionState: 6
+  _actionState: 4
   _name: 

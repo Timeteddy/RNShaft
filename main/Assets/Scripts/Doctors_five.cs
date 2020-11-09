@@ -50,7 +50,9 @@ public class Doctors_five : NPC
             arrAnswer[i] = 0;
             arrBtnAnswer[i].interactable = true;
         }
-        arrAnswer[2] = -1;
+        arrAnswer[0] = -1;
+        arrAnswer[1] = -1;
+        arrAnswer[3] = -1;
     }
     #endregion
 

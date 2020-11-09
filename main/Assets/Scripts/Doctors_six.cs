@@ -52,7 +52,7 @@ public class Doctors_six : NPC
             arrAnswer[i] = 0;
             arrBtnAnswer[i].interactable = true;
         }
-        arrAnswer[1] = -1;
+        arrAnswer[0] = -1;
     }
     #endregion
 

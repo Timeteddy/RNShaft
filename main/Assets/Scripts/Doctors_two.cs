@@ -58,6 +58,9 @@ public class Doctors_two : NPC
             arrAnswer[i] = 0;
             arrBtnAnswer[i].interactable = true;
         }
+
+        arrAnswer[0] = -1;
+        arrAnswer[1] = -1;
     }
     #endregion
 
@@ -338,8 +341,6 @@ public class Doctors_two : NPC
     {
         isGive = true;
         prompt.SetActive(true);
-        arrAnswer[0] = -1;
-        arrAnswer[1] = -1;
     }
     #endregion
 
