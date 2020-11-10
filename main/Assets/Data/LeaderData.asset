@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba2e083953a01d4eb96057b1f851985, type: 3}
   m_Name: LeaderData
   m_EditorClassIdentifier: 
-  _TaskState: 1
+  _TaskState: 0
   _name: "\u8B77\u7406\u9577"
   start:
   - "\u59B3\u597D\uFF0C\u6B61\u8FCE\u4F86\u5230\u672C\u55AE\u4F4D!\u59B3\u5C31\u662F\u525B\u5831\u5230\u7684\u8B77\u7406\u5E2B\u55CE? "

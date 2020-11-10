@@ -50,7 +50,6 @@ public class Doctors_four : NPC
             arrAnswer[i] = 0;
             arrBtnAnswer[i].interactable = true;
         }
-        arrAnswer[0] = -1;
         arrAnswer[2] = -1;
     }
     #endregion
@@ -270,9 +269,6 @@ public class Doctors_four : NPC
     {
         switch (answer)
         {
-            case 0:       //選擇正確答案
-                arrAnswer[answer] = 1;
-                break;
             case 2:       //選擇正確答案
                 arrAnswer[answer] = 1;
                 break;

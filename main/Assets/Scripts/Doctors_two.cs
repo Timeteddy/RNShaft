@@ -58,9 +58,6 @@ public class Doctors_two : NPC
             arrAnswer[i] = 0;
             arrBtnAnswer[i].interactable = true;
         }
-
-        arrAnswer[0] = -1;
-        arrAnswer[1] = -1;
     }
     #endregion
 
@@ -293,6 +290,12 @@ public class Doctors_two : NPC
             case 4:       //過關
                 arrAnswer[answer] = 1;
                 break;
+            case 11:       //過關
+                arrAnswer[answer] = 1;
+                break;
+            case 12:       //過關
+                arrAnswer[answer] = 1;
+                break;
             default:        //失敗
                 arrAnswer[answer] = -1;
                 break;
@@ -359,9 +362,9 @@ public class Doctors_two : NPC
     }
     #endregion
 
-    #region 射定錯誤答案
+    #region 設定錯誤答案
     /// <summary>
-    /// 射定錯誤答案
+    /// 設定錯誤答案
     /// </summary>
     /// <param name="index">按鈕數字</param>
     public void setWrong(int index)
@@ -378,6 +381,12 @@ public class Doctors_two : NPC
                 arrAnswer[index] = -1;
                 break;
             case 4:       //過關
+                arrAnswer[index] = -1;
+                break;
+            case 11:       //過關
+                arrAnswer[index] = -1;
+                break;
+            case 12:       //過關
                 arrAnswer[index] = -1;
                 break;
             default:        //失敗

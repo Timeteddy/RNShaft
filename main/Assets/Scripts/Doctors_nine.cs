@@ -52,7 +52,9 @@ public class Doctors_nine : NPC
             arrAnswer[i] = 0;
             arrBtnAnswer[i].interactable = true;
         }
-        arrAnswer[2] = -1;
+        arrAnswer[0] = -1;
+        arrAnswer[1] = -1;
+        arrAnswer[3] = -1;
     }
     #endregion
 
@@ -286,7 +288,13 @@ public class Doctors_nine : NPC
     {
         switch (answer)
         {
-            case 2:         //選擇正確答案
+            case 0:         //選擇正確答案
+                arrAnswer[answer] = 1;
+                break;
+            case 1:         //選擇正確答案
+                arrAnswer[answer] = 1;
+                break;
+            case 3:         //選擇正確答案
                 arrAnswer[answer] = 1;
                 break;
             default:        //選擇錯誤答案

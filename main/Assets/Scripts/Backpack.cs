@@ -92,7 +92,6 @@ public class Backpack : MonoBehaviour
     private void Start()
     {
         btnGetProps("11_3");
-        btnGetProps("11_10");
     }
     #endregion
 

@@ -258,14 +258,14 @@ public class GameManager : MonoBehaviour
     public void checkInEnd()
     {
         //讓攝影機移動到特定的房間
-        sceneState = (SceneState)arrTaskSchedule[roomTaskSchedule];
+        //sceneState = (SceneState)arrTaskSchedule[roomTaskSchedule];
 
-        myCamera.onCheckInStart(arrRoomEntrance[arrTaskSchedule[roomTaskSchedule]]);
+        //myCamera.onCheckInStart(arrRoomEntrance[arrTaskSchedule[roomTaskSchedule]]);
 
-        nowSchedule = arrTaskSchedule[roomTaskSchedule];
+        //nowSchedule = arrTaskSchedule[roomTaskSchedule];
 
-        //sceneState = SceneState.twoStart;
-        //myCamera.onCheckInStart(arrRoomEntrance[2]);
+        sceneState = SceneState.nineStart;
+        myCamera.onCheckInStart(arrRoomEntrance[9]);
     }
     #endregion
 
