@@ -110,6 +110,7 @@ public class Doctors_one : NPC
                     GM.onReturnControl();
                     symbol.gameObject.SetActive(false);
                     btnDialogue.gameObject.SetActive(false);
+                    GM.onSetReadlyDialogue("");
                     return;
                 }
                 dlge.setConten(npcData.finshed[dlgeSchedule]);

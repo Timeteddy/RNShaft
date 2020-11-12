@@ -45,12 +45,7 @@ public class Doctors_four : NPC
         PlotControl.SE_ROOM_ING += plotSeRoomIng;
         PlotControl.SE_ROOM_END += plotSeRoomEnd;
 
-        for (int i = 0; i < arrAnswer.Length; i++)
-        {
-            arrAnswer[i] = 0;
-            arrBtnAnswer[i].interactable = true;
-        }
-        arrAnswer[2] = -1;
+        resetAnswer();
     }
     #endregion
 
@@ -121,6 +116,7 @@ public class Doctors_four : NPC
                     GM.onReturnControl();
                     symbol.gameObject.SetActive(false);
                     btnDialogue.gameObject.SetActive(false);
+                    GM.onSetReadlyDialogue("");
                     return;
                 }
                 dlge.setConten(npcData.finshed[dlgeSchedule]);
@@ -261,6 +257,27 @@ public class Doctors_four : NPC
     }
     #endregion
 
+    #region 答案重置
+    /// <summary>答案重置 </summary>
+    private void resetAnswer()
+    {
+        for (int i = 0; i < arrAnswer.Length; i++)
+        {
+            arrAnswer[i] = 0;
+            arrBtnAnswer[i].interactable = true;
+        }
+        arrAnswer[1] = -1;
+    }
+    #endregion
+
+    #region 按鈕，取消回答
+    /// <summary>按鈕，取消回答 </summary>
+    public void btnAnswerClose()
+    {
+        resetAnswer();
+    }
+    #endregion
+
     #region 按鈕,回答問題
     /// <summary>
     /// 回答問題
@@ -269,7 +286,7 @@ public class Doctors_four : NPC
     {
         switch (answer)
         {
-            case 2:       //選擇正確答案
+            case 1:       //選擇正確答案
                 arrAnswer[answer] = 1;
                 break;
             default:        //選擇錯誤答案

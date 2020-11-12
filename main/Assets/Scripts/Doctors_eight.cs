@@ -44,6 +44,8 @@ public class Doctors_eight : NPC
         PlotControl.SE_ROOM_START += plotSeRoomStart;
         PlotControl.SE_ROOM_ING += plotSeRoomIng;
         PlotControl.SE_ROOM_END += plotSeRoomEnd;
+
+        resetAnswer();
     }
     #endregion
 
@@ -178,6 +180,7 @@ public class Doctors_eight : NPC
                     GM.onReturnControl();
                     symbol.gameObject.SetActive(false);
                     btnDialogue.gameObject.SetActive(false);
+                    GM.onSetReadlyDialogue("");
                     return;
                 }
                 dlge.setConten(npcData.finshed[dlgeSchedule]);
@@ -317,6 +320,26 @@ public class Doctors_eight : NPC
             default:
                 break;
         }
+    }
+    #endregion
+
+    #region 答案重置
+    /// <summary>答案重置 </summary>
+    private void resetAnswer()
+    {
+        for (int i = 0; i < arrAnswer.Length; i++)
+        {
+            arrAnswer[i] = 0;
+            arrBtnAnswer[i].interactable = true;
+        }
+    }
+    #endregion
+
+    #region 按鈕，取消回答
+    /// <summary>按鈕，取消回答 </summary>
+    public void btnAnswerClose()
+    {
+        resetAnswer();
     }
     #endregion
 

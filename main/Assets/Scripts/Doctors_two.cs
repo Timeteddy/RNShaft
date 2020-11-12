@@ -125,6 +125,7 @@ public class Doctors_two : NPC
                     GM.onReturnControl();
                     symbol.gameObject.SetActive(false);
                     btnDialogue.gameObject.SetActive(false);
+                    GM.onSetReadlyDialogue("");
                     return;
                 }
                 dlge.setConten(npcData.finshed[dlgeSchedule]);

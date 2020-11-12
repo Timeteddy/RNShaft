@@ -110,6 +110,7 @@ public class Doctors_three : NPC
                     GM.onReturnControl();
                     symbol.gameObject.SetActive(false);
                     btnDialogue.gameObject.SetActive(false);
+                    GM.onSetReadlyDialogue("");
                     return;
                 }
                 dlge.setConten(npcData.finshed[dlgeSchedule]);

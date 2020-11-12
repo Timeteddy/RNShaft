@@ -152,14 +152,14 @@ public class GameManager : MonoBehaviour
         {
             arrTaskSchedule[i] = i;
         }
-        //將順序打亂
-        for(int i = 0; i < lenTs; i++)
-        {
-            int original = arrTaskSchedule[i];
-            int rdm = Random.RandomRange(0, 10);
-            arrTaskSchedule[i] = arrTaskSchedule[rdm];
-            arrTaskSchedule[rdm] = original;
-        }
+        //將順序打亂 TODO正式版要打開
+        //for(int i = 0; i < lenTs; i++)
+        //{
+        //    int original = arrTaskSchedule[i];
+        //    int rdm = Random.RandomRange(0, 10);
+        //    arrTaskSchedule[i] = arrTaskSchedule[rdm];
+        //    arrTaskSchedule[rdm] = original;
+        //}
     }
     #endregion
     
@@ -258,14 +258,14 @@ public class GameManager : MonoBehaviour
     public void checkInEnd()
     {
         //讓攝影機移動到特定的房間
-        //sceneState = (SceneState)arrTaskSchedule[roomTaskSchedule];
+        sceneState = (SceneState)arrTaskSchedule[roomTaskSchedule];
 
-        //myCamera.onCheckInStart(arrRoomEntrance[arrTaskSchedule[roomTaskSchedule]]);
+        myCamera.onCheckInStart(arrRoomEntrance[arrTaskSchedule[roomTaskSchedule]]);
 
-        //nowSchedule = arrTaskSchedule[roomTaskSchedule];
+        nowSchedule = arrTaskSchedule[roomTaskSchedule];
 
-        sceneState = SceneState.nineStart;
-        myCamera.onCheckInStart(arrRoomEntrance[9]);
+        //sceneState = SceneState.nineStart;
+        //myCamera.onCheckInStart(arrRoomEntrance[9]);
     }
     #endregion
 

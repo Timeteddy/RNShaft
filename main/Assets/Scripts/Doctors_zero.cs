@@ -109,7 +109,8 @@ public class Doctors_zero : NPC
                     dlgeSchedule = 0;
                     GM.onReturnControl();
                     btnDialogue.gameObject.SetActive(false);
-                    symbol.gameObject.SetActive(false);
+                    symbol.gameObject.SetActive(false); 
+                    GM.onSetReadlyDialogue("");
                     return;
                 }
                 dlge.setConten(npcData.finshed[dlgeSchedule]);

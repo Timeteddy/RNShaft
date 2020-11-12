@@ -47,12 +47,7 @@ public class Doctors_six : NPC
         PlotControl.SE_ROOM_ING += plotSeRoomIng;
         PlotControl.SE_ROOM_END += plotSeRoomEnd;
 
-        for (int i = 0; i < arrAnswer.Length; i++)
-        {
-            arrAnswer[i] = 0;
-            arrBtnAnswer[i].interactable = true;
-        }
-        arrAnswer[0] = -1;
+        resetAnswer();
     }
     #endregion
 
@@ -126,6 +121,7 @@ public class Doctors_six : NPC
                     GM.onReturnControl();
                     symbol.gameObject.SetActive(false);
                     btnDialogue.gameObject.SetActive(false);
+                    GM.onSetReadlyDialogue("");
                     StartCoroutine(plotPressentationFirstAct());
                     return;
                 }
@@ -269,6 +265,27 @@ public class Doctors_six : NPC
             default:
                 break;
         }
+    }
+    #endregion
+
+    #region 答案重置
+    /// <summary>答案重置 </summary>
+    private void resetAnswer()
+    {
+        for (int i = 0; i < arrAnswer.Length; i++)
+        {
+            arrAnswer[i] = 0;
+            arrBtnAnswer[i].interactable = true;
+        }
+        arrAnswer[0] = -1;
+    }
+    #endregion
+
+    #region 按鈕，取消回答
+    /// <summary>按鈕，取消回答 </summary>
+    public void btnAnswerClose()
+    {
+        resetAnswer();
     }
     #endregion
 
