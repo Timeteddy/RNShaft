@@ -117,7 +117,7 @@ MonoBehaviour:
   m_MinSize: {x: 911, y: 271}
   m_MaxSize: {x: 22006, y: 10021}
   vertical: 0
-  controlID: 173
+  controlID: 60
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -137,8 +137,8 @@ MonoBehaviour:
     y: 0
     width: 656
     height: 676
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 11}
@@ -217,8 +217,8 @@ MonoBehaviour:
     y: 0
     width: 276
     height: 676
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -293,23 +293,23 @@ MonoBehaviour:
     m_DrawArea:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 21
       width: 655
-      height: 655
-    m_Scale: {x: 0.63964844, y: 0.63964844}
-    m_Translation: {x: 327.5, y: 327.5}
+      height: 634
+    m_Scale: {x: 0.6191406, y: 0.6191406}
+    m_Translation: {x: 327.5, y: 317}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -512
+      x: -528.959
       y: -512
-      width: 1024
+      width: 1057.918
       height: 1024
     m_MinimalGUI: 1
-  m_defaultScale: 0.63964844
+  m_defaultScale: 0.6191406
   m_LastWindowPixelSize: {x: 655, y: 655}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
@@ -352,9 +352,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -5.176792, y: 3.362051, z: -1.5495433}
+    m_Target: {x: 360, y: 512, z: 0}
     speed: 2
-    m_Value: {x: -5.176792, y: 3.362051, z: -1.5495433}
+    m_Value: {x: 359.99826, y: 511.99753, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -404,9 +404,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 14.052758
+    m_Target: 625.89453
     speed: 2
-    m_Value: 14.052758
+    m_Value: 625.89136
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -575,23 +575,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 68330000
-      m_LastClickedID: 0
-      m_ExpandedIDs: fae5ffff0ee6fffface6ffffb4e6ffff6cfbffff
+      m_SelectedIDs: 06900000
+      m_LastClickedID: 36870
+      m_ExpandedIDs: d295fffff695ffffbea9ffff08aaffff1caaffffacbeffffc4beffff30d3ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Canvas
+        m_OriginalName: Canvas
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 36870
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 7}
       m_SearchString: 
@@ -640,20 +640,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Data
+    - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Data
+  - Assets/Scenes
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\Pino\WorkRoom\UnityEngine\Progect\RNShaft\main
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 86500000
-    m_LastClickedID: 20614
-    m_ExpandedIDs: 0000000074500000765000007850000000ca9a3b
+    m_SelectedIDs: b44b0000
+    m_LastClickedID: 19380
+    m_ExpandedIDs: 000000009e4b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -681,7 +681,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000745000007650000078500000
+    m_ExpandedIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
