@@ -146,7 +146,6 @@ public class Leader : NPC
             case TaskState.lose:
                 break;
             case TaskState.finished:
-                dlge.setConten(npcData.finshed[dlgeSchedule]);
                 break;
             default:
                 break;

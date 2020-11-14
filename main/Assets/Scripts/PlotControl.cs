@@ -36,7 +36,7 @@ public class PlotControl : MonoBehaviour
 
     void Start()
     {
-        SE_CHECKIN_START();
+        //SE_CHECKIN_START();
     }
 
     public void onSeChechin_End()

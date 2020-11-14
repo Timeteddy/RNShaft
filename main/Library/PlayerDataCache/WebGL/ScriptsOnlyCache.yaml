@@ -788,7 +788,7 @@ ScriptsOnlyBuild:
     className: Doctors_three
   - hash:
       serializedVersion: 2
-      Hash: 892cd3f9411acabc7280bf785ebd5835
+      Hash: e3a6136a246f355b2a83f13b782c49d9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AnimScene

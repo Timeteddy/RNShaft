@@ -56,8 +56,6 @@ public class Patient_zero : MonoBehaviour
     /// </summary>
     public void btnOpenTopic()
     {
-        print(isOpenTopic);
-        print(doctors.npcData._TaskState);
         if (!isOpenTopic) return;
         if (doctors.npcData._TaskState != TaskState.ing) return;
         doctors.GM.onChangePlayerStatePlot();

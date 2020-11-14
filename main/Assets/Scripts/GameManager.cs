@@ -161,8 +161,13 @@ public class GameManager : MonoBehaviour
         //    arrTaskSchedule[rdm] = original;
         //}
     }
+
+    public void Start()
+    {
+        checkInStart();
+    }
     #endregion
-    
+
     //功能
     #region 設定準備進行對話的對象
     /// <summary>
@@ -348,6 +353,7 @@ public class GameManager : MonoBehaviour
             if (roomTaskSchedule == 10)
             {
                 myCamera.onCheckInStart(leader.transform);
+                leader.npcData._TaskState = TaskState.finished;
                 return;
             }
             sceneState = (SceneState)arrTaskSchedule[roomTaskSchedule];

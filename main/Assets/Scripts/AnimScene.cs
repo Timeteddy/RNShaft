@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class AnimScene : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class AnimScene : MonoBehaviour
     public GameManager GM;
     [Header("動畫控制器")]
     public Animator anim;
+    [Header("文字顯示")]
+    public Text textWin;
     /// <summary>是否為進入房間 </summary>
     private bool isIntoRoom;
 
@@ -19,6 +22,13 @@ public class AnimScene : MonoBehaviour
     public AudioClip mscLose_1;
     [Header("失敗_2")]
     public AudioClip mscLose_2;
+    #endregion
+
+    #region 起始
+    public void Start()
+    {
+        textWin.text = "恭喜" + player.playerData._name + "順利通過考驗\r\n有妳再大家都放心了";
+    }
     #endregion
 
     #region 播放過場動畫(進入房間)
