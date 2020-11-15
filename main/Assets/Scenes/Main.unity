@@ -2004,7 +2004,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 57c358450422c8f46990e08f8df8270c, type: 3}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -2321,7 +2321,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 57c358450422c8f46990e08f8df8270c, type: 3}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -18516,7 +18516,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 57c358450422c8f46990e08f8df8270c, type: 3}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -19915,12 +19915,12 @@ PrefabInstance:
     - target: {fileID: 4969723376863003199, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.19
+      value: 0.37717
       objectReference: {fileID: 0}
     - target: {fileID: 4969723376863003199, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.97
+      value: 0.59566003
       objectReference: {fileID: 0}
     - target: {fileID: 4969723376863003199, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
@@ -19980,12 +19980,12 @@ PrefabInstance:
     - target: {fileID: 8881301668592786552, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.19
+      value: 0.37717
       objectReference: {fileID: 0}
     - target: {fileID: 8881301668592786552, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.97
+      value: 0.59566003
       objectReference: {fileID: 0}
     - target: {fileID: 8881301668592786552, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
@@ -30545,7 +30545,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 57c358450422c8f46990e08f8df8270c, type: 3}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -33036,7 +33036,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 57c358450422c8f46990e08f8df8270c, type: 3}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -38922,7 +38922,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 57c358450422c8f46990e08f8df8270c, type: 3}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -41592,12 +41592,12 @@ PrefabInstance:
     - target: {fileID: 4969723376863003199, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.19
+      value: 0.37717
       objectReference: {fileID: 0}
     - target: {fileID: 4969723376863003199, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.97
+      value: 0.59566003
       objectReference: {fileID: 0}
     - target: {fileID: 4969723376863003199, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
@@ -41667,12 +41667,12 @@ PrefabInstance:
     - target: {fileID: 8881301668592786552, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.19
+      value: 0.37717
       objectReference: {fileID: 0}
     - target: {fileID: 8881301668592786552, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.97
+      value: 0.59566003
       objectReference: {fileID: 0}
     - target: {fileID: 8881301668592786552, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
@@ -41751,7 +41751,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 57c358450422c8f46990e08f8df8270c, type: 3}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -44213,12 +44213,12 @@ PrefabInstance:
     - target: {fileID: 4969723376863003199, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.19
+      value: 0.37717
       objectReference: {fileID: 0}
     - target: {fileID: 4969723376863003199, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.97
+      value: 0.59566003
       objectReference: {fileID: 0}
     - target: {fileID: 4969723376863003199, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
@@ -44283,12 +44283,12 @@ PrefabInstance:
     - target: {fileID: 8881301668592786552, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.19
+      value: 0.37717
       objectReference: {fileID: 0}
     - target: {fileID: 8881301668592786552, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.97
+      value: 0.59566003
       objectReference: {fileID: 0}
     - target: {fileID: 8881301668592786552, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
@@ -44367,7 +44367,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 57c358450422c8f46990e08f8df8270c, type: 3}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -52911,7 +52911,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 57c358450422c8f46990e08f8df8270c, type: 3}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -53912,12 +53912,12 @@ PrefabInstance:
     - target: {fileID: 4969723376863003199, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.19
+      value: 0.37717
       objectReference: {fileID: 0}
     - target: {fileID: 4969723376863003199, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.97
+      value: 0.59566003
       objectReference: {fileID: 0}
     - target: {fileID: 4969723376863003199, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
@@ -53987,12 +53987,12 @@ PrefabInstance:
     - target: {fileID: 8881301668592786552, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.19
+      value: 0.37717
       objectReference: {fileID: 0}
     - target: {fileID: 8881301668592786552, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.97
+      value: 0.59566003
       objectReference: {fileID: 0}
     - target: {fileID: 8881301668592786552, guid: 296c28e750182c049a7b552621bf7ba4,
         type: 3}
@@ -54778,7 +54778,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 57c358450422c8f46990e08f8df8270c, type: 3}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -55803,12 +55803,12 @@ PrefabInstance:
     - target: {fileID: 2285206752335629882, guid: 79158c59b3c362944a50c1164d2f1c2c,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.19
+      value: 0.37717
       objectReference: {fileID: 0}
     - target: {fileID: 2285206752335629882, guid: 79158c59b3c362944a50c1164d2f1c2c,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.97
+      value: 0.59566003
       objectReference: {fileID: 0}
     - target: {fileID: 2285206752335629882, guid: 79158c59b3c362944a50c1164d2f1c2c,
         type: 3}
@@ -55828,12 +55828,12 @@ PrefabInstance:
     - target: {fileID: 3003825170575824966, guid: 79158c59b3c362944a50c1164d2f1c2c,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.19
+      value: 0.37717
       objectReference: {fileID: 0}
     - target: {fileID: 3003825170575824966, guid: 79158c59b3c362944a50c1164d2f1c2c,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.97
+      value: 0.59566003
       objectReference: {fileID: 0}
     - target: {fileID: 3003825170575824966, guid: 79158c59b3c362944a50c1164d2f1c2c,
         type: 3}

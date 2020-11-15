@@ -77,6 +77,7 @@ public class AnimScene : MonoBehaviour
     /// <summary>播放獲勝動畫 </summary>
     public void onAnimPlayWin()
     {
+        textWin.text = "恭喜" + player.playerData._name + "順利通過考驗\r\n有妳再大家都放心了";
         GM.audioS.PlayOneShot(mscWin, 1.0f);
         anim.SetTrigger("GameWin");
     }

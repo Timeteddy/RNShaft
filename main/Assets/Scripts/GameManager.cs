@@ -153,13 +153,13 @@ public class GameManager : MonoBehaviour
             arrTaskSchedule[i] = i;
         }
         //將順序打亂 TODO正式版要打開
-        //for(int i = 0; i < lenTs; i++)
-        //{
-        //    int original = arrTaskSchedule[i];
-        //    int rdm = Random.RandomRange(0, 10);
-        //    arrTaskSchedule[i] = arrTaskSchedule[rdm];
-        //    arrTaskSchedule[rdm] = original;
-        //}
+        for (int i = 0; i < lenTs; i++)
+        {
+            int original = arrTaskSchedule[i];
+            int rdm = Random.RandomRange(0, 10);
+            arrTaskSchedule[i] = arrTaskSchedule[rdm];
+            arrTaskSchedule[rdm] = original;
+        }
     }
 
     public void Start()
