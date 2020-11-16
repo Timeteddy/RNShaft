@@ -28,6 +28,8 @@ public class Doctors_nine : NPC
     public Button[] arrBtnAnswer;
     /// <summary>能否說話 </summary>
     private bool isTock = true;
+    [Header("對話按鈕")]
+    public Button btnDialogus;
     #endregion
 
     #region 啟動
@@ -47,6 +49,7 @@ public class Doctors_nine : NPC
         PlotControl.SE_ROOM_ING += plotSeRoomIng;
         PlotControl.SE_ROOM_END += plotSeRoomEnd;
 
+        btnDialogus.gameObject.SetActive(true);
         resetAnswer();
     }
     #endregion
@@ -119,6 +122,7 @@ public class Doctors_nine : NPC
                     if (!GM.getArrTaskSchedule(9))
                     {
                         GM.finallyTask(9);
+                        btnDialogus.gameObject.SetActive(false);
                     }
                     dlge.onDisplayWindow(false);
                     dlge.setName(null);

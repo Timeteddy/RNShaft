@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
 public class Patient_three : MonoBehaviour
 {
@@ -24,6 +26,8 @@ public class Patient_three : MonoBehaviour
     public DialogueSystem dlge;
     [Header("遊戲控制器")]
     public GameManager GM;
+    [Header("關閉題目按鈕")]
+    public Button btnConditon;
 
     /// <summary>護士開始對話 </summary>
     private bool isTock = false;
@@ -38,6 +42,8 @@ public class Patient_three : MonoBehaviour
 
         GameMachine.SE_TYPWRTR_START += typewriterStart;
         GameMachine.SE_TYPWRTR_END += typewriterEnd;
+
+        btnConditon.interactable = false;
     }
     #endregion
 
@@ -70,6 +76,7 @@ public class Patient_three : MonoBehaviour
                         dlgeSchedule = 0;
                         doctors.topic.SetActive(true);
                         conditon.SetActive(true);
+                        StartCoroutine(isOpenConditon());
                         return;
                     }
                     dlge.setConten(npcData.start[dlgeSchedule]);
@@ -170,6 +177,14 @@ public class Patient_three : MonoBehaviour
         dlge.setName(npcData._name);
         doctors.GM.onChangePlayerStatePlot();
         dlge.setConten(npcData.start[dlgeSchedule]);
+    }
+    #endregion
+
+    #region 3秒後才可關閉圖片
+    IEnumerator isOpenConditon()
+    {
+        yield return new WaitForSeconds(3.0f);
+        btnConditon.interactable = true;
     }
     #endregion
 

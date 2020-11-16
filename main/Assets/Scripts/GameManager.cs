@@ -207,7 +207,7 @@ public class GameManager : MonoBehaviour
                 player.onDlgeMyself("先去找護理長報到吧!");
                 break;
             case "MyselfWrongDoor":
-                player.onDlgeMyself("走錯地方了，病人還再等我們呢!");
+                player.onDlgeMyself("走錯地方了，病人還在等我們呢!");
                 break;
             case "DcotorsZero":
                 doctorsZero.onStartDialogue();
@@ -322,12 +322,47 @@ public class GameManager : MonoBehaviour
     public void onPassIntoRoom()
     {
         sceneState = (SceneState)doorNumber; //切換遊戲主狀態
-        plotControl.onSeRoomStart();
         myCamera.GetComponent<Camera>().orthographicSize = fltInRoom;
         myCamera.transform.position = arrRoomExport[doorNumber].transform.position;
         player.transform.position = arrRoomExport[doorNumber].transform.position;
         player.onSetPoint(player.transform.position);
         player.playerData._actionState = ActionState.Idle;
+
+        switch (doorNumber)
+        {
+            case 0:
+                doctorsZero.plotSeRoomStart();
+                break;
+            case 1:
+                doctorsOne.plotSeRoomStart();
+                break;
+            case 2:
+                doctorsTwo.plotSeRoomStart();
+                break;
+            case 3:
+                doctorsThree.plotSeRoomStart();
+                break;
+            case 4:
+                doctorsFour.plotSeRoomStart();
+                break;
+            case 5:
+                doctorsFive.plotSeRoomStart();
+                break;
+            case 6:
+                doctorsSix.plotSeRoomStart();
+                break;
+            case 7:
+                doctorsSeven.plotSeRoomStart();
+                break;
+            case 8:
+                doctorsEight.plotSeRoomStart();
+                break;
+            case 9:
+                doctorsNine.plotSeRoomStart();
+                break;
+            default:
+                break;
+        }
     }
     #endregion
 

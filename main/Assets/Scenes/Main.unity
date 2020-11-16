@@ -24598,7 +24598,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 35c345fa218aec6419aabcbd285136a7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4177307fd02a4f04cba62f7ae127c4b4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -25565,7 +25565,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1021572785}
   m_OnClick:
     m_PersistentCalls:
@@ -26885,6 +26885,7 @@ MonoBehaviour:
   isNexDialogue: 0
   dlge: {fileID: 1068297362983402817}
   GM: {fileID: 1372858373}
+  btnConditon: {fileID: 1021572784}
 --- !u!95 &1064986137
 Animator:
   serializedVersion: 3
@@ -27503,6 +27504,7 @@ MonoBehaviour:
   - {fileID: 1860869571}
   - {fileID: 1338584284}
   - {fileID: 428189765}
+  btnDialogus: {fileID: 1147827633}
 --- !u!61 &1081343570
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -49955,7 +49957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -55647,7 +55649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.86274517, g: 0.8235295, b: 0.7843138, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
