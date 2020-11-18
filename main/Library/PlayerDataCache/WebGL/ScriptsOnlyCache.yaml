@@ -452,7 +452,7 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: 0380864c6b160e864fef687fa494f68c
+      Hash: c09cd9062c99d2400ba53872844beedc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Doctors_two

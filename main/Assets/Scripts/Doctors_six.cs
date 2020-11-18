@@ -47,6 +47,10 @@ public class Doctors_six : NPC
         PlotControl.SE_ROOM_ING += plotSeRoomIng;
         PlotControl.SE_ROOM_END += plotSeRoomEnd;
 
+        arrAnswer[0] = -1;
+        arrAnswer[2] = -1;
+        arrAnswer[3] = -1;
+
         resetAnswer();
     }
     #endregion

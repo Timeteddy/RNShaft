@@ -31,9 +31,12 @@ public class Doctors_two : NPC
 
     /// <summary>玩家的答案 </summary>
     [SerializeField]
-    private int[] arrAnswer = new int[11];
+    private int[] arrAnswer = new int[6];
     [Header("答案按鈕")]
     public Button[] arrBtnAnswer;
+    /// <summary>完家給予的道具 </summary>
+    [SerializeField]
+    private int intAnswer;
     #endregion
 
     #region 啟動
@@ -55,9 +58,10 @@ public class Doctors_two : NPC
 
         for (int i = 0; i < arrAnswer.Length; i++)
         {
-            arrAnswer[i] = 0;
+            arrAnswer[i] = -1;
             arrBtnAnswer[i].interactable = true;
         }
+        intAnswer = 0;
     }
     #endregion
 
@@ -278,31 +282,54 @@ public class Doctors_two : NPC
         switch (answer)
         {
             case 0:       //過關
-                arrAnswer[answer] = 1;
                 arrAnswer[0] = 1;
                 break;
             case 2:       //過關
-                arrAnswer[answer] = 1;
-                break;
-            case 3:       //過關
-                arrAnswer[answer] = 1;
                 arrAnswer[1] = 1;
                 break;
+            case 3:       //過關
+                arrAnswer[2] = 1;
+                break;
             case 4:       //過關
-                arrAnswer[answer] = 1;
+                arrAnswer[3] = 1;
                 break;
             case 11:       //過關
-                arrAnswer[answer] = 1;
+                arrAnswer[4] = 1;
                 break;
             case 12:       //過關
-                arrAnswer[answer] = 1;
+                arrAnswer[5] = 1;
                 break;
-            default:        //失敗
-                arrAnswer[answer] = -1;
+            case 1:       //失敗
+                arrAnswer[0] = -1;
+                break;
+            case 5:       //失敗
+                arrAnswer[1] = -1;
+                break;
+            case 6:       //失敗
+                arrAnswer[2] = -1;
+                break;
+            case 7:       //失敗
+                arrAnswer[3] = -1;
+                break;
+            case 8:       //失敗
+                arrAnswer[4] = -1;
+                break;
+            case 9:       //失敗
+                arrAnswer[5] = -1;
+                break;
+            case 10:       //失敗
+                arrAnswer[0] = -1;
+                break;
+            case 13:       //失敗
+                arrAnswer[1] = -1;
+                break;
+            case 14:       //失敗
+                arrAnswer[2] = -1;
                 break;
         }
         isNexDialogue = false;
         dlgeSchedule = 0;
+        intAnswer++;
     }
     #endregion
 
@@ -333,6 +360,13 @@ public class Doctors_two : NPC
                 return;
             }
         }
+        //發現回答的問題過多時
+        if(intAnswer != arrAnswer.Length)
+        {
+            npcData._TaskState = TaskState.lose;
+            GM.animScene.onAnimPlayLose();
+            return;
+        }
 
         //如果沒有錯誤的答案
         npcData._TaskState = TaskState.finished;
@@ -345,6 +379,16 @@ public class Doctors_two : NPC
     {
         isGive = true;
         prompt.SetActive(true);
+        for (int i = 0; i < arrAnswer.Length; i++)
+        {
+            arrAnswer[i] = -1;
+        }
+        for (int i = 0; i < arrBtnAnswer.Length; i++)
+        {
+            arrBtnAnswer[i].interactable = true;
+        }
+
+        intAnswer = 0;
     }
     #endregion
 
@@ -357,9 +401,14 @@ public class Doctors_two : NPC
 
         for (int i = 0; i < arrAnswer.Length; i++)
         {
-            arrAnswer[i] = 0;
+            arrAnswer[i] = -1;
+        }
+        for(int i = 0; i < arrBtnAnswer.Length; i++) 
+        {
             arrBtnAnswer[i].interactable = true;
         }
+
+        intAnswer = 0;
     }
     #endregion
 
@@ -370,30 +419,30 @@ public class Doctors_two : NPC
     /// <param name="index">按鈕數字</param>
     public void setWrong(int index)
     {
-        switch (index)
-        {
-            case 0:       //過關
-                arrAnswer[index] = -1;
-                break;
-            case 2:       //過關
-                arrAnswer[index] = -1;
-                break;
-            case 3:       //過關
-                arrAnswer[index] = -1;
-                break;
-            case 4:       //過關
-                arrAnswer[index] = -1;
-                break;
-            case 11:       //過關
-                arrAnswer[index] = -1;
-                break;
-            case 12:       //過關
-                arrAnswer[index] = -1;
-                break;
-            default:        //失敗
-                arrAnswer[index] = 0;
-                break;
-        }
+        //switch (index)
+        //{
+        //    case 0:       //過關
+        //        arrAnswer[index] = -1;
+        //        break;
+        //    case 2:       //過關
+        //        arrAnswer[index] = -1;
+        //        break;
+        //    case 3:       //過關
+        //        arrAnswer[index] = -1;
+        //        break;
+        //    case 4:       //過關
+        //        arrAnswer[index] = -1;
+        //        break;
+        //    case 11:       //過關
+        //        arrAnswer[index] = -1;
+        //        break;
+        //    case 12:       //過關
+        //        arrAnswer[index] = -1;
+        //        break;
+        //    default:        //失敗
+        //        arrAnswer[index] = 0;
+        //        break;
+        //}
     }
     #endregion
 
