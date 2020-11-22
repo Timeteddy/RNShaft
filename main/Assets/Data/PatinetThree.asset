@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba2e083953a01d4eb96057b1f851985, type: 3}
   m_Name: PatinetThree
   m_EditorClassIdentifier: 
-  _TaskState: 1
+  _TaskState: 0
   _name: "\u624B\u4E0D\u592A\u8212\u670D\u7684\u75C5\u4EBA"
   start:
   - "\u8B77\u7406\u5E2B\u8B77\u7406\u5E2B\u5FEB\u4F86\u6551\u6551\u6211!!"

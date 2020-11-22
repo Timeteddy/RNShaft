@@ -56,6 +56,7 @@ public class Doctors_three : NPC
                 if (dlgeSchedule >= npcData.start.Length)
                 {
                     npcData._TaskState = TaskState.ing;
+                    patint.isTock = true;
                     dlge.onDisplayWindow(false);
                     dlge.setName(null);
                     dlgeSchedule = 0;

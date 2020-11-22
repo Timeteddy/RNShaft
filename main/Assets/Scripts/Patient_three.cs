@@ -30,7 +30,7 @@ public class Patient_three : MonoBehaviour
     public Button btnConditon;
 
     /// <summary>護士開始對話 </summary>
-    private bool isTock = false;
+    public bool isTock = false;
     #endregion
 
     #region 啟動
@@ -42,7 +42,7 @@ public class Patient_three : MonoBehaviour
 
         GameMachine.SE_TYPWRTR_START += typewriterStart;
         GameMachine.SE_TYPWRTR_END += typewriterEnd;
-
+        isTock = false;
         btnConditon.interactable = false;
     }
     #endregion
@@ -167,8 +167,7 @@ public class Patient_three : MonoBehaviour
     /// </summary>
     public void btnOpenTopic()
     {
-        if (isTock) return;
-        isTock = true;
+        if (!isTock) return;
         if (!isOpenTopic) return;
         if (doctors.npcData._TaskState != TaskState.ing) return;
         onJitterStart();

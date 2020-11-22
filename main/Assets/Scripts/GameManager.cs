@@ -269,8 +269,8 @@ public class GameManager : MonoBehaviour
 
         nowSchedule = arrTaskSchedule[roomTaskSchedule];
 
-        //sceneState = SceneState.twoStart;
-        //myCamera.onCheckInStart(arrRoomEntrance[2]);
+        //sceneState = SceneState.threeStart;
+        //myCamera.onCheckInStart(arrRoomEntrance[3]);
     }
     #endregion
 

@@ -47,10 +47,6 @@ public class Doctors_six : NPC
         PlotControl.SE_ROOM_ING += plotSeRoomIng;
         PlotControl.SE_ROOM_END += plotSeRoomEnd;
 
-        arrAnswer[0] = -1;
-        arrAnswer[2] = -1;
-        arrAnswer[3] = -1;
-
         resetAnswer();
     }
     #endregion
@@ -278,10 +274,11 @@ public class Doctors_six : NPC
     {
         for (int i = 0; i < arrAnswer.Length; i++)
         {
-            arrAnswer[i] = 0;
             arrBtnAnswer[i].interactable = true;
         }
         arrAnswer[0] = -1;
+        arrAnswer[2] = -1;
+        arrAnswer[3] = -1;
     }
     #endregion
 
